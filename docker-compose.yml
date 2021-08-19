@@ -1,0 +1,39 @@
+version: '3.7'
+
+
+services:
+  postgressql:
+    image: postgres
+    container_name: container_loglife
+    restart: always
+    ports: 
+      - 5432:5432
+    environment: 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=loglife
+    volumes: 
+      - pgdata:/data/postgres
+    networks:
+      - log
+   
+  app:
+    build: .
+    container_name: loglife
+    ports: 
+      - 3333:3333
+    volumes:
+      - .:/usr/app
+    links:
+      - postgressql
+    depends_on:
+      - postgressql
+    networks:
+      - log
+    
+
+networks:
+      log:
+volumes:
+   pgdata:
+     driver: local
