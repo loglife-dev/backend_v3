@@ -1,15 +1,14 @@
-import { Connection, createConnection, getConnectionOptions } from "typeorm";
+  
+import { createConnection, getConnectionOptions } from 'typeorm';
 
-export default async (host = "loglife"): Promise<Connection> => {
-  const defaultOptions = await getConnectionOptions();
+interface IOptions {
+  host: string;
+}
 
-  return createConnection(
-    Object.assign(defaultOptions, {
-      host: process.env.NODE_ENV === "test" ? "localhost" : host,
-      database:
-        process.env.NODE_ENV === "test"
-          ? "loglife"
-          : defaultOptions.database,
-    }),
-  );
-};
+getConnectionOptions().then(options => {
+  const newOptions = options as IOptions;
+  newOptions.host = 'postgressql';
+  createConnection({
+    ...options,
+  });
+});
