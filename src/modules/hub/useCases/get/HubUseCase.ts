@@ -1,31 +1,34 @@
-import { getCustomRepository } from "typeorm";
-import { AppError } from "../../../../shared/errors/AppError";
-import { HubRepositories } from "../../repositories/HubRepositories";
+import { inject, injectable } from "tsyringe";
+import { Hub } from "../../infra/typeorm/entities/Hub";
+import { IHubRepository } from "../../repositories/IHubRepositories";
 
-class GetHubAllUseCase {
-  async execute() {
-    const hubRepositories = getCustomRepository(HubRepositories);
+@injectable()
+class GetHubUseCase {
+  constructor(
+    @inject("HubRepository")
+    private readonly hubRepository: IHubRepository) { }
 
-    const hub = await hubRepositories.find();
+  public async execute(id: string): Promise<Hub> {
+    const hub = await this.hubRepository.Get(id);
 
     return hub;
   }
 }
 
-class GetHubByIdUseCase {
-  async execute(id: string) {
-    const hubRepositories = getCustomRepository(HubRepositories);
+@injectable()
+class GetAllHubUseCase {
+  constructor(
+    @inject("HubRepository")
+    private readonly hubRepositories: IHubRepository
+  ) { }
 
-    const hubAlreadyExists = await hubRepositories.findOne({
-      where: { id },
-    });
+  public async execute(page: number): Promise<Hub[]> {
+    const customers = await this.hubRepositories.GetAll(page)
 
-    if (!hubAlreadyExists) {
-      throw new AppError("Hub not found!");
-    }
-
-    return hubAlreadyExists;
+    return customers;
   }
 }
 
-export { GetHubAllUseCase, GetHubByIdUseCase };
+export { GetHubUseCase, GetAllHubUseCase };
+
+

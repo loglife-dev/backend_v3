@@ -1,19 +1,32 @@
-import { getCustomRepository } from "typeorm";
+import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
-import { HubRepositories } from "../../repositories/HubRepositories";
+import { IHubDTO } from "../../dtos/IHubDTO";
+import { Hub } from "../../infra/typeorm/entities/Hub";
+import { IHubRepository } from "../../repositories/IHubRepositories";
 
+interface IRequest {
+  id: string;
+
+}
+
+@injectable()
 class DeleteHubUseCase {
-  async execute(id: string) {
-    const hubRepositories = getCustomRepository(HubRepositories);
+  constructor(
+    @inject("HubRepository")
+    private readonly hubRepository: IHubRepository,
 
-    const hub = await hubRepositories.findOne({ id });
+  ) { }
+
+  public async execute(id: string): Promise<void> {
+    const hub = await this.hubRepository.Get(id)
 
     if (!hub) {
-      throw new AppError("Hub not found!");
+      throw new AppError("Customer does not exists!");
     }
 
-    await hubRepositories.remove(hub);
+
+    await this.hubRepository.Delete(hub);
   }
 }
 
-export { DeleteHubUseCase };
+export { DeleteHubUseCase }

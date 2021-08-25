@@ -1,38 +1,35 @@
-import { delay, inject, injectable } from "tsyringe";
-import { getCustomRepository } from "typeorm";
+import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
-import { HubRepositories } from "../../repositories/HubRepositories";
+import { IHubDTO } from "../../dtos/IHubDTO";
+import { Hub } from "../../infra/typeorm/entities/Hub";
+import { IHubRepository } from "../../repositories/IHubRepositories";
 
-interface IRequest {
-  name: string;
-  state: string;
-  observation: string;
-}
 
+@injectable()
 class CreateHubUseCase {
-  async execute({ name, state, observation }: IRequest) {
-    const hubRepositories = getCustomRepository(HubRepositories);
+  constructor(
+    @inject("HubRepository")
+    private readonly hubRepository: IHubRepository) { }
 
-    if (name == " " || state == " ") throw new AppError("Preencha");
+  public async execute({ name, state, observation }: IHubDTO): Promise<Hub> {
+    const hub = new Hub();
 
-    if (!name) {
-      throw new AppError("Name incorrect!", 400);
-    }
-
-    const hubAlreadyExists = await hubRepositories.findOne({ name });
+    const hubAlreadyExists = await this.hubRepository.findByName(name);
 
     if (hubAlreadyExists) {
-      throw new AppError("Hub Already exists!");
+      throw new AppError("There is already a registered user with this e-mail!!", 400)
     }
 
-    const hub = hubRepositories.create({
+    Object.assign(hub, {
       name,
       state,
-      observation,
+      observation
     });
-    await hubRepositories.save(hub);
 
-    return hub;
+    const createHub = await this.hubRepository.Create(hub)
+
+    return createHub;
+
   }
 }
 

@@ -1,27 +1,29 @@
 import { Request, Response } from "express";
-import { GetHubAllUseCase, GetHubByIdUseCase } from "./HubUseCase";
+import { container, injectable } from "tsyringe";
+import { GetAllHubUseCase, GetHubUseCase } from "./HubUseCase";
 
 class GetHubController {
-  async handle(request: Request, response: Response) {
+  async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
+    const getHubUseCase = container.resolve(GetHubUseCase);
 
-    const getHubAllUseCase = new GetHubAllUseCase();
-
-    const hub = await getHubAllUseCase.execute();
+    const hub = await getHubUseCase.execute(id);
 
     return response.json(hub);
   }
 }
 
-class GetHubByIdController {
-  async handle(request: Request, response: Response) {
-    const { id } = request.params;
 
-    const getHubByIdUseCase = new GetHubByIdUseCase();
+class GetAllHubCotroller {
+  async handle(request: Request, response: Response): Promise<Response> {
+    const { page } = request.query;
 
-    const hub = await getHubByIdUseCase.execute(id);
+    const getAllHubUseCase = container.resolve(GetAllHubUseCase)
+
+    const hub = await getAllHubUseCase.execute(Number(page));
 
     return response.json(hub);
   }
 }
-export { GetHubController, GetHubByIdController };
+
+export { GetHubController, GetAllHubCotroller }

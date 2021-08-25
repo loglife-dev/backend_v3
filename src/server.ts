@@ -2,8 +2,9 @@ import express, { Request, Response, NextFunction } from "express";
 import "reflect-metadata";
 import "express-async-errors";
 import "./database";
+import "./shared/container"
 
-import { router } from "./shared/routes";
+import { router } from "./shared/infra/routes";
 import { AppError } from "./shared/errors/AppError";
 
 const app = express();

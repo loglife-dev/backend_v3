@@ -1,41 +1,50 @@
-import { getCustomRepository } from "typeorm";
+import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
-import { HubRepositories } from "../../repositories/HubRepositories";
+import { IHubUpdateDTO } from "../../dtos/IHubDTO";
+import { Hub } from "../../infra/typeorm/entities/Hub";
+import { IHubRepository } from "../../repositories/IHubRepositories";
 
-interface IRequest {
-  id: string;
-  name: string;
-  state: string;
-  observation: string;
-}
 
+@injectable()
 class UpdateHubUseCase {
-  async execute({ id, name, state, observation }: IRequest) {
-    try {
-      const hubRepositories = getCustomRepository(HubRepositories);
+  constructor(
+    @inject("HubRepository")
+    private readonly hubRepositories: IHubRepository
+  ) { }
 
-      if (name == " " || state == " ") throw new AppError("Preencha");
+  async execute({
+    id,
+    name,
+    state,
+    observation
+  }: IHubUpdateDTO): Promise<Hub> {
+    const hubExist = await this.hubRepositories.Get(id)
 
-      const hubAlreadyExists = await hubRepositories.findOne(id);
-
-      if (!hubAlreadyExists) {
-        throw new AppError("Hub not found!");
-      }
-
-      const hub = hubRepositories.update(
-        { id },
-        {
-          name,
-          state,
-          observation,
-        }
-      );
-
-      return hub;
-    } catch (err) {
-      throw new AppError("Hub not found!");
+    if (!hubExist) {
+      throw new AppError("Hub does not exists!");
     }
+
+    const hubExistByName = await this.hubRepositories.findByName(name)
+
+    if (hubExistByName && hubExist.name !== name) {
+      throw new AppError("Hub already exists!");
+    }
+
+
+    Object.assign(hubExist, {
+      id,
+      name,
+      state,
+      observation
+
+    });
+
+    const updatedHub = await this.hubRepositories.Update(
+      hubExist
+    );
+
+    return updatedHub;
   }
 }
 
-export { UpdateHubUseCase };
+export { UpdateHubUseCase }

@@ -1,21 +1,23 @@
-import { Request, Response } from "express";
-import { UpdateHubUseCase } from "../update/HubUseCase";
+import { Request, Response } from "express"
+import { container } from "tsyringe";
+import { UpdateHubUseCase } from "./HubUseCase";
+
 
 class UpdateHubController {
-  async handle(request: Request, response: Response) {
-    const { id } = request.params;
-    const { name, state, observation } = request.body;
+    async handle(request: Request, response: Response): Promise<Response> {
+        const { id } = request.params
+        const { name, state, observation } = request.body;
 
-    const updateHubUseCase = new UpdateHubUseCase();
+        const updateHub = container.resolve(UpdateHubUseCase)
 
-    const hub = await updateHubUseCase.execute({
-      id,
-      name,
-      state,
-      observation,
-    });
-
-    return response.status(200).json(hub);
-  }
+        const updatedCustomer = await updateHub.execute({
+            id,
+            name,
+            state,
+            observation
+        })
+        return response.json(updatedCustomer);
+    }
 }
+
 export { UpdateHubController };
