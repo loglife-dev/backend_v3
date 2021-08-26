@@ -23,9 +23,9 @@ class GetAllHubUseCase {
   ) { }
 
   public async execute(): Promise<Hub[]> {
-    const customers = await this.hubRepositories.GetAll()
+    const hub = await this.hubRepositories.GetAll()
 
-    return customers;
+    return hub;
   }
 }
 

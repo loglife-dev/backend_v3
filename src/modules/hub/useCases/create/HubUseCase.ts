@@ -18,7 +18,7 @@ class CreateHubUseCase {
     const hubAlreadyExists = await this.hubRepository.findByName(name);
 
     if (hubAlreadyExists) {
-      throw new AppError("There is already a registered user with this e-mail!!", 400)
+      throw new AppError("There is already a registered user with this Hub!!", 400)
     }
 
     Object.assign(hub, {

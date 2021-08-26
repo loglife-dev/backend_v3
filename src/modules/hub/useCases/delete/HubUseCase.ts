@@ -1,13 +1,8 @@
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
-import { IHubDTO } from "../../dtos/IHubDTO";
-import { Hub } from "../../infra/typeorm/entities/Hub";
 import { IHubRepository } from "../../repositories/IHubRepositories";
 
-interface IRequest {
-  id: string;
 
-}
 
 @injectable()
 class DeleteHubUseCase {
@@ -17,7 +12,7 @@ class DeleteHubUseCase {
 
   ) { }
 
-  public async execute(id: string): Promise<void> {
+  async execute(id: string): Promise<void> {
     const hub = await this.hubRepository.Get(id)
 
     if (!hub) {

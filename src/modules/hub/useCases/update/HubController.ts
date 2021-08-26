@@ -10,13 +10,13 @@ class UpdateHubController {
 
         const updateHub = container.resolve(UpdateHubUseCase)
 
-        const updatedCustomer = await updateHub.execute({
+        const updatedHub = await updateHub.execute({
             id,
             name,
             state,
             observation
         })
-        return response.json(updatedCustomer);
+        return response.json(updatedHub);
     }
 }
 
