@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
 import "reflect-metadata";
 import "express-async-errors";
-import "./database";
+import "./shared/infra/database";
 import "./shared/container"
 
 import { router } from "./shared/infra/routes";

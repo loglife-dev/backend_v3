@@ -1,7 +1,7 @@
-import { IHubDTO } from "../../dtos/IHubDTO";
-import { HubRepositoryInMemory } from "../../repositories/in-memory/HubRepositoryInMemory";
-import { CreateHubUseCase } from "../create/HubUseCase";
-import { UpdateHubUseCase } from "./HubUseCase";
+import { IHubDTO } from "../../modules/hub/dtos/IHubDTO";
+import { HubRepositoryInMemory } from "../../modules/hub/repositories/in-memory/HubRepositoryInMemory";
+import { CreateHubUseCase } from "../../modules/hub/useCases/create/HubUseCase";
+import { UpdateHubUseCase } from "../../modules/hub/useCases/update/HubUseCase";
 
 
 

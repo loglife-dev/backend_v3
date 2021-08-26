@@ -1,13 +1,12 @@
-import { IHubDTO } from "../../dtos/IHubDTO";
-import { HubRepositoryInMemory } from "../../repositories/in-memory/HubRepositoryInMemory";
-import { CreateHubUseCase } from "../create/HubUseCase";
-import { DeleteHubUseCase } from "./HubUseCase";
+import { IHubDTO } from "../../modules/hub/dtos/IHubDTO";
+import { HubRepositoryInMemory } from "../../modules/hub/repositories/in-memory/HubRepositoryInMemory";
+import { CreateHubUseCase } from "../../modules/hub/useCases/create/HubUseCase";
+import { DeleteHubUseCase } from "../../modules/hub/useCases/delete/HubUseCase";
 
 
 let createHubUseCase: CreateHubUseCase;
 let hubRepositoryInMemory: HubRepositoryInMemory;
 let deleteHubUseCase: DeleteHubUseCase;
-
 
 describe("Delete a hub", () => {
 

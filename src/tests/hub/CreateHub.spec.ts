@@ -1,6 +1,6 @@
-import { CreateHubUseCase } from "./HubUseCase"
-import { HubRepositoryInMemory } from "../../repositories/in-memory/HubRepositoryInMemory"
-import { AppError } from "../../../../shared/errors/AppError";
+import { CreateHubUseCase } from "../../modules/hub/useCases/create/HubUseCase"
+import { HubRepositoryInMemory } from "../../modules/hub/repositories/in-memory/HubRepositoryInMemory"
+import { AppError } from "../../shared/errors/AppError";
 
 let createHubUseCase: CreateHubUseCase;
 let hubRepositoryInMemory: HubRepositoryInMemory;
@@ -30,7 +30,7 @@ describe("Create Hub", () => {
 
         })
         const hubCreated = await hubRepositoryInMemory.findByName(hub.name);
-        
+
 
         expect(hubCreated).toHaveProperty("id")
 

@@ -1,14 +1,12 @@
 import { v4 as uuidv4 } from "uuid"
-import { IHubDTO } from "../../dtos/IHubDTO";
-import { HubRepositoryInMemory } from "../../repositories/in-memory/HubRepositoryInMemory";
-import { CreateHubUseCase } from "../create/HubUseCase";
-import { GetAllHubUseCase, GetHubUseCase } from "./HubUseCase";
+import { IHubDTO } from "../../modules/hub/dtos/IHubDTO";
+import { HubRepositoryInMemory } from "../../modules/hub/repositories/in-memory/HubRepositoryInMemory";
+import { CreateHubUseCase } from "../../modules/hub/useCases/create/HubUseCase";
+import { GetAllHubUseCase, GetHubUseCase } from "../../modules/hub/useCases/get/HubUseCase";
 
 let getAllHubUseCase: GetAllHubUseCase;
 let hubRepositoryInMemory: HubRepositoryInMemory;
 let createHubUseCase: CreateHubUseCase;
-
-
 let getHubFindByIdUseCase: GetHubUseCase;
 
 describe('List all hub', () => {
