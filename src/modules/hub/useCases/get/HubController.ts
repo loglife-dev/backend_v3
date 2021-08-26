@@ -20,7 +20,7 @@ class GetAllHubCotroller {
 
     const getAllHubUseCase = container.resolve(GetAllHubUseCase)
 
-    const hub = await getAllHubUseCase.execute(Number(page));
+    const hub = await getAllHubUseCase.execute();
 
     return response.json(hub);
   }

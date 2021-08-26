@@ -22,8 +22,8 @@ class GetAllHubUseCase {
     private readonly hubRepositories: IHubRepository
   ) { }
 
-  public async execute(page: number): Promise<Hub[]> {
-    const customers = await this.hubRepositories.GetAll(page)
+  public async execute(): Promise<Hub[]> {
+    const customers = await this.hubRepositories.GetAll()
 
     return customers;
   }

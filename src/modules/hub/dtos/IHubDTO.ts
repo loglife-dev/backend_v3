@@ -1,4 +1,5 @@
 interface IHubDTO {
+    id?: string;
     name: string;
     state: string;
     observation: string;

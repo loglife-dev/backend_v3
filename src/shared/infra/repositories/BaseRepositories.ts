@@ -4,7 +4,6 @@ import { IBaseRepository } from "./IBaseRepositories"
 
 
 class BaseRepository<T> implements IBaseRepository<T> {
-    protected limitPage = 10;
     protected readonly repository: Repository<T>;
 
     constructor(entity: EntityTarget<T>) {
@@ -16,11 +15,8 @@ class BaseRepository<T> implements IBaseRepository<T> {
         });
     }
 
-    public async GetAll(page: number): Promise<T[]> {
-        return this.repository.find({
-            skip: page * this.limitPage,
-            take: this.limitPage,
-        })
+    public async GetAll(): Promise<T[]> {
+        return this.repository.find()
     }
 
     public async Create(entity: T): Promise<T> {
