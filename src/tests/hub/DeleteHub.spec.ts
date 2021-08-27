@@ -31,10 +31,8 @@ describe("Delete a hub", () => {
         });
         const findId = await deleteHubUseCase.execute(hub.id)
 
-
+        expect(findId).toBe(undefined)
     })
-
-
 })
 
 

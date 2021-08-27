@@ -8,7 +8,7 @@ class HubRepositoryInMemory implements IHubRepository {
     hubs: Hub[] = [];
 
     async Get(id: string): Promise<Hub> {
-        const hub = this.hubs.find((hub) => hub.id === id);
+       const hub = this.hubs.find((hub) => hub.id === id);
        return hub;
     }
 
