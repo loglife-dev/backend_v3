@@ -13,7 +13,12 @@ class CreateHubUseCase {
     private readonly hubRepository: IHubRepository) { }
 
   public async execute({ name, state, observation }: IHubDTO): Promise<Hub> {
-    const hub = new Hub();
+
+
+    if (name === "" || state === "") {
+      throw new AppError("fill fieds", 400)
+    }
+
 
     const hubAlreadyExists = await this.hubRepository.findByName(name);
 
@@ -21,6 +26,7 @@ class CreateHubUseCase {
       throw new AppError("There is already a registered user with this Hub!!", 400)
     }
 
+    const hub = new Hub();
     Object.assign(hub, {
       name,
       state,

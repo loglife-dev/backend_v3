@@ -21,8 +21,8 @@ class CreateCityUseCase {
 
     }: ICityDTO): Promise<City> {  
 
-        if ( name == " " || state == " "  || observation == " "){
-            throw new AppError("There is already a registered user with this City!!", 400)
+        if ( name ==="" || state ===""){
+            throw new AppError("fill fieds", 400)
         }
        
         const cityAlreadyExists = await this.cityRepository.findByName(name);

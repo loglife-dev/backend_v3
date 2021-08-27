@@ -14,21 +14,25 @@ export class CreateCity1629999276926 implements MigrationInterface {
                     },
                     {
                         name: 'name',
-                        type: 'varchar'
+                        type: 'varchar',
+                        isNullable: false,
+
 
                     },
                     {
                         name: 'state',
                         type: 'varchar',
+                        isNullable: false,
                     },
                     {
                         name: 'hub_id',
                         type: 'uuid',
+                        isNullable: false,
                     },
                     {
                         name: 'deadline_collect',
                         type: 'timestamp',
-                        default: 'now()'
+                        isNullable: false,
                     },
                     {
                         name: 'observation',
