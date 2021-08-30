@@ -1,0 +1,380 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Loglife documentation",
+        "description": "Backend API.",
+        "version": "1.0.0",
+        "contact": {
+            "email": "jhonatangomes859@gmail.com"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3333/",
+            "description": "Local server"
+        }
+    ],
+    "paths": {
+        "/hub/{id}": {
+            "get": {
+                "tags": [
+                    "Hub"
+                ],
+                "description": "Find One Hub",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "hub id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#definitions/HubGet"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/hub/": {
+            "get": {
+                "tags": [
+                    "Hub"
+                ],
+                "description": "List all Hub",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#definitions/HubGet"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/hub": {
+            "post": {
+                "tags": [
+                    "Hub"
+                ],
+                "description": "Create a new Hub",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#definitions/Hub"
+                            },
+                            "example": {
+                                "name": "Manaus",
+                                "state": "Amazonas",
+                                "observation": "Produto em perfeito estado"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Hub already exists!"
+                    }
+                },
+                "items": {
+                    "$ref": "#definitions/Hub"
+                }
+            }
+        },
+        "/hub/{id}/": {
+            "put": {
+                "tags": [
+                    "Hub"
+                ],
+                "description": "Update hub",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "paths",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "state",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "observation",
+                        "in": "body",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Updated hub sucess!"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "items": {
+                        "$ref": "#definitions/HubGet"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Hub"
+                ],
+                "description": "Delete Hub",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Hub id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    }
+                }
+            }
+        },
+        "/city/{id}": {
+            "get": {
+                "tags": [
+                    "City"
+                ],
+                "description": "List product by id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/city/": {
+            "get": {
+                "tags": [
+                    "City"
+                ],
+                "sumary": "List all citys",
+                "description": "list all citys",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/city": {
+            "post": {
+                "tags": [
+                    "City"
+                ],
+                "sumary": "Create a city",
+                "description": "Create a new city",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "state",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "hub_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "deadline_collect",
+                        "in": "body",
+                        "type": "date"
+                    },
+                    {
+                        "name": "observation",
+                        "in": "body",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created new city sucess!"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/city/{id}/": {
+            "put": {
+                "tags": [
+                    "City"
+                ],
+                "description": "Update city",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "state",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "hub_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "deadline_collect",
+                        "in": "body",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "observation",
+                        "in": "body",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Updated city sucess!"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "delete": {
+            "tags": [
+                "City"
+            ],
+            "sumary": "Delete a city",
+            "description": "Delet city",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                },
+                "404": {
+                    "description": "Not Found"
+                }
+            }
+        }
+    },
+    "definitions": {
+        "HubGet": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "observation": {
+                    "type": "string"
+                }
+            }
+        },
+        "Hub": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "observation": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
