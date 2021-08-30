@@ -15,12 +15,10 @@ export class CreateHub1629820472786 implements MigrationInterface {
                     {
                         name: 'name',
                         type: 'varchar',
-                        isNullable: false,
                     },
                     {
                         name: 'state',
                         type: 'varchar',
-                        isNullable: false,
                     },
                     {
                         name: 'observation',

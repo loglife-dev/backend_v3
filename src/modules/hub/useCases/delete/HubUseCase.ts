@@ -16,7 +16,7 @@ class DeleteHubUseCase {
     const hub = await this.hubRepository.Get(id)
 
     if (!hub) {
-      throw new AppError("Customer does not exists!");
+      throw new AppError("Hub does not exists!");
     }
 
 

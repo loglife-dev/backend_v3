@@ -10,30 +10,23 @@ export class CreateCity1629999276926 implements MigrationInterface {
                     {
                         name: 'id',
                         type: 'uuid',
-                        isPrimary: true,
                     },
                     {
                         name: 'name',
                         type: 'varchar',
-                        isNullable: false,
-
-
                     },
                     {
                         name: 'state',
                         type: 'varchar',
-                        isNullable: false,
                     },
                     {
                         name: 'hub_id',
                         type: 'uuid',
-                        isNullable: false,
                     },
                     {
                         name: 'deadline_collect',
                         type: 'timestamp',
-                        isNullable: false,
-                    },
+                     },
                     {
                         name: 'observation',
                         type: 'text'

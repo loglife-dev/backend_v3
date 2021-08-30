@@ -16,7 +16,6 @@ class GetHubController {
 
 class GetAllHubCotroller {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { page } = request.query;
 
     const getAllHubUseCase = container.resolve(GetAllHubUseCase)
 
