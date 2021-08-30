@@ -39,7 +39,7 @@ describe("Find by id to hub", () => {
         createHubUseCase = new CreateHubUseCase(hubRepositoryInMemory);
     })
 
-    it("Should be able to findOne id hub", async () => {
+    it("Should be able to findOne id hubs", async () => {
 
         const hub: IHubDTO = {
             id: '29d2b86a-0679-11ec-9a03-0242ac130003',
