@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, Unique, UpdateDateColumn } from "typeorm"
 import { v4 as uuidv4 } from 'uuid'
-import { Hub } from "../../../hub/infra/typeorm/entities/Hub";
+import { Hub } from "../../../../hub/infra/typeorm/entities/Hub";
 
 @Entity('customer')
 class Customer {
@@ -19,7 +19,9 @@ class Customer {
     @Column()
     company_lastname: string;
 
-    @Column()
+    @Column({
+        unique: true
+    })
     cnpj_cpf: string;
     
 

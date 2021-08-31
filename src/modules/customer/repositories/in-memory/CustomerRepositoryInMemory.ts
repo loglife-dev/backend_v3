@@ -1,5 +1,5 @@
 import { ICustomerDTO } from "../../dtos/ICustomerDTO";
-import { Customer } from "../../infra/entities/Customer";
+import { Customer } from "../../infra/typeorm/entities/Customer";
 import { ICustomerRepository } from "../ICustomerRepository";
 
 

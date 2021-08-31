@@ -1,5 +1,5 @@
-import { BaseRepository } from "../../../../shared/infra/repositories/BaseRepositories";
-import { ICustomerRepository } from "../../repositories/ICustomerRepository";
+import { BaseRepository } from "../../../../../shared/infra/repositories/BaseRepositories";
+import { ICustomerRepository } from "../../../repositories/ICustomerRepository";
 import { Customer } from "../entities/Customer";
 
 

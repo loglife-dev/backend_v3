@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { container, injectable } from "tsyringe";
+import { container } from "tsyringe";
 import { GetAllCityUseCase, GetCityUseCase } from "./CityUseCase";
 
 
@@ -16,7 +16,6 @@ class GetCityController {
 
 class GetAllCityCotroller {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { page } = request.query;
 
         const getAllcityUseCase = container.resolve(GetAllCityUseCase)
 
