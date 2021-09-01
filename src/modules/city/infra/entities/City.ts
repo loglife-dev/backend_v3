@@ -21,7 +21,7 @@ class City {
     hubId: Hub;
 
     @Column()
-    deadline_collect: Date;
+    schedule_deadline: Date;
 
     @Column()
     observation: string;

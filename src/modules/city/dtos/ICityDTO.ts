@@ -5,7 +5,7 @@ interface ICityDTO {
     name: string;
     state: string;
     hub_id: string;
-    deadline_collect: Date;
+    schedule_deadline: Date;
     observation: string;
 }
 

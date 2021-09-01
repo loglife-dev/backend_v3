@@ -16,7 +16,7 @@ class UpdateCityUseCase {
         name,
         state,
         hub_id,
-        deadline_collect,
+        schedule_deadline,
         observation,
     }: ICityDTO): Promise<City> {
         const cityExist = await this.cityRepository.Get(id)
@@ -37,7 +37,7 @@ class UpdateCityUseCase {
             name,
             state,
             hub_id,
-            deadline_collect,
+            schedule_deadline,
             observation,
 
         });

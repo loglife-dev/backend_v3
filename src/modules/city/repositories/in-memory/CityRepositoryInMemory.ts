@@ -22,7 +22,7 @@ class CityRepositoryInMemory implements ICityRepository {
         name,
         state,
         hub_id,
-        deadline_collect,
+        schedule_deadline,
         observation,
     }: ICityDTO): Promise<City> {
         const city = new City();
@@ -32,7 +32,7 @@ class CityRepositoryInMemory implements ICityRepository {
             name,
             state,
             hub_id: '1e0b9d6a-0739-11ec-9a03-0242ac130003',
-            deadline_collect: new Date(),
+            schedule_deadline: new Date(),
             observation
 
         })

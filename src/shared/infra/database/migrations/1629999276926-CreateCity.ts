@@ -24,7 +24,7 @@ export class CreateCity1629999276926 implements MigrationInterface {
                         type: 'uuid',
                     },
                     {
-                        name: 'deadline_collect',
+                        name: 'schedule_deadline',
                         type: 'timestamp',
                      },
                     {

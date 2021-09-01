@@ -34,6 +34,5 @@ describe("Update permission", () => {
         })
         expect(updatePermission.key).toBe("chave-wwlss")
         expect(updatePermission.order).toBe(2)
-        console.log(updatePermission)
     });
 })

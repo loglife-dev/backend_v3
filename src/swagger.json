@@ -247,7 +247,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "deadline_collect",
+                        "name": "schedule_deadline",
                         "in": "body",
                         "type": "date"
                     },
@@ -300,7 +300,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "deadline_collect",
+                        "name": "schedule_deadline",
                         "in": "body",
                         "type": "timestamp"
                     },

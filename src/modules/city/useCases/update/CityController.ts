@@ -6,7 +6,7 @@ import { UpdateCityUseCase } from "./CityUseCase";
 class UpdateCityController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { id } = request.params
-        const { name, state, hub_id, deadline_collect, observation, } = request.body;
+        const { name, state, hub_id, schedule_deadline, observation, } = request.body;
 
         const updateCity = container.resolve(UpdateCityUseCase)
 
@@ -15,7 +15,7 @@ class UpdateCityController {
             name,
             state,
             hub_id,
-            deadline_collect,
+            schedule_deadline,
             observation,
         })
         return response.json(updatedCity);

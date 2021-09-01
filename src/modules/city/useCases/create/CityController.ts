@@ -5,7 +5,7 @@ import { CreateCityUseCase } from "./CityUseCase";
 
 class CreateCityController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { name, state, hub_id, deadline_collect, observation, } = request.body;
+        const { name, state, hub_id, schedule_deadline, observation, } = request.body;
 
         const createCityUseCase = container.resolve(CreateCityUseCase);
 
@@ -13,7 +13,7 @@ class CreateCityController {
             name,
             state,
             hub_id,
-            deadline_collect,
+            schedule_deadline,
             observation,
         });
 
@@ -21,7 +21,7 @@ class CreateCityController {
             name: city.name,
             state: city.state,
             hub_id: city.hubId,
-            deadline_collect: city.deadline_collect,
+            schedule_deadline: city.schedule_deadline,
             observation: city.observation
         }
 

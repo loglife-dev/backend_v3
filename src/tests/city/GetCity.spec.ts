@@ -22,7 +22,7 @@ describe("List all city", () => {
             name: 'test city',
             state: 'Amazonas',
             hub_id: '1e0b9d6a-0739-11ec-9a03-0242ac130003',
-            deadline_collect: new Date(),
+            schedule_deadline: new Date(),
             observation: 'describe'
         };
 
@@ -49,7 +49,7 @@ describe("Find by id to city", () => {
             name: 'test city',
             state: 'Amazonas',
             hub_id: '1e0b9d6a-0739-11ec-9a03-0242ac130003',
-            deadline_collect: new Date(),
+            schedule_deadline: new Date(),
             observation: 'describe'
         };
 

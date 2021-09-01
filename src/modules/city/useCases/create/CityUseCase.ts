@@ -16,7 +16,7 @@ class CreateCityUseCase {
         name,
         state,
         hub_id,
-        deadline_collect,
+        schedule_deadline,
         observation,
 
     }: ICityDTO): Promise<City> {  
@@ -37,7 +37,7 @@ class CreateCityUseCase {
             name,
             state,
             hub_id,
-            deadline_collect,
+            schedule_deadline,
             observation,
         });
 
