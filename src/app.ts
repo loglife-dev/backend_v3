@@ -6,11 +6,13 @@ import "./shared/container"
 import swaggerUi from 'swagger-ui-express';
 import swaggerFile from "./swagger.json";
 import { router } from "./shared/infra/routes";
+import cors from 'cors'
 
 import { AppError } from "./shared/errors/AppError";
 
 
 const app = express();
+app.use(cors())
 app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile))
 app.use(router);
