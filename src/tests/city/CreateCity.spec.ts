@@ -1,5 +1,7 @@
+import { ICityDTO } from "../../modules/city/dtos/ICityDTO";
 import { CityRepositoryInMemory } from "../../modules/city/repositories/in-memory/CityRepositoryInMemory";
 import { CreateCityUseCase } from "../../modules/city/useCases/create/CityUseCase";
+import { AppError } from "../../shared/errors/AppError";
 
 
 let createCityUseCase: CreateCityUseCase;
@@ -37,5 +39,25 @@ describe("Create City", () => {
         const cityCreated = await cityRepositoryInMemory.findByName(city.name);
 
         expect(cityCreated).toHaveProperty("id")
+    })
+
+    it("should not be able to create a new city with name exists", async () => {
+
+        expect(async () => {
+            const city: ICityDTO = {
+                id: '59fde46d-40ad-46ac-a674-a8506c4791f6',
+                name: 'test city',
+                state: 'Amazonas',
+                hub_id: '1e0b9d6a-0739-11ec-9a03-0242ac130003',
+                schedule_deadline: new Date(),
+                observation: 'describe'
+            }
+            await createCityUseCase.execute(city);
+
+            await createCityUseCase.execute(city);
+
+            
+        }).rejects.toBeInstanceOf(AppError)
+        
     })
 })
