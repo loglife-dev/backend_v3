@@ -5,6 +5,8 @@ import { CollectorRepository } from "../../modules/collector/infra/typeorm/repos
 import { ICollectorRepository } from "../../modules/collector/repositories/ICollectorRepository";
 import { CustomerRepository } from "../../modules/customer/infra/typeorm/repositories/CustomerRepository";
 import { ICustomerRepository } from "../../modules/customer/repositories/ICustomerRepository";
+import { DriverRepository } from "../../modules/driver/infra/typeorm/repositories/DriverRepositories";
+import { IDriverRepository } from "../../modules/driver/repositories/IDriverRepository";
 import { HubRepository } from "../../modules/hub/infra/typeorm/repositories/HubRepositories";
 import { IHubRepository } from "../../modules/hub/repositories/IHubRepositories";
 import { PermissionRepository } from "../../modules/permission/infra/typeorm/repositories/PermissionRepository";
@@ -35,4 +37,9 @@ container.registerSingleton<IPermissionRepository>(
 container.registerSingleton<ICollectorRepository>(
     "CollectorRepository",
     CollectorRepository
+)
+
+container.registerSingleton<IDriverRepository>(
+    "DriverRepository",
+    DriverRepository
 )

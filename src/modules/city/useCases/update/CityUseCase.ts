@@ -28,7 +28,7 @@ class UpdateCityUseCase {
         const cityExistByName = await this.cityRepository.findByName(name)
 
         if (cityExistByName && cityExist.name !== name) {
-            throw new AppError("Hub already exists!");
+            throw new AppError("Name already exists!");
         }
 
 
