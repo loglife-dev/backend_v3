@@ -7,7 +7,9 @@ class City {
     @PrimaryColumn()
     readonly id?: string;
 
-    @Column()
+    @Column({
+        unique: true
+    })
     name: string;
 
     @Column()

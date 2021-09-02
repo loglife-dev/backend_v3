@@ -2,11 +2,13 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn, PrimaryGeneratedColumn
 import { v4 as uuidv4 } from 'uuid'
 
 @Entity('permission')
-class Permission{
+class Permission {
     @PrimaryColumn()
     readonly id?: string;
 
-    @Column()
+    @Column({
+        unique: true
+    })
     key: string;
 
     @Column()
@@ -21,12 +23,12 @@ class Permission{
     @UpdateDateColumn()
     updated_at: Date;
 
-    constructor(){
-        if(!this.id){
+    constructor() {
+        if (!this.id) {
             this.id = uuidv4()
         }
     }
 
 }
 
-export { Permission}
+export { Permission }

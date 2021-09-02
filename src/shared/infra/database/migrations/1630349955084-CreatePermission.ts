@@ -15,6 +15,7 @@ export class CreatePermission1630349955084 implements MigrationInterface {
                     {
                         name: 'key',
                         type: 'varchar',
+                        isUnique: true,
                     },
                     {
                         name: 'group',

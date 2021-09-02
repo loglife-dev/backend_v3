@@ -2,11 +2,13 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn, PrimaryGeneratedColumn
 import { v4 as uuidv4 } from 'uuid'
 
 @Entity('hub')
-class Hub{
+class Hub {
     @PrimaryColumn()
     readonly id?: string;
 
-    @Column()
+    @Column({
+        unique: true
+    })
     name: string;
 
     @Column()
@@ -21,12 +23,12 @@ class Hub{
     @UpdateDateColumn()
     updated_at: Date;
 
-    constructor(){
-        if(!this.id){
+    constructor() {
+        if (!this.id) {
             this.id = uuidv4()
         }
     }
 
 }
 
-export { Hub}
+export { Hub }

@@ -14,6 +14,7 @@ export class CreateCity1629999276926 implements MigrationInterface {
                     {
                         name: 'name',
                         type: 'varchar',
+                        isUnique: true,
                     },
                     {
                         name: 'state',
