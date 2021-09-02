@@ -15,12 +15,10 @@ class Collector {
     @Column()
     trading_name: string;
 
-    @Column({
-        array: true,
-        default: [],
-        nullable: false,
-      })
-    hub_list: string;
+    @Column("varchar",{
+        array: true
+    })
+    hub_list: string[];
 
 
     @Column({

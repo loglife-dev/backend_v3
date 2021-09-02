@@ -1,7 +1,8 @@
 
 
-export interface ICollectorDTO {
-    id?: string;    
+
+interface ICollectorDTO {
+    id?: string;
     situation: string;
     company_name: string;
     trading_name: string;
@@ -29,3 +30,4 @@ export interface ICollectorDTO {
     sunday_close: Date;
     observation: string;
 }
+export { ICollectorDTO }
