@@ -54,12 +54,12 @@ export class CreateDriver1630599874728 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        name: 'FKDriver',
+                        name: 'FKCollector',
                         referencedTableName: 'collector',
                         referencedColumnNames: ['id'],
                         columnNames: ['collector_id'],
                         onDelete: 'SET NULL',
-                        onUpdate: 'SET NULL',
+                        onUpdate: 'CASCADE',
                     }
                 ]
             })

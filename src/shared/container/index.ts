@@ -11,6 +11,8 @@ import { HubRepository } from "../../modules/hub/infra/typeorm/repositories/HubR
 import { IHubRepository } from "../../modules/hub/repositories/IHubRepositories";
 import { PermissionRepository } from "../../modules/permission/infra/typeorm/repositories/PermissionRepository";
 import { IPermissionRepository } from "../../modules/permission/repositories/IPermissionRepository";
+import { UserRepository } from "../../modules/user/infra/typeorm/repositories/UserRepository";
+import { IUserRepository } from "../../modules/user/repositories/IUserRepositories";
 
 
 
@@ -42,4 +44,9 @@ container.registerSingleton<ICollectorRepository>(
 container.registerSingleton<IDriverRepository>(
     "DriverRepository",
     DriverRepository
+)
+
+container.registerSingleton<IUserRepository>(
+    "UserRepository",
+    UserRepository
 )

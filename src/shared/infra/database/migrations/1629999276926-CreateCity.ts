@@ -45,12 +45,12 @@ export class CreateCity1629999276926 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        name: 'FKCity',
+                        name: 'FKHub',
                         referencedTableName: 'hub',
                         referencedColumnNames: ['id'],
                         columnNames: ['hub_id'],
                         onDelete: 'SET NULL',
-                        onUpdate: 'SET NULL',
+                        onUpdate: 'CASCADE',
                     },
                 ]
             })
