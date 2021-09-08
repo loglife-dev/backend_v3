@@ -342,7 +342,485 @@
                     "description": "Not Found"
                 }
             }
+        },
+        "/customer/{id}": {
+            "get": {
+                "tags": [
+                    "customer"
+                ],
+                "description": "List customer by id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/customer/": {
+            "get": {
+                "tags": [
+                    "customer"
+                ],
+                "sumary": "List all customers",
+                "description": "list all customers",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/customer": {
+            "post": {
+                "tags": [
+                    "customer"
+                ],
+                "sumary": "Create a customer",
+                "description": "Create a new customer",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "situation",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "trading_firstname",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "company_lastname",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "cnpj_cpf",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "deadline_delivery",
+                        "in": "body",
+                        "type": "timestamp",
+                        "default": "now()"
+                    },
+                    {
+                        "name": "operational_email",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "financial_email",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "cellphone",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "telephone",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "cep",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "state",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "city",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "street",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "number",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "neighborhood",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "complement",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "municipal_register",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "state_register",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "icms",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "iss",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "payment_conditional",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "day_expiration_1",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "day_expiration_2",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "payment_type",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "emission_type",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "observation",
+                        "in": "body",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created new customer sucess!"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+            
+        },
+        "/customer/:{id}": {
+                "put": {
+                    "tags": [
+                        "customer"
+                    ],
+                    "description": "Update customer",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "name": "type",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "situation",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "trading_firstname",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "company_lastname",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "cnpj_cpf",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "deadline_delivery",
+                            "in": "body",
+                            "type": "timestamp",
+                            "default": "now()"
+                        },
+                        {
+                            "name": "operational_email",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "financial_email",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "cellphone",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "telephone",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "cep",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "state",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "city",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "street",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "number",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "neighborhood",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "complement",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "municipal_register",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "state_register",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "icms",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "iss",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "payment_conditional",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "day_expiration_1",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "day_expiration_2",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "payment_type",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "emission_type",
+                            "in": "body",
+                            "type": "string"
+                        },
+                        {
+                            "name": "observation",
+                            "in": "body",
+                            "type": "string"
+                        }
+                    ],
+                    "responses": {
+                        "201": {
+                            "description": "Updated customer sucess!"
+                        },
+                        "500": {
+                            "description": "Internal Server Error"
+                        }
+                    }
+                },
+                "delete": {
+                    "tags": [
+                        "customer"
+                    ],
+                    "sumary": "Delete a customer",
+                    "description": "Delet customer",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "in": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "OK"
+                        },
+                        "404": {
+                            "description": "Not Found"
+                        }
+                    }
+                }
+            },
+            "/permission/{id}":{
+                "get": {
+                    "tags": [
+                        "Permission"
+                    ],
+                    "description": "Find One Permission",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "in": "path",
+                            "description": "Permission id",
+                            "required": true,
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#definitions/PermissionGet"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+           "/permission/": {
+            "get": {
+                "tags": [
+                    "Permission"
+                ],
+                "sumary": "List all Permissions",
+                "description": "list all Permissions",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/permission":{
+            "post": {
+                "tags": [
+                    "Permission"
+                ],
+                "sumary": "Create a permission",
+                "description": "Create a new permission",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "group",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "order",
+                        "in": "body",
+                        "type": "int"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created new permission sucess!"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
         }
+            
     },
     "definitions": {
         "HubGet": {
@@ -375,6 +853,23 @@
                     "type": "string"
                 }
             }
+        },
+       "PermissionGet": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type":"string"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "group": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "int"
+                }
         }
+       }
     }
 }

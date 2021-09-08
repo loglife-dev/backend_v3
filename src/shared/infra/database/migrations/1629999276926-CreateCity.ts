@@ -10,6 +10,7 @@ export class CreateCity1629999276926 implements MigrationInterface {
                     {
                         name: 'id',
                         type: 'uuid',
+                        isPrimary: true,
                     },
                     {
                         name: 'name',

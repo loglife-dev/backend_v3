@@ -1,17 +1,17 @@
 import { Request, Response } from "express"
 import { container } from "tsyringe";
-import { DeleteCityUseCase } from "./CityUseCase";
+import { DeleteAddressUseCase } from "./AddressUseCase";
 
-class DeleteCityController {
+
+class DeleteAddressController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { id } = request.params;
 
-        const deleteCityUseCase = container.resolve(DeleteCityUseCase);
+        const deleteAddressUseCase = container.resolve(DeleteAddressUseCase);
 
-        await deleteCityUseCase.execute(id)
+        await deleteAddressUseCase.execute(id)
 
         return response.sendStatus(200)
     }
 }
-
-export { DeleteCityController }
+export { DeleteAddressController }

@@ -1,4 +1,8 @@
 import { container } from "tsyringe";
+import { AddressRepository } from "../../modules/address/infra/repositories/AddressRepository";
+import { IAddressRepository } from "../../modules/address/repositories/IAddressRepository";
+
+
 import { CityRepository } from "../../modules/city/infra/repositories/CityRepositories";
 import { ICityRepository } from "../../modules/city/repositories/ICityRepository";
 import { CollectorRepository } from "../../modules/collector/infra/typeorm/repositories/CollectorRepository";
@@ -13,6 +17,7 @@ import { PermissionRepository } from "../../modules/permission/infra/typeorm/rep
 import { IPermissionRepository } from "../../modules/permission/repositories/IPermissionRepository";
 import { UserRepository } from "../../modules/user/infra/typeorm/repositories/UserRepository";
 import { IUserRepository } from "../../modules/user/repositories/IUserRepositories";
+
 
 
 
@@ -49,4 +54,9 @@ container.registerSingleton<IDriverRepository>(
 container.registerSingleton<IUserRepository>(
     "UserRepository",
     UserRepository
+)
+
+container.registerSingleton<IAddressRepository>(
+    "AddressRepository",
+    AddressRepository
 )
