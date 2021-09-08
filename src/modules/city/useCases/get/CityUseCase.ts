@@ -10,7 +10,7 @@ class GetCityUseCase {
         private readonly cityRepository: ICityRepository) { }
 
     async execute(id: string): Promise<City> {
-        const city = await this.cityRepository.Get(id);
+        const city = await this.cityRepository.findById(id)
 
         return city;
     }
@@ -23,7 +23,7 @@ class GetAllCityUseCase {
         private readonly cityRepository: ICityRepository) { }
 
     async execute(): Promise<City[]> {
-        const city = await this.cityRepository.GetAll()
+        const city = await this.cityRepository.list()
 
         return city;
     }

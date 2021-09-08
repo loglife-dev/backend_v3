@@ -65,6 +65,12 @@ class CityRepositoryInMemory implements ICityRepository {
         this.citys.splice(findIndex, 1);
     }
 
+    async list(): Promise<City[]> {
+        const all = this.citys;
+
+        return all;
+    }
+
 }
 
 export { CityRepositoryInMemory }
