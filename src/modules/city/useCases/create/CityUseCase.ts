@@ -22,7 +22,7 @@ class CreateCityUseCase {
     }: ICityDTO): Promise<City> {  
 
         if ( name ==="" || state ===""){
-            throw new AppError("fill fieds", 400)
+            throw new AppError("fill in all fields")
         }
        
         const cityAlreadyExists = await this.cityRepository.findByName(name);

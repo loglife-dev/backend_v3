@@ -19,7 +19,7 @@ class CreatePermissionUseCase {
     }: IPermissionDTO): Promise<Permission> {
 
         if (key === "" || group === "") {
-            throw new AppError("fill fieds", 400)
+            throw new AppError("fill in all fields", 400)
         }
 
         const permissionAlreadyExists = await this.permissionRepository.findByKey(key);

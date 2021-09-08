@@ -24,7 +24,10 @@ class CreateUserUseCase {
         firstname,
         lastname,
     }: IUserDTO): Promise<User> {
-
+        
+        if (user_type == "" || email == "" || firstname == "" || lastname == "") {
+            throw new AppError("fill in all fields")
+        }
 
         const userAlreadyExists = await this.userRepository.findByEmail(email);
 

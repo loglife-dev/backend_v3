@@ -40,6 +40,11 @@ class CreateCollectorUseCase {
         observation
 
     }: ICollectorDTO): Promise<Collector> {
+        if (situation == "" || company_name == "" || trading_name == "" || cnpj == "" || operational_email == "" || delay_cost == "" || cellphone == "" ||
+            telephone == "" || cep == "" || state == "" || city == "" || street == "" || number == "" || neighborhood == "" || complement == "" || municipal_register == "" ||
+            payment_type == "" || day_expiration == "") {
+            throw new AppError("fill in all fields!")
+        }
 
         const collectorAlreadyExists = await this.collectorRepository.findByCnpj(cnpj);
 

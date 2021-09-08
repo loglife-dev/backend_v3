@@ -23,7 +23,7 @@ class CreateDriverUseCase {
     }: IDriverDTO): Promise<Driver> {
 
         if (situation === "" || firstname === "" || cpf === "" || email === "") {
-            throw new AppError("fill fieds", 400)
+            throw new AppError("fill in all fields", 400)
         }
 
         const DriverAlreadyExists = await this.driverRepository.findByCpf(cpf)

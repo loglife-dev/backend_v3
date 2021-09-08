@@ -36,6 +36,12 @@ class CreateAddressUseCase {
         sunday_close,
         observation,
     }: IAddressDTO): Promise<Address> {
+
+        if (customer_id == "" || type == "" || cnpj_cpf == "" || trading_name == "" || branch == "" || responsible_name == "" || responsible_telephone == "" || cep == "" ||
+            state == "" || city_id == "" || street == "" || number == "" || neighborhood == "" || complement == "" || reference_point == "" || icms == "") {
+            throw new AppError("fill in all fields", 400)
+        }
+
         const addressAlreadyExists = await this.addressRepository.findByCnpjCpf(cnpj_cpf);
 
         if (addressAlreadyExists) {

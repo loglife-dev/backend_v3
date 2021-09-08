@@ -15,7 +15,7 @@ class CreateHubUseCase {
   public async execute({ name, state, observation }: IHubDTO): Promise<Hub> {
 
     if (name === "" || state === "") {
-      throw new AppError("fill fieds", 400)
+      throw new AppError("fill in all fields", 400)
     }
 
     const hubAlreadyExists = await this.hubRepository.findByName(name);
