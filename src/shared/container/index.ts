@@ -1,8 +1,6 @@
 import { container } from "tsyringe";
 import { AddressRepository } from "../../modules/address/infra/repositories/AddressRepository";
 import { IAddressRepository } from "../../modules/address/repositories/IAddressRepository";
-
-
 import { CityRepository } from "../../modules/city/infra/repositories/CityRepositories";
 import { ICityRepository } from "../../modules/city/repositories/ICityRepository";
 import { CollectorRepository } from "../../modules/collector/infra/typeorm/repositories/CollectorRepository";
@@ -15,11 +13,10 @@ import { HubRepository } from "../../modules/hub/infra/typeorm/repositories/HubR
 import { IHubRepository } from "../../modules/hub/repositories/IHubRepositories";
 import { PermissionRepository } from "../../modules/permission/infra/typeorm/repositories/PermissionRepository";
 import { IPermissionRepository } from "../../modules/permission/repositories/IPermissionRepository";
+import { ProviderRepository } from "../../modules/provider/infra/typeorm/repositories/ProviderRepository";
+import { IProviderRepository } from "../../modules/provider/repositories/IProviderRepository";
 import { UserRepository } from "../../modules/user/infra/typeorm/repositories/UserRepository";
 import { IUserRepository } from "../../modules/user/repositories/IUserRepositories";
-
-
-
 
 container.registerSingleton<IHubRepository>(
     "HubRepository",
@@ -59,4 +56,9 @@ container.registerSingleton<IUserRepository>(
 container.registerSingleton<IAddressRepository>(
     "AddressRepository",
     AddressRepository
+)
+
+container.registerSingleton<IProviderRepository>(
+    "ProviderRepository",
+    ProviderRepository
 )

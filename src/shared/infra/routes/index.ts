@@ -7,6 +7,7 @@ import { collectorRoutes } from "./collector.routes";
 import { driverRoutes } from "./driver.routes";
 import { userRoutes } from "./user.routes";
 import { addressRoutes } from "./address.routes";
+import { providerRoutes } from "./provider.routes";
 const router = Router();
 
 router.use("/hub", hubRoutes);
@@ -17,4 +18,5 @@ router.use("/collector", collectorRoutes);
 router.use("/driver", driverRoutes);
 router.use("/user", userRoutes);
 router.use("/address", addressRoutes)
+router.use("/provider", providerRoutes)
 export { router }
