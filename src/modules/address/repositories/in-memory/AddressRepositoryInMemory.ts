@@ -43,7 +43,7 @@ class AddressRepositoryInMemory implements IAddressRepository {
 
         Object.assign(address, {
             id: "59fde46d-40ad-46ac-a674-a8506c4791f6",
-            customer_id:  "fee4d482-744c-48a4-aa23-881859bb6074",
+            customer_id: "fee4d482-744c-48a4-aa23-881859bb6074",
             type,
             cnpj_cpf,
             trading_name,
@@ -90,7 +90,7 @@ class AddressRepositoryInMemory implements IAddressRepository {
 
         return address;
     }
-    
+
     async findById(id: string): Promise<Address> {
         const address = this.addresses.find((address) => address.id === id);
         return address;

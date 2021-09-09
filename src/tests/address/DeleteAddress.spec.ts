@@ -15,7 +15,7 @@ describe("Delete a Address", () => {
         deleteAddressUseCase = new DeleteAddressUseCase(addressRepositoryInMemory);
     });
 
-    it("should be able to create a new address", async () => {
+    it("should be able to delete a address", async () => {
         const address: IAddressDTO = {
             id: '59fde46d-40ad-46ac-a674-a8506c4791f6',
             customer_id: "fee4d482-744c-48a4-aa23-881859bb6074",
