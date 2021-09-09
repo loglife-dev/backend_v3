@@ -40,7 +40,7 @@ class UpdateCollectorUseCase {
         sunday_close,
         observation
     }: ICollectorDTO): Promise<Collector> {
-        const collectorExists = await this.collectorRepository.Get(id)
+        const collectorExists = await this.collectorRepository.findById(id)
 
         if (!collectorExists) {
             throw new AppError("Collector does not exists!");

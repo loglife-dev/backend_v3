@@ -9,6 +9,15 @@ class PermissionRepository extends BaseRepository<Permission> implements IPermis
         super(Permission)
     }
 
+    async Get(): Promise<Permission[]> {
+        return this.repository.find({
+            order: {
+                group: 'ASC',
+                order: 'ASC'
+            }
+        });
+    }
+
     async findById(id: string): Promise<Permission> {
         return this.repository.findOne({ id })
     }

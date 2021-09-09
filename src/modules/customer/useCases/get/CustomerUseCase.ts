@@ -9,8 +9,8 @@ class GetCustomerUseCase {
         @inject("CustomerRepository")
         private readonly customerRepository: ICustomerRepository) { }
 
-    public async execute(id: string): Promise<Customer> {
-        const customer = await this.customerRepository.Get(id);
+    async execute(id: string): Promise<Customer> {
+        const customer = await this.customerRepository.findById(id)
 
         return customer;
     }
@@ -22,8 +22,8 @@ class GetAllCustomerseCase {
         @inject("CustomerRepository")
         private readonly customerRepository: ICustomerRepository) { }
 
-    public async execute(): Promise<Customer[]> {
-        const customer = await this.customerRepository.GetAll()
+    async execute(): Promise<Customer[]> {
+        const customer = await this.customerRepository.Get()
 
         return customer;
     }

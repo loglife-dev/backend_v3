@@ -11,7 +11,7 @@ class DeleteCollectorUseCase {
         private readonly collectorRepository: ICollectorRepository) { }
 
     async execute(id: string): Promise<void> {
-        const collector = await this.collectorRepository.Get(id)
+        const collector = await this.collectorRepository.findById(id)
 
         if (!collector) {
             throw new AppError("Collector does not exists!");

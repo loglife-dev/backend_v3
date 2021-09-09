@@ -11,7 +11,7 @@ class DeleteUserUseCase {
         private readonly userRepository: IUserRepository) { }
 
     async execute(id: string): Promise<void> {
-        const user = await this.userRepository.Get(id);
+        const user = await this.userRepository.findById(id);
 
         if (!user) {
             throw new AppError("User does not exists!");

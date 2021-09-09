@@ -7,12 +7,8 @@ import { IDriverRepository } from "../IDriverRepository";
 class DriverRepositoryInMemory implements IDriverRepository {
     drivers: Driver[] = [];
 
-    async Get(id: string): Promise<Driver> {
-        const driver = this.drivers.find((driver) => driver.id === id);
-        return driver;
-    }
 
-    async GetAll(): Promise<Driver[]> {
+    async Get(): Promise<Driver[]> {
         const all = this.drivers;
         return all;
     }
@@ -61,6 +57,11 @@ class DriverRepositoryInMemory implements IDriverRepository {
     async findByCpf(cpf: string): Promise<Driver> {
         const driver = this.drivers.find((driver) => driver.cpf === cpf);
 
+        return driver;
+    }
+    
+    async findById(id: string): Promise<Driver> {
+        const driver = this.drivers.find((driver) => driver.id === id);
         return driver;
     }
 }

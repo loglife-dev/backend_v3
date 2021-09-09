@@ -17,7 +17,7 @@ class UpdatePermissionUseCase {
         group,
         order,
     }: IPermissionDTO): Promise<Permission> {
-        const permissionExists = await this.permissionRepository.Get(id)
+        const permissionExists = await this.permissionRepository.findById(id)
 
         if (!permissionExists) {
             throw new AppError("Permission does not exists!");

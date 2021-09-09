@@ -11,7 +11,7 @@ class GetCollectorUseCase {
         private readonly collectorRepository: ICollectorRepository) { }
 
     async execute(id: string): Promise<Collector> {
-        const collector = await this.collectorRepository.Get(id);
+        const collector = await this.collectorRepository.findById(id);
 
         return collector;
     }
@@ -24,7 +24,7 @@ class GetAllCollectorUseCase {
         private readonly collectorRepository: ICollectorRepository) { }
 
     async execute(): Promise<Collector[]> {
-        const collector = await this.collectorRepository.GetAll()
+        const collector = await this.collectorRepository.Get()
 
         return collector;
     }

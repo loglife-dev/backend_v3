@@ -10,7 +10,7 @@ class GetPermissionUseCase {
         private readonly permissionRepository: IPermissionRepository) { }
 
     async execute(id: string): Promise<Permission> {
-        const permission = await this.permissionRepository.Get(id);
+        const permission = await this.permissionRepository.findById(id);
 
         return permission;
     }
@@ -23,7 +23,7 @@ class GetAllPermissionUseCase {
         private readonly permissionRepository: IPermissionRepository) { }
 
     async execute(): Promise<Permission[]> {
-        const permission = await this.permissionRepository.GetAll()
+        const permission = await this.permissionRepository.Get()
 
         return permission;
     }

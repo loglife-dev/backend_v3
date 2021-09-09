@@ -7,6 +7,14 @@ class HubRepository extends BaseRepository<Hub> implements IHubRepository {
         super(Hub)
     }
 
+    async Get(): Promise<Hub[]> {
+       return this.repository.find({
+           order: {
+               name: 'ASC'
+           }
+       })
+    }
+
     async findByName(name: string): Promise<Hub> {
         return this.repository.findOne({ name })
     }

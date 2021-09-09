@@ -13,7 +13,7 @@ class DeleteHubUseCase {
   ) { }
 
   async execute(id: string): Promise<void> {
-    const hub = await this.hubRepository.Get(id)
+    const hub = await this.hubRepository.findById(id)
 
     if (!hub) {
       throw new AppError("Hub does not exists!");

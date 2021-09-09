@@ -23,7 +23,7 @@ class GetAllCityUseCase {
         private readonly cityRepository: ICityRepository) { }
 
     async execute(): Promise<City[]> {
-        const city = await this.cityRepository.list()
+        const city = await this.cityRepository.Get()
 
         return city;
     }

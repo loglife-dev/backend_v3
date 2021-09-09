@@ -8,6 +8,10 @@ class CollectorRepository extends BaseRepository<Collector> implements ICollecto
         super(Collector);
     }
 
+    async Get(): Promise<Collector[]> {
+        return this.repository.find()
+    }
+
     async findById(id: string): Promise<Collector> {
         return this.repository.findOne({ id })
     }

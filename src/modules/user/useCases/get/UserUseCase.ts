@@ -10,7 +10,7 @@ class GetUserUseCase {
         private readonly userRepository: IUserRepository) { }
 
     async execute(id: string): Promise<User> {
-        const user = await this.userRepository.Get(id);
+        const user = await this.userRepository.findById(id);
 
         return user;
     }
@@ -23,7 +23,7 @@ class GetAllUserUseCase {
         private readonly userRepository: IUserRepository) { }
 
     async execute(): Promise<User[]> {
-        const user = await this.userRepository.GetAll()
+        const user = await this.userRepository.Get()
 
         return user;
     }

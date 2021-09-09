@@ -38,7 +38,7 @@ class UpdateAddressUseCase {
         sunday_close,
         observation,
     }: IAddressDTO): Promise<Address> {
-        const addressExists = await this.addressRepository.Get(id);
+        const addressExists = await this.addressRepository.findById(id)
 
         if (!addressExists) {
             throw new AppError("Address does not exists!");

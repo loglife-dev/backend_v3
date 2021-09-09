@@ -6,13 +6,9 @@ import { ICollectorRepository } from "../ICollectorRepository";
 
 class CollectorRepositoryInMemory implements ICollectorRepository {
     collectors: Collector[] = [];
+   
 
-    async Get(id: string): Promise<Collector> {
-        const collector = this.collectors.find((collector) => collector.id === id);
-        return collector;
-    }
-
-    async GetAll(): Promise<Collector[]> {
+    async Get(): Promise<Collector[]> {
         const all = this.collectors;
         return all;
     }

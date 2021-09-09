@@ -9,7 +9,7 @@ class GetAddressUseCase {
         private addressRepository: IAddressRepository) { }
 
     async execute(id: string): Promise<Address> {
-        const address = await this.addressRepository.Get(id);
+        const address = await this.addressRepository.findById(id)
 
         return address;
     }
@@ -22,7 +22,7 @@ class GetAllAddressUseCase {
         private addressRepository: IAddressRepository) { }
 
     async execute(): Promise<Address[]> {
-        const addresses = await this.addressRepository.GetAll();
+        const addresses = await this.addressRepository.Get()
 
         return addresses
     }

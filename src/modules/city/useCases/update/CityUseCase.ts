@@ -19,7 +19,7 @@ class UpdateCityUseCase {
         schedule_deadline,
         observation,
     }: ICityDTO): Promise<City> {
-        const cityExist = await this.cityRepository.Get(id)
+        const cityExist = await this.cityRepository.findById(id)
 
         if (!cityExist) {
             throw new AppError("Hub does not exists!");

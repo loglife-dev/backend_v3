@@ -3,6 +3,7 @@ import { Permission } from "../infra/typeorm/entities/Permission";
 
 export interface IPermissionRepository extends IBaseRepository<Permission> {
 
+    Get(): Promise<Permission[]>;
     findById(id: string): Promise<Permission>;
     findByKey(key: string): Promise<Permission>;
 

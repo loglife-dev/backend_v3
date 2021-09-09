@@ -6,12 +6,8 @@ import { ICustomerRepository } from "../ICustomerRepository";
 class CustomerRepositoryInMemory implements ICustomerRepository {
     customers: Customer[] = [];
 
-    async Get(id: string): Promise<Customer> {
-        const customer = this.customers.find((customer) => customer.id === id);
-        return customer;
-    }
     
-    async GetAll(): Promise<Customer[]> {
+    async Get(): Promise<Customer[]> {
         const all = this.customers;
         return all;
     }

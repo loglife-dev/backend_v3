@@ -11,7 +11,7 @@ class DeleteCustomerUseCase {
         private readonly customerRepository: ICustomerRepository) { }
 
   async execute(id: string): Promise<void> {
-    const customer = await this.customerRepository.Get(id)
+    const customer = await this.customerRepository.findById(id);
 
     if (!customer) {
       throw new AppError("Customer does not exists!");

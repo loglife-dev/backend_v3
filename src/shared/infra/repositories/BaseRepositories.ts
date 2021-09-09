@@ -9,15 +9,7 @@ class BaseRepository<T> implements IBaseRepository<T> {
     constructor(entity: EntityTarget<T>) {
         this.repository = getRepository(entity);
     }
-    public async Get(id: string): Promise<T> {
-        return this.repository.findOne({
-            where: { id },
-        });
-    }
-
-    public async GetAll(): Promise<T[]> {
-        return this.repository.find()
-    }
+    
 
     public async Create(entity: T): Promise<T> {
         const entityCreate = this.repository.create(entity);

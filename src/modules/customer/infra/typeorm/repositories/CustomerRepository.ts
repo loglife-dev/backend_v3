@@ -8,8 +8,21 @@ class CustomerRepository extends BaseRepository<Customer> implements ICustomerRe
         super(Customer);
     }
 
+    async Get(): Promise<Customer[]> {
+        return this.repository.find({
+            order: {
+                trading_firstname: 'ASC'
+            }
+        });
+    }
+
     async findById(id: string): Promise<Customer> {
-        return this.repository.findOne({ id });
+        return this.repository.findOne({ 
+            where: { id },
+            order: {
+                trading_firstname: 'ASC'
+            }
+         });
     }
 
     findByCnpjAndCpf(cnpj_cpf: string): Promise<Customer> {

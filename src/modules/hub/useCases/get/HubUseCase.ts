@@ -8,8 +8,8 @@ class GetHubUseCase {
     @inject("HubRepository")
     private readonly hubRepository: IHubRepository) { }
 
-  public async execute(id: string): Promise<Hub> {
-    const hub = await this.hubRepository.Get(id);
+  async execute(id: string): Promise<Hub> {
+    const hub = await this.hubRepository.findById(id);
 
     return hub;
   }
@@ -19,11 +19,10 @@ class GetHubUseCase {
 class GetAllHubUseCase {
   constructor(
     @inject("HubRepository")
-    private readonly hubRepositories: IHubRepository
-  ) { }
+    private readonly hubRepositories: IHubRepository) { }
 
-  public async execute(): Promise<Hub[]> {
-    const hub = await this.hubRepositories.GetAll()
+  async execute(): Promise<Hub[]> {
+    const hub = await this.hubRepositories.Get()
 
     return hub;
   }

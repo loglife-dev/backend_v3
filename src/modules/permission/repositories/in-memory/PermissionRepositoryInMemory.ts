@@ -7,25 +7,7 @@ import { IPermissionRepository } from "../IPermissionRepository";
 class PermissionnRepositoryInMemory implements IPermissionRepository {
     permissions: Permission[] = [];
 
-    async findById(id: string): Promise<Permission> {
-        const permission = this.permissions.find((permission) => permission.id === id);
-
-        return permission;
-    }
-
-    async findByKey(key: string): Promise<Permission> {
-        const permission = this.permissions.find((permission) => permission.key === key);
-
-        return permission;
-    }
-
-    async Get(id: string): Promise<Permission> {
-        const permission = this.permissions.find((permission) => permission.id === id);
-
-        return permission;
-    }
-
-    async GetAll(): Promise<Permission[]> {
+    async Get(): Promise<Permission[]> {
         const all = this.permissions;
         return all;
     }
@@ -54,6 +36,18 @@ class PermissionnRepositoryInMemory implements IPermissionRepository {
         const findIndex = this.permissions.findIndex(permission => permission === permission);
 
         this.permissions.splice(findIndex, 1);
+    }
+    
+    async findById(id: string): Promise<Permission> {
+        const permission = this.permissions.find((permission) => permission.id === id);
+
+        return permission;
+    }
+
+    async findByKey(key: string): Promise<Permission> {
+        const permission = this.permissions.find((permission) => permission.key === key);
+
+        return permission;
     }
 
 }

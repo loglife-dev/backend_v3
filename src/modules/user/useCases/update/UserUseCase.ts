@@ -25,7 +25,7 @@ class UpdateUserUseCase {
         firstname,
         lastname,
     }: IUserDTO): Promise<User> {
-        const userExists = await this.userRepository.Get(id)
+        const userExists = await this.userRepository.findById(id)
 
         if (!userExists) {
             throw new AppError("User does not exists!");

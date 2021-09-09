@@ -23,7 +23,7 @@ class UpdateDriverUseCase {
         observation,
 
     }: IDriverDTO): Promise<Driver> {
-        const driverExist = await this.driverRepository.Get(id)
+        const driverExist = await this.driverRepository.findById(id)
 
         if (!driverExist) {
             throw new AppError("Driver does not exists!");

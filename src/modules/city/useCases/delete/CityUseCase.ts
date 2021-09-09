@@ -10,7 +10,7 @@ class DeleteCityUseCase {
         private readonly cityRepository: ICityRepository) { }
 
     async execute(id: string): Promise<void> {
-        const city = await this.cityRepository.Get(id)
+        const city = await this.cityRepository.findById(id)
 
         if (!city) {
             throw new AppError("City does not exists!");

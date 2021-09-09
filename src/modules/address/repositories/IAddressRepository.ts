@@ -5,4 +5,6 @@ import { Address } from "../infra/entities/Address";
 export interface IAddressRepository extends IBaseRepository<Address> {
 
     findByCnpjCpf(cnpj_cpf: string): Promise<Address>;
+    findById(id: string): Promise<Address>;
+    Get(): Promise<Address[]>
 }

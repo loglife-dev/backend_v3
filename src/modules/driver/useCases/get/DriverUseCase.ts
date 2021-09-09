@@ -11,7 +11,7 @@ class GetDriverUseCase {
         private readonly driverRepository: IDriverRepository) { }
 
     async execute(id: string): Promise<Driver> {
-        const driver = await this.driverRepository.Get(id);
+        const driver = await this.driverRepository.findById(id)
 
         return driver;
     }
@@ -24,7 +24,7 @@ class GetAllDriverUseCase {
         private readonly driverRepository: IDriverRepository) { }
 
     async execute(): Promise<Driver[]> {
-        const driver = await this.driverRepository.GetAll()
+        const driver = await this.driverRepository.Get()
 
         return driver;
     }

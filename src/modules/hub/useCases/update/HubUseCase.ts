@@ -18,7 +18,7 @@ class UpdateHubUseCase {
     state,
     observation
   }: IHubUpdateDTO): Promise<Hub> {
-    const hubExist = await this.hubRepositories.Get(id)
+    const hubExist = await this.hubRepositories.findById(id);
 
     if (!hubExist) {
       throw new AppError("Hub does not exists!");

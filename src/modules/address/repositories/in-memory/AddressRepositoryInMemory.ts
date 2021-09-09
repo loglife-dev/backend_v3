@@ -6,12 +6,8 @@ import { IAddressRepository } from "../IAddressRepository";
 class AddressRepositoryInMemory implements IAddressRepository {
     addresses: Address[] = [];
 
-    async Get(id: string): Promise<Address> {
-        const address = this.addresses.find((address) => address.id === id);
-        return address;
-    }
 
-    async GetAll(): Promise<Address[]> {
+    async Get(): Promise<Address[]> {
         const all = this.addresses;
         return all;
     }
@@ -92,6 +88,11 @@ class AddressRepositoryInMemory implements IAddressRepository {
     async findByCnpjCpf(cnpj_cpf: string): Promise<Address> {
         const address = this.addresses.find((address) => address.cnpj_cpf === cnpj_cpf)
 
+        return address;
+    }
+    
+    async findById(id: string): Promise<Address> {
+        const address = this.addresses.find((address) => address.id === id);
         return address;
     }
 }

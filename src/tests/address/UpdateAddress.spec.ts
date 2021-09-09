@@ -45,7 +45,7 @@ describe("Update address", () => {
         };
         await createAddressUseCase.execute(address);
 
-        const findAddress = await addressRepositoryInMemory.Get(address.id)
+        const findAddress = await addressRepositoryInMemory.findById(address.id)
         
         const updateAddress = await updateAddressUseCase.execute({
             id: '59fde46d-40ad-46ac-a674-a8506c4791f6',

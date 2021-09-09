@@ -6,5 +6,5 @@ export interface ICityRepository extends IBaseRepository<City> {
 
     findByName(name: string): Promise<City>;
     findById(id: string): Promise<City>;
-    list():Promise<City[]>;
+    Get():Promise<City[]>;
 }

@@ -11,7 +11,7 @@ class DeleteAddressUseCase {
         private  addressRepository: IAddressRepository) { }
 
     async execute(id: string): Promise<void> {
-        const address = await this.addressRepository.Get(id)
+        const address = await this.addressRepository.findById(id)
 
         if (!address) {
             throw new AppError("Address does not exists!");

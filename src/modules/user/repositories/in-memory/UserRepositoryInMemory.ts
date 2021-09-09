@@ -1,4 +1,3 @@
-import { hash } from "bcryptjs";
 import { IUserDTO } from "../../dtos/IUserDTO";
 import { User } from "../../infra/typeorm/entities/User";
 import { IUserRepository } from "../IUserRepositories";
@@ -8,12 +7,7 @@ import { IUserRepository } from "../IUserRepositories";
 class UserRepositoryInMemory implements IUserRepository {
     users: User[] = [];
 
-    async Get(id: string): Promise<User> {
-        const user = this.users.find((user) => user.id === id);
-        return user;
-    }
-
-    async GetAll(): Promise<User[]> {
+    async Get(): Promise<User[]> {
         const all = this.users;
         return all;
     }
@@ -65,6 +59,11 @@ class UserRepositoryInMemory implements IUserRepository {
 
     async findByEmail(email: string): Promise<User> {
         const user = this.users.find((user) => user.email === email);
+        return user;
+    }
+
+    async findById(id: string): Promise<User> {
+        const user = this.users.find((user) => user.id === id);
         return user;
     }
 

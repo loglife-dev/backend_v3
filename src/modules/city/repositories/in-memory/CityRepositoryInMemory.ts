@@ -7,12 +7,7 @@ class CityRepositoryInMemory implements ICityRepository {
     citys: City[] = [];
 
 
-    async Get(id: string): Promise<City> {
-        const city = this.citys.find((city) => city.id === id);
-        return city;
-    }
-
-    async GetAll(): Promise<City[]> {
+    async Get(): Promise<City[]> {
         const all = this.citys;
         return all;
     }

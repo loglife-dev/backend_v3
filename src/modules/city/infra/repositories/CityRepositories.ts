@@ -8,19 +8,21 @@ class CityRepository extends BaseRepository<City> implements ICityRepository {
         super(City);
     }
 
-
-    public async findByName(name: string): Promise<City> {
+     async findByName(name: string): Promise<City> {
         return this.repository.findOne({ name })
     }
 
-    public async findById(id: string): Promise<City> {
+     async findById(id: string): Promise<City> {
         return this.repository.findOne({
             where: { id },
-            relations: ["hubId"]
+            relations: ["hubId"],
+            order: {
+                name: "ASC"
+            }
         })
     }
 
-    public async list(): Promise<City[]> {
+     async Get(): Promise<City[]> {
         const all = await this.repository.find({
             relations: ["hubId"],
             order: {
