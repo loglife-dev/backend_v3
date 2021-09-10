@@ -7,6 +7,8 @@ import { CityRepository } from "../../modules/city/infra/repositories/CityReposi
 import { ICityRepository } from "../../modules/city/repositories/ICityRepository";
 import { CollectorRepository } from "../../modules/collector/infra/typeorm/repositories/CollectorRepository";
 import { ICollectorRepository } from "../../modules/collector/repositories/ICollectorRepository";
+import { CollectorCostRepository } from "../../modules/collector_cost/infra/typeorm/repositories/CollectorCostRepository";
+import { ICollectorCostRepository } from "../../modules/collector_cost/repositories/ICollectorCostRepository";
 import { CustomerRepository } from "../../modules/customer/infra/typeorm/repositories/CustomerRepository";
 import { ICustomerRepository } from "../../modules/customer/repositories/ICustomerRepository";
 import { DriverRepository } from "../../modules/driver/infra/typeorm/repositories/DriverRepositories";
@@ -76,4 +78,9 @@ container.registerSingleton<IShippingRepository>(
 container.registerSingleton<IBranchRepository>(
     "BranchRepository",
     BranchRepository
+)
+
+container.registerSingleton<ICollectorCostRepository>(
+    "CollectorCostRepository",
+    CollectorCostRepository
 )

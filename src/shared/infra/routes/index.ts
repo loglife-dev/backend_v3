@@ -10,6 +10,7 @@ import { addressRoutes } from "./address.routes";
 import { providerRoutes } from "./provider.routes";
 import { shippingRoutes } from "./shipping.routes";
 import { branchRoutes } from "./branch.routes";
+import { collectorCostRoutes } from "./collectorCost.routes";
 
 const router = Router();
 
@@ -24,4 +25,5 @@ router.use("/address", addressRoutes);
 router.use("/provider", providerRoutes);
 router.use("/shipping", shippingRoutes);
 router.use("/branch", branchRoutes);
+router.use("/cost/collector", collectorCostRoutes);
 export { router }
