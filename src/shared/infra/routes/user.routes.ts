@@ -11,7 +11,6 @@ const createUserController = new CreateUserController();
 const updateUserController = new UpdateUserController();
 const deleteUserController = new DeleteUserController();
 
-
 userRoutes.get("/", getAllUserController.handle);
 userRoutes.get("/:id", getUserController.handle);
 userRoutes.post("/", createUserController.handle);

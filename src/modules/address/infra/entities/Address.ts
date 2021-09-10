@@ -8,7 +8,7 @@ import { Customer } from '../../../customer/infra/typeorm/entities/Customer';
 @Entity('address')
 class Address {
     @PrimaryColumn()
-    id: string;
+    id?: string;
 
     @JoinColumn({ name: 'customer_id' })
     @ManyToOne(() => Customer)

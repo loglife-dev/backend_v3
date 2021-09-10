@@ -1,16 +1,16 @@
 import { Request, Response } from "express"
 import { container } from "tsyringe";
-import { DeleteAddressUseCase } from "./AddressUseCase";
+import { DeleteBranchUseCase } from "./BranchUseCase";
 
-class DeleteAddressController {
+class DeleteBranchController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { id } = request.params;
 
-        const deleteAddressUseCase = container.resolve(DeleteAddressUseCase);
+        const deleteBranchUseCase = container.resolve(DeleteBranchUseCase);
 
-        await deleteAddressUseCase.execute(id);
+        await deleteBranchUseCase.execute(id);
 
         return response.sendStatus(200);
     }
 }
-export { DeleteAddressController }
+export { DeleteBranchController }

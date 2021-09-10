@@ -4,14 +4,12 @@ import { DeleteAddressController } from "../../../modules/address/useCases/delet
 import { GetAddressController, GetAllAddressController } from "../../../modules/address/useCases/get/AddressController";
 import { UpdateAddressController } from "../../../modules/address/useCases/update/AddressController";
 
-
 const addressRoutes = Router();
 const getAllAddressController = new GetAllAddressController();
 const getAddressController = new GetAddressController();
 const createAddressController = new CreateAddressController();
 const updateAddressController = new UpdateAddressController();
 const deleteAddressController = new DeleteAddressController();
-
 
 addressRoutes.get("/", getAllAddressController.handle);
 addressRoutes.get("/:id", getAddressController.handle);

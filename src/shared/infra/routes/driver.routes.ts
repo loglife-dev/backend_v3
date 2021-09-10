@@ -4,7 +4,6 @@ import { DeleteDriverController } from "../../../modules/driver/useCases/delete/
 import { GetAllDriverCotroller, GetDriverController } from "../../../modules/driver/useCases/get/DriverController";
 import { UpdateDriverController } from "../../../modules/driver/useCases/update/DriverController";
 
-
 const driverRoutes = Router();
 const getAllDriverController = new GetAllDriverCotroller();
 const getDriverController = new GetDriverController();

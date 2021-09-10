@@ -4,8 +4,6 @@ import { DeleteCollectorController } from "../../../modules/collector/useCases/d
 import { GetAllCollectorController, GetCollectorController } from "../../../modules/collector/useCases/get/CollectorController";
 import { UpdateCollectorController } from "../../../modules/collector/useCases/update/CollectorController";
 
-
-
 const collectorRoutes = Router();
 const getAllCollectorController = new GetAllCollectorController();
 const getCollectorController = new GetCollectorController();

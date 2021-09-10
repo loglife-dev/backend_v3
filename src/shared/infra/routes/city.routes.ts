@@ -4,7 +4,6 @@ import { DeleteCityController } from "../../../modules/city/useCases/delete/City
 import { GetAllCityCotroller, GetCityController } from "../../../modules/city/useCases/get/CityController";
 import { UpdateCityController } from "../../../modules/city/useCases/update/CityController";
 
-
 const cityRoutes = Router();
 const getAllCityController = new GetAllCityCotroller();
 const getCityController = new GetCityController();

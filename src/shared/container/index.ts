@@ -1,6 +1,8 @@
 import { container } from "tsyringe";
 import { AddressRepository } from "../../modules/address/infra/repositories/AddressRepository";
 import { IAddressRepository } from "../../modules/address/repositories/IAddressRepository";
+import { BranchRepository } from "../../modules/branch/infra/typeorm/repositories/BranchRepository";
+import { IBranchRepository } from "../../modules/branch/repositories/IBranchRepository";
 import { CityRepository } from "../../modules/city/infra/repositories/CityRepositories";
 import { ICityRepository } from "../../modules/city/repositories/ICityRepository";
 import { CollectorRepository } from "../../modules/collector/infra/typeorm/repositories/CollectorRepository";
@@ -69,4 +71,9 @@ container.registerSingleton<IShippingRepository>(
     "ShippingRepository",
     ShippingRepository
 
+)
+
+container.registerSingleton<IBranchRepository>(
+    "BranchRepository",
+    BranchRepository
 )

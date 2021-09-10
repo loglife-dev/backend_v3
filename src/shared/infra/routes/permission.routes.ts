@@ -4,7 +4,6 @@ import { DeletePermissionController } from "../../../modules/permission/useCases
 import { GetAllPermissionCotroller, GetPermissionController } from "../../../modules/permission/useCases/get/PermissionController";
 import { UpdatePermissionController } from "../../../modules/permission/useCases/update/PermissionController";
 
-
 const permissionRoutes = Router()
 const getAllPermissionController = new GetAllPermissionCotroller();
 const getPermissionController = new GetPermissionController();
