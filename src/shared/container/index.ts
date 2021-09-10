@@ -15,6 +15,8 @@ import { PermissionRepository } from "../../modules/permission/infra/typeorm/rep
 import { IPermissionRepository } from "../../modules/permission/repositories/IPermissionRepository";
 import { ProviderRepository } from "../../modules/provider/infra/typeorm/repositories/ProviderRepository";
 import { IProviderRepository } from "../../modules/provider/repositories/IProviderRepository";
+import { ShippingRepository } from "../../modules/shipping/infra/typeorm/repositories/ShippingRepository";
+import { IShippingRepository } from "../../modules/shipping/repositories/IShippingRepository";
 import { UserRepository } from "../../modules/user/infra/typeorm/repositories/UserRepository";
 import { IUserRepository } from "../../modules/user/repositories/IUserRepositories";
 
@@ -61,4 +63,10 @@ container.registerSingleton<IAddressRepository>(
 container.registerSingleton<IProviderRepository>(
     "ProviderRepository",
     ProviderRepository
+)
+
+container.registerSingleton<IShippingRepository>(
+    "ShippingRepository",
+    ShippingRepository
+
 )

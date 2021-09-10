@@ -8,6 +8,7 @@ import { driverRoutes } from "./driver.routes";
 import { userRoutes } from "./user.routes";
 import { addressRoutes } from "./address.routes";
 import { providerRoutes } from "./provider.routes";
+import { shippingRoutes } from "./shipping.routes";
 const router = Router();
 
 router.use("/hub", hubRoutes);
@@ -17,6 +18,7 @@ router.use("/permission", permissionRoutes);
 router.use("/collector", collectorRoutes);
 router.use("/driver", driverRoutes);
 router.use("/user", userRoutes);
-router.use("/address", addressRoutes)
-router.use("/provider", providerRoutes)
+router.use("/address", addressRoutes);
+router.use("/provider", providerRoutes);
+router.use("/shipping", shippingRoutes);
 export { router }

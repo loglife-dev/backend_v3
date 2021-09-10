@@ -3,7 +3,6 @@ import { IPermissionRepository } from "../../../repositories/IPermissionReposito
 import { Permission } from "../entities/Permission";
 
 
-
 class PermissionRepository extends BaseRepository<Permission> implements IPermissionRepository {
     constructor() {
         super(Permission)
