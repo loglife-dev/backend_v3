@@ -3,7 +3,6 @@ import { CityRepositoryInMemory } from "../../modules/city/repositories/in-memor
 import { CreateCityUseCase } from "../../modules/city/useCases/create/CityUseCase";
 import { GetAllCityUseCase, GetCityUseCase } from "../../modules/city/useCases/get/CityUseCase";
 
-
 let getAllCityUseCase: GetAllCityUseCase;
 let cityRepositoryInMemory: CityRepositoryInMemory;
 let createCityUseCase: CreateCityUseCase;
@@ -43,7 +42,6 @@ describe("Find by id to city", () => {
     })
 
     it("Should be able to findOne id city", async () => {
-
         const city: ICityDTO = {
             id: '59fde46d-40ad-46ac-a674-a8506c4791f6',
             name: 'test city',

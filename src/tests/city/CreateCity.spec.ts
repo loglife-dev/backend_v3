@@ -55,7 +55,6 @@ describe("Create City", () => {
             await createCityUseCase.execute(city);
 
             await createCityUseCase.execute(city);
-
             
         }).rejects.toBeInstanceOf(AppError)
         

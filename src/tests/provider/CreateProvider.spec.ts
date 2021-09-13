@@ -3,7 +3,6 @@ import { ProviderRepositoryInMemory } from "../../modules/provider/repositories/
 import { CreateProviderUseCase } from "../../modules/provider/useCases/create/ProviderUseCase";
 import { AppError } from "../../shared/errors/AppError";
 
-
 let createProviderUseCase: CreateProviderUseCase;
 let providerRepositoryInMemory: ProviderRepositoryInMemory;
 
@@ -82,7 +81,7 @@ describe("Create Provider", () => {
             };
             await createProviderUseCase.execute(provider);
             await createProviderUseCase.execute(provider);
+            
         }).rejects.toBeInstanceOf(AppError)
-
     })
 })

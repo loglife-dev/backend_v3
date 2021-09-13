@@ -47,7 +47,7 @@ describe("Delete a Provider", () => {
         await createProviderUseCase.execute(provider);
         const findId = await deleteProviderUseCase.execute(provider.id);
 
-        expect(findId).toBe(findId)
+        expect(findId).toBe(undefined)
 
     })
 })

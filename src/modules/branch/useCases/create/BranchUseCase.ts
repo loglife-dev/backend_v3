@@ -42,7 +42,7 @@ class CreateBranchUseCase {
         const branchAlreadyExists = await this.branchRepository.findByNickname(nickname);
 
         if (branchAlreadyExists) {
-            throw new AppError("There is already a registered nickname with this Branch!!", 400)
+            throw new AppError("Nickname already exists!!", 400)
         }
 
         const branch = new Branch();

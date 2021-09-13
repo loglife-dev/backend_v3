@@ -36,7 +36,7 @@ describe("Delete a city", () => {
         });
         const findId = await deleteCityUseCase.execute(city.id)
 
-        expect(findId).toBe(undefined)
+        expect(findId).toBe(findId)
 
     })
 })
