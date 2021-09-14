@@ -12,6 +12,7 @@ import { shippingRoutes } from "./shipping.routes";
 import { branchRoutes } from "./branch.routes";
 import { collectorCostRoutes } from "./collectorCost.routes";
 import { budgetRoutes } from "./budget.routes";
+import { authenticateRoutes } from "./authenticate.routes";
 
 const router = Router();
 router.use("/hub", hubRoutes);
@@ -27,5 +28,6 @@ router.use("/shipping", shippingRoutes);
 router.use("/branch", branchRoutes);
 router.use("/cost/collector", collectorCostRoutes);
 router.use("/budget", budgetRoutes);
+router.use(authenticateRoutes);
 
 export { router }

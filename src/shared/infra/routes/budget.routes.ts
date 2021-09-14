@@ -3,6 +3,7 @@ import { CreateBudgetController } from "../../../modules/budget/useCases/create/
 import { DeleteBudgetController } from "../../../modules/budget/useCases/delete/BudgetController";
 import { GetAllBudgetController, GetBudgetController } from "../../../modules/budget/useCases/get/BudgetController";
 import { UpdateBudgetController } from "../../../modules/budget/useCases/update/BudgetController";
+import { ensureAuthenticate } from "../middlewares/ensureAuthenticate";
 
 
 const budgetRoutes = Router();
@@ -12,7 +13,7 @@ const createBudgetController = new CreateBudgetController();
 const updateBudgetController = new UpdateBudgetController();
 const deleteBudgetController = new DeleteBudgetController();
 
-
+budgetRoutes.use(ensureAuthenticate);
 budgetRoutes.get("/", getAllBudgetController.handle);
 budgetRoutes.get("/:id", getBudgetController.handle);
 budgetRoutes.post("/", createBudgetController.handle);

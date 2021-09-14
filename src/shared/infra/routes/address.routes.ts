@@ -3,6 +3,7 @@ import { CreateAddressController } from "../../../modules/address/useCases/creat
 import { DeleteAddressController } from "../../../modules/address/useCases/delete/AddressController";
 import { GetAddressController, GetAllAddressController } from "../../../modules/address/useCases/get/AddressController";
 import { UpdateAddressController } from "../../../modules/address/useCases/update/AddressController";
+import { ensureAuthenticate } from "../middlewares/ensureAuthenticate";
 
 const addressRoutes = Router();
 const getAllAddressController = new GetAllAddressController();
@@ -11,6 +12,7 @@ const createAddressController = new CreateAddressController();
 const updateAddressController = new UpdateAddressController();
 const deleteAddressController = new DeleteAddressController();
 
+addressRoutes.use(ensureAuthenticate)
 addressRoutes.get("/", getAllAddressController.handle);
 addressRoutes.get("/:id", getAddressController.handle);
 addressRoutes.post("/", createAddressController.handle);

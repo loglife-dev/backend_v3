@@ -3,6 +3,7 @@ import { CreateCityController } from "../../../modules/city/useCases/create/City
 import { DeleteCityController } from "../../../modules/city/useCases/delete/CityController";
 import { GetAllCityCotroller, GetCityController } from "../../../modules/city/useCases/get/CityController";
 import { UpdateCityController } from "../../../modules/city/useCases/update/CityController";
+import { ensureAuthenticate } from "../middlewares/ensureAuthenticate";
 
 const cityRoutes = Router();
 const getAllCityController = new GetAllCityCotroller();
@@ -11,6 +12,7 @@ const createCityController = new CreateCityController();
 const updateCityController = new UpdateCityController();
 const deleteCityController = new DeleteCityController();
 
+cityRoutes.use(ensureAuthenticate);
 cityRoutes.get("/", getAllCityController.handle);
 cityRoutes.get("/:id", getCityController.handle);
 cityRoutes.post("/", createCityController.handle);

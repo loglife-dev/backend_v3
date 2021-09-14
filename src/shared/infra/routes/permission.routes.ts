@@ -3,6 +3,7 @@ import { CreatePermissionController } from "../../../modules/permission/useCases
 import { DeletePermissionController } from "../../../modules/permission/useCases/delete/PermissionController";
 import { GetAllPermissionCotroller, GetPermissionController } from "../../../modules/permission/useCases/get/PermissionController";
 import { UpdatePermissionController } from "../../../modules/permission/useCases/update/PermissionController";
+import { ensureAuthenticate } from "../middlewares/ensureAuthenticate";
 
 const permissionRoutes = Router()
 const getAllPermissionController = new GetAllPermissionCotroller();
@@ -11,6 +12,7 @@ const createPermissionController = new CreatePermissionController();
 const updatePermissionController = new UpdatePermissionController();
 const deletePermissionController = new DeletePermissionController();
 
+permissionRoutes.use(ensureAuthenticate);
 permissionRoutes.get("/", getAllPermissionController.handle)
 permissionRoutes.get("/:id", getPermissionController.handle)
 permissionRoutes.post("/", createPermissionController.handle);

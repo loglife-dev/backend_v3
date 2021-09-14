@@ -3,6 +3,7 @@ import { CreateDriverController } from "../../../modules/driver/useCases/create/
 import { DeleteDriverController } from "../../../modules/driver/useCases/delete/DriverController";
 import { GetAllDriverCotroller, GetDriverController } from "../../../modules/driver/useCases/get/DriverController";
 import { UpdateDriverController } from "../../../modules/driver/useCases/update/DriverController";
+import { ensureAuthenticate } from "../middlewares/ensureAuthenticate";
 
 const driverRoutes = Router();
 const getAllDriverController = new GetAllDriverCotroller();
@@ -11,6 +12,7 @@ const createDriverController = new CreateDriverController();
 const updateDriverController = new UpdateDriverController();
 const deleteDriverController = new DeleteDriverController();
 
+driverRoutes.use(ensureAuthenticate);
 driverRoutes.get("/", getAllDriverController.handle);
 driverRoutes.get("/:id", getDriverController.handle);
 driverRoutes.post("/", createDriverController.handle);

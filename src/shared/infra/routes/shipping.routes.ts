@@ -3,6 +3,7 @@ import { CreateShippingController } from "../../../modules/shipping/useCases/cre
 import { DeleteShippingController } from "../../../modules/shipping/useCases/delete/ShippingController";
 import { GetAllShippingController, GetShippingController } from "../../../modules/shipping/useCases/get/ShippingController";
 import { UpdateShippingController } from "../../../modules/shipping/useCases/update/ShippingController";
+import { ensureAuthenticate } from "../middlewares/ensureAuthenticate";
 
 const shippingRoutes = Router();
 const getAllShippingController = new GetAllShippingController();
@@ -11,6 +12,7 @@ const createShippingControler = new CreateShippingController();
 const updateShippingController = new UpdateShippingController();
 const deleteShippingController = new DeleteShippingController();
 
+shippingRoutes.use(ensureAuthenticate);
 shippingRoutes.get("/", getAllShippingController.handle);
 shippingRoutes.get("/:id", getShippingController.handle);
 shippingRoutes.post("/", createShippingControler.handle);
