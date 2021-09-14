@@ -3,7 +3,6 @@ import { CityRepositoryInMemory } from "../../modules/city/repositories/in-memor
 import { CreateCityUseCase } from "../../modules/city/useCases/create/CityUseCase";
 import { AppError } from "../../shared/errors/AppError";
 
-
 let createCityUseCase: CreateCityUseCase;
 let cityRepositoryInMemory: CityRepositoryInMemory;
 
@@ -15,8 +14,7 @@ describe("Create City", () => {
 
     });
 
-    it("should be able to create a new city", async () => {
-
+    it("should be able to create a new city", async () => { 
         const city = {
             id: '59fde46d-40ad-46ac-a674-a8506c4791f6',
             name: 'test city',

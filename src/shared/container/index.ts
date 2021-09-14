@@ -3,6 +3,8 @@ import { AddressRepository } from "../../modules/address/infra/repositories/Addr
 import { IAddressRepository } from "../../modules/address/repositories/IAddressRepository";
 import { BranchRepository } from "../../modules/branch/infra/typeorm/repositories/BranchRepository";
 import { IBranchRepository } from "../../modules/branch/repositories/IBranchRepository";
+import { BudgetRepository } from "../../modules/budget/infra/typeorm/repositories/BudgetRepository";
+import { IBudgetRepository } from "../../modules/budget/repositories/IBudgetRepository";
 import { CityRepository } from "../../modules/city/infra/repositories/CityRepositories";
 import { ICityRepository } from "../../modules/city/repositories/ICityRepository";
 import { CollectorRepository } from "../../modules/collector/infra/typeorm/repositories/CollectorRepository";
@@ -83,4 +85,9 @@ container.registerSingleton<IBranchRepository>(
 container.registerSingleton<ICollectorCostRepository>(
     "CollectorCostRepository",
     CollectorCostRepository
+)
+
+container.registerSingleton<IBudgetRepository>(
+    "BudgetRepository",
+    BudgetRepository
 )

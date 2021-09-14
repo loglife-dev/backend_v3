@@ -3,7 +3,6 @@ import { CityRepositoryInMemory } from "../../modules/city/repositories/in-memor
 import { CreateCityUseCase } from "../../modules/city/useCases/create/CityUseCase";
 import { UpdateCityUseCase } from "../../modules/city/useCases/update/CityUseCase";
 
-
 let createCityUseCase: CreateCityUseCase;
 let cityRepositoryInMemory: CityRepositoryInMemory;
 let updateCityUseCase: UpdateCityUseCase;
@@ -37,7 +36,7 @@ describe("Update city", () => {
         });
 
         const findCity = await cityRepositoryInMemory.findById(city.id)
-       
+
         const updateCity = await updateCityUseCase.execute({
             id: '59fde46d-40ad-46ac-a674-a8506c4791f6',
             name: 'test city2',
