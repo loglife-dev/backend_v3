@@ -12,7 +12,6 @@ const createDriverController = new CreateDriverController();
 const updateDriverController = new UpdateDriverController();
 const deleteDriverController = new DeleteDriverController();
 
-driverRoutes.use(ensureAuthenticate);
 driverRoutes.get("/", getAllDriverController.handle);
 driverRoutes.get("/:id", getDriverController.handle);
 driverRoutes.post("/", createDriverController.handle);

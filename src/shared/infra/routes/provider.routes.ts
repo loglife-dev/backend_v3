@@ -12,7 +12,6 @@ const updateProviderController = new UpdateProviderController();
 const createProviderController = new CreateProviderController();
 const deleteProviderController = new DeleteProviderController();
 
-providerRoutes.use(ensureAuthenticate);
 providerRoutes.get("/", getAllProviderController.handle);
 providerRoutes.get("/:id", getProviderController.handle);
 providerRoutes.post("/", createProviderController.handle);

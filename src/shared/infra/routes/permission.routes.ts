@@ -12,7 +12,7 @@ const createPermissionController = new CreatePermissionController();
 const updatePermissionController = new UpdatePermissionController();
 const deletePermissionController = new DeletePermissionController();
 
-permissionRoutes.use(ensureAuthenticate);
+
 permissionRoutes.get("/", getAllPermissionController.handle)
 permissionRoutes.get("/:id", getPermissionController.handle)
 permissionRoutes.post("/", createPermissionController.handle);

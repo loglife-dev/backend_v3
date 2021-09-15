@@ -13,7 +13,7 @@ const createCustomerController = new CreateCustomerController();
 const updateCustomerController = new UpdateCustomerController();
 const deleteCustomerController = new DeleteCustomerController();
 
-customerRoutes.use(ensureAuthenticate);
+
 customerRoutes.get("/", getAllCustomerController.handle);
 customerRoutes.get("/:id", getCustomerController.handle);
 customerRoutes.post("/", createCustomerController.handle);

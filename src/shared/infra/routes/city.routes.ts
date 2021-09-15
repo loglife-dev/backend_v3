@@ -12,7 +12,7 @@ const createCityController = new CreateCityController();
 const updateCityController = new UpdateCityController();
 const deleteCityController = new DeleteCityController();
 
-cityRoutes.use(ensureAuthenticate);
+
 cityRoutes.get("/", getAllCityController.handle);
 cityRoutes.get("/:id", getCityController.handle);
 cityRoutes.post("/", createCityController.handle);

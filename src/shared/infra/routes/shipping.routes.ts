@@ -12,7 +12,7 @@ const createShippingControler = new CreateShippingController();
 const updateShippingController = new UpdateShippingController();
 const deleteShippingController = new DeleteShippingController();
 
-shippingRoutes.use(ensureAuthenticate);
+
 shippingRoutes.get("/", getAllShippingController.handle);
 shippingRoutes.get("/:id", getShippingController.handle);
 shippingRoutes.post("/", createShippingControler.handle);

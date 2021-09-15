@@ -12,7 +12,7 @@ const createBranchController = new CreateBranchController();
 const updateBranchController = new UpdateBranchController();
 const deleteBranchController = new DeleteBranchController();
 
-branchRoutes.use(ensureAuthenticate);
+
 branchRoutes.get("/", getAllBranchController.handle);
 branchRoutes.get("/:id", getBranchController.handle);
 branchRoutes.post("/", createBranchController.handle);

@@ -12,7 +12,7 @@ const createHubController = new CreateHubController()
 const updateHubController = new UpdateHubController()
 const deleteHubController = new DeleteHubController();
 
-hubRoutes.use(ensureAuthenticate);
+
 hubRoutes.get("/", getAllHubController.handle)
 hubRoutes.get("/:id", getHubController.handle)
 hubRoutes.post("/", createHubController.handle);

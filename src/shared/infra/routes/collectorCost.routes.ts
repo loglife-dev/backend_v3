@@ -12,7 +12,7 @@ const createCollectorCostController = new CreateCollectorCostController();
 const updateCollectorCostController = new UpdateCollectorCostController();
 const deleteCollectorCostController = new DeleteCollectorCostController();
 
-collectorCostRoutes.use(ensureAuthenticate);
+
 collectorCostRoutes.get("/", getAllCollectorCostController.handle);
 collectorCostRoutes.get("/:id", getCollectorCostController.handle);
 collectorCostRoutes.post("/", createCollectorCostController.handle);

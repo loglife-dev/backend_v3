@@ -13,7 +13,7 @@ const createBudgetController = new CreateBudgetController();
 const updateBudgetController = new UpdateBudgetController();
 const deleteBudgetController = new DeleteBudgetController();
 
-budgetRoutes.use(ensureAuthenticate);
+
 budgetRoutes.get("/", getAllBudgetController.handle);
 budgetRoutes.get("/:id", getBudgetController.handle);
 budgetRoutes.post("/", createBudgetController.handle);

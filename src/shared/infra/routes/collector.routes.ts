@@ -13,7 +13,7 @@ const createCollectorController = new CreateCollectorController();
 const updateCollectorController = new UpdateCollectorController();
 const deleteCollectorController = new DeleteCollectorController();
 
-collectorCostRoutes.use(ensureAuthenticate);
+
 collectorRoutes.get("/", getAllCollectorController.handle)
 collectorRoutes.get("/:id", getCollectorController.handle)
 collectorRoutes.post("/", createCollectorController.handle);

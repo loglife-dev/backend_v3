@@ -12,7 +12,7 @@ const createAddressController = new CreateAddressController();
 const updateAddressController = new UpdateAddressController();
 const deleteAddressController = new DeleteAddressController();
 
-addressRoutes.use(ensureAuthenticate)
+
 addressRoutes.get("/", getAllAddressController.handle);
 addressRoutes.get("/:id", getAddressController.handle);
 addressRoutes.post("/", createAddressController.handle);
