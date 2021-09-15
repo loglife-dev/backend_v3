@@ -101,18 +101,22 @@ export class CreateProvider1631127096473 implements MigrationInterface {
                     {
                         name: 'saturday_open',
                         type: 'timestamp',
+                        isNullable: true,
                     },
                     {
                         name: 'saturday_close',
                         type: 'timestamp',
+                        isNullable: true,
                     },
                     {
                         name: 'sunday_open',
                         type: 'timestamp',
+                        isNullable: true,
                     },
                     {
                         name: 'sunday_close',
                         type: 'timestamp',
+                        isNullable: true,
                     },
                     {
                         name: 'observation',

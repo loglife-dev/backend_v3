@@ -92,18 +92,22 @@ export class CreateAddress1630938182716 implements MigrationInterface {
                     {
                         name: 'saturday_open',
                         type: 'timestamp',
+                        isNullable: true,
                     },
                     {
                         name: 'saturday_close',
                         type: 'timestamp',
+                        isNullable: true,
                     },
                     {
                         name: 'sunday_open',
                         type: 'timestamp',
+                        isNullable: true,
                     },
                     {
                         name: 'sunday_close',
                         type: 'timestamp',
+                        isNullable: true,
                     },
                     {
                         name: 'observation',

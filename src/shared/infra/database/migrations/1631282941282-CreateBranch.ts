@@ -78,18 +78,22 @@ export class CreateBranch1631282941282 implements MigrationInterface {
                     {
                         name: 'saturday_open',
                         type: 'timestamp',
+                        isNullable: true,
                     },
                     {
                         name: 'saturday_close',
                         type: 'timestamp',
+                        isNullable: true,
                     },
                     {
                         name: 'sunday_open',
                         type: 'timestamp',
+                        isNullable: true,
                     },
                     {
                         name: 'sunday_close',
                         type: 'timestamp',
+                        isNullable: true,
                     },
                     {
                         name: 'observation',
