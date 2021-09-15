@@ -5,8 +5,8 @@ interface IBudgetDTO {
     customer_id: string;
     source_hub_id: string;
     destination_hub_id: string;
-    source_cities: Number[];
-    destination_cities: Number[];
+    source_cities: string[];
+    destination_cities: string[];
     source_address_qty: Number;
     destination_address_qty: Number;
     deadline: Number;

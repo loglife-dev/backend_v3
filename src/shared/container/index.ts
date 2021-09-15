@@ -21,6 +21,8 @@ import { PermissionRepository } from "../../modules/permission/infra/typeorm/rep
 import { IPermissionRepository } from "../../modules/permission/repositories/IPermissionRepository";
 import { ProviderRepository } from "../../modules/provider/infra/typeorm/repositories/ProviderRepository";
 import { IProviderRepository } from "../../modules/provider/repositories/IProviderRepository";
+import { ServiceRepository } from "../../modules/service/infra/typeorm/repositories/ServiceRepository";
+import { IServiceRepository } from "../../modules/service/repositories/IServiceRepository";
 import { ShippingRepository } from "../../modules/shipping/infra/typeorm/repositories/ShippingRepository";
 import { IShippingRepository } from "../../modules/shipping/repositories/IShippingRepository";
 import { UserRepository } from "../../modules/user/infra/typeorm/repositories/UserRepository";
@@ -90,4 +92,9 @@ container.registerSingleton<ICollectorCostRepository>(
 container.registerSingleton<IBudgetRepository>(
     "BudgetRepository",
     BudgetRepository
+)
+
+container.registerSingleton<IServiceRepository>(
+    "ServiceRepository",
+    ServiceRepository
 )

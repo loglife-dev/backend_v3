@@ -37,7 +37,7 @@ class CreateBudgetUseCase {
         price_add_delivery,
         price_unsuccessful_collect,
         observation,
-    }: IBudgetDTO): Promise<Budget> {   
+    }: IBudgetDTO): Promise<Budget> {
 
         const budget = new Budget();
 
@@ -70,7 +70,7 @@ class CreateBudgetUseCase {
             price_unsuccessful_collect,
             observation,
         });
-        const  createBudget = await this.budGetRepository.Create(budget);
+        const createBudget = await this.budGetRepository.Create(budget);
 
         return budget;
     }

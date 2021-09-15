@@ -28,15 +28,15 @@ class Budget {
     @Column()
     destination_hub_id: string;
 
-    @Column("int", {
+    @Column("varchar", {
         array: true
     })
-    source_cities: Number[];
+    source_cities: string[];
 
-    @Column("int", {
+    @Column("varchar", {
         array: true
     })
-    destination_cities: Number[];
+    destination_cities: string[];
 
     @Column()
     source_address_qty: Number;

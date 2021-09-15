@@ -2,8 +2,6 @@ import { Provider } from "../entities/Provider"
 import { BaseRepository } from "../../../../../shared/infra/repositories/BaseRepositories";
 import { IProviderRepository } from "../../../repositories/IProviderRepository";
 
-
-
 class ProviderRepository extends BaseRepository<Provider> implements IProviderRepository {
     constructor() {
         super(Provider)

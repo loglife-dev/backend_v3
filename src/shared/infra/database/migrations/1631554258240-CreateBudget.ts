@@ -29,12 +29,12 @@ export class CreateBudget1631554258240 implements MigrationInterface {
                     },
                     {
                         name: 'source_cities',
-                        type: 'int',
+                        type: 'varchar',
                         isArray: true,
                     },
                     {
                         name: 'destination_cities',
-                        type: 'int',
+                        type: 'varchar',
                         isArray: true,
                     },
                     {
@@ -55,7 +55,7 @@ export class CreateBudget1631554258240 implements MigrationInterface {
                     },
                     {
                         name: 'franchising',
-                        type: 'integer',
+                        type: 'float',
                     },
                     {
                         name: 'modal',
