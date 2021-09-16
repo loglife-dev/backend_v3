@@ -7,7 +7,7 @@ class Service {
     id: string;
 
     @Column()
-    protocol: Number;
+    protocol: number;
 
     @Column()
     step: string;

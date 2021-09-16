@@ -20,6 +20,11 @@ class CreateServiceUseCase {
             throw new AppError("fill in all fields")
         }
 
+        const protocoll = await this.serviceRepository.findByProtocol(protocol)
+
+        if (protocoll) {
+            throw new AppError('Protocol already exists');
+        }
         const service = new Service();
 
         Object.assign(service, {

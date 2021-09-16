@@ -6,5 +6,5 @@ export interface IServiceRepository extends IBaseRepository<Service> {
 
     Get(): Promise<Service[]>;
     findById(id: string): Promise<Service>;
-    fidByProtocol(protocol: number): Promise<Service>;
+    findByProtocol(protocol: number): Promise<Service>;
 }

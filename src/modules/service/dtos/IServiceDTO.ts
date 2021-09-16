@@ -1,7 +1,7 @@
 
 interface IServiceDTO {
     id?: string;
-    protocol?: Number;
+    protocol?: number;
     step: string;
     customer_id?: string;
 }

@@ -6,7 +6,7 @@ class ServiceRepository extends BaseRepository<Service> implements IServiceRepos
     constructor() {
         super(Service)
     }
-
+   
     async Get(): Promise<Service[]> {
         return this.repository.find({
             relations: ["customerId"],
@@ -26,7 +26,7 @@ class ServiceRepository extends BaseRepository<Service> implements IServiceRepos
         })
     }
 
-    async fidByProtocol(protocol: number): Promise<Service> {
+    async findByProtocol(protocol: number): Promise<Service> {
         return this.repository.findOne({
             where: { protocol },
             relations: ["customerId"],
