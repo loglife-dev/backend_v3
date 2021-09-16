@@ -37,6 +37,10 @@ export class CreateCollector1630518165895 implements MigrationInterface {
                         type: 'varchar',
                     },
                     {
+                        name: 'financial_email',
+                        type: 'varchar'
+                    },
+                    {
                         name: 'delay_cost',
                         type: 'varchar',
                     },

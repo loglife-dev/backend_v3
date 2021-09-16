@@ -9,6 +9,7 @@ interface ICollectorDTO {
     hub_list: string[];
     cnpj: string;
     operational_email: string;
+    financial_email: string;
     delay_cost: string;
     cellphone: string;
     telephone: string;

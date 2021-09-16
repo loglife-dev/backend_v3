@@ -4,7 +4,7 @@ import { CreateCollectorUseCase } from "./CollectorUseCase";
 
 class CreateCollectorController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { situation, company_name, trading_name, hub_list, cnpj, operational_email, delay_cost, cellphone, telephone,
+        const { situation, company_name, trading_name, hub_list, cnpj, operational_email, financial_email, delay_cost, cellphone, telephone,
             cep, state, city, street, number, neighborhood, complement, municipal_register, payment_type, day_expiration, business_open,
             business_close, saturday_open, saturday_close, sunday_open, sunday_close, observation } = request.body;
 
@@ -17,6 +17,7 @@ class CreateCollectorController {
             hub_list,
             cnpj,
             operational_email,
+            financial_email,
             delay_cost,
             cellphone,
             telephone,
@@ -46,6 +47,7 @@ class CreateCollectorController {
             hub_list: collector.hub_list,
             cnpj: collector.cnpj,
             operational_email: collector.operational_email,
+            financial_email: collector.financial_email,
             delay_cost: collector.delay_cost,
             cellphone: collector.cellphone,
             telephone: collector.telephone,

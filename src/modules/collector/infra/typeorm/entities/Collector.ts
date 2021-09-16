@@ -29,6 +29,9 @@ class Collector {
 
     @Column()
     operational_email: string;
+    
+    @Column()
+    financial_email: string;
 
     @Column()
     delay_cost: string;

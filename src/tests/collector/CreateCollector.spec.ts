@@ -22,6 +22,7 @@ describe("Create collector", () => {
             hub_list: ["59fde46d-40ad-46ac-a674-a8506c4791f6"],
             cnpj: '00011222',
             operational_email: 'emailtest@gmail.com',
+            financial_email: 'financial@gmail.com',
             delay_cost: '5.00',
             cellphone: '(92)9911-2222',
             telephone: '(92)99999',
