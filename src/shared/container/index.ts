@@ -21,6 +21,8 @@ import { PermissionRepository } from "../../modules/permission/infra/typeorm/rep
 import { IPermissionRepository } from "../../modules/permission/repositories/IPermissionRepository";
 import { ProviderRepository } from "../../modules/provider/infra/typeorm/repositories/ProviderRepository";
 import { IProviderRepository } from "../../modules/provider/repositories/IProviderRepository";
+import { RequestedServiceRepository } from "../../modules/requestedService/infra/typeorm/repositories/RequestedServiceRepository";
+import { IRequestedServiceRepository } from "../../modules/requestedService/repositories/IRequestdServiceRepository";
 import { ServiceRepository } from "../../modules/service/infra/typeorm/repositories/ServiceRepository";
 import { IServiceRepository } from "../../modules/service/repositories/IServiceRepository";
 import { ShippingRepository } from "../../modules/shipping/infra/typeorm/repositories/ShippingRepository";
@@ -97,4 +99,9 @@ container.registerSingleton<IBudgetRepository>(
 container.registerSingleton<IServiceRepository>(
     "ServiceRepository",
     ServiceRepository
+)
+
+container.registerSingleton<IRequestedServiceRepository>(
+    "RequestedServiceRepository",
+    RequestedServiceRepository
 )

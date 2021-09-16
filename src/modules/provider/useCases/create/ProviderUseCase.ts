@@ -4,8 +4,6 @@ import { IProviderDTO } from "../../dtos/IProviderDTO";
 import { Provider } from "../../infra/typeorm/entities/Provider";
 import { IProviderRepository } from "../../repositories/IProviderRepository";
 
-
-
 @injectable()
 class CreateProviderUseCase {
     constructor(
