@@ -21,6 +21,7 @@ describe("Delete a Provider", () => {
             trading_name: "PL LDT",
             hub_id: "fee4d482-744c-48a4-aa23-881859bb6074",
             email: "emailtest@gmail.com",
+            cnpj: "9999999",
             material: "plastico",
             unit_cost: "25,00",
             payment_conditional: "50,00",

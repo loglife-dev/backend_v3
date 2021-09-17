@@ -25,6 +25,11 @@ class Provider {
     })
     email: string;
 
+    @Column({
+        unique: true
+    })
+    cnpj: string;
+
     @Column()
     material: string;
 

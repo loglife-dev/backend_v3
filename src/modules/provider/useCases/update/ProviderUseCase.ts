@@ -16,6 +16,7 @@ class UpdateProviderUseCase {
         trading_name,
         hub_id,
         email,
+        cnpj,
         material,
         unit_cost,
         payment_conditional,
@@ -51,12 +52,19 @@ class UpdateProviderUseCase {
             throw new AppError("Email already exists!");
         }
 
+        const cnpjAlreadyExists = await this.providerRepository.findByCnpj(cnpj);
+
+        if (cnpjAlreadyExists && provider.id !== id){
+            throw new AppError("Cnpj already exists!")
+        }
+
         Object.assign(provider, {
             id,
             company_name,
             trading_name,
             hub_id,
             email,
+            cnpj,
             material,
             unit_cost,
             payment_conditional,

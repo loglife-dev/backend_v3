@@ -16,6 +16,7 @@ class ProviderRepositoryInMemory implements IProviderRepository {
         trading_name,
         hub_id,
         email,
+        cnpj,
         material,
         unit_cost,
         payment_conditional,
@@ -47,6 +48,7 @@ class ProviderRepositoryInMemory implements IProviderRepository {
             trading_name,
             hub_id: "fee4d482-744c-48a4-aa23-881859bb6074",
             email,
+            cnpj,
             material,
             unit_cost,
             payment_conditional,
@@ -95,6 +97,12 @@ class ProviderRepositoryInMemory implements IProviderRepository {
 
     async findByEmail(email: string): Promise<Provider> {
         const provider = this.providers.find((provider) => provider.email === email);
+
+        return provider;
+    }
+
+    async findByCnpj(cnpj: string): Promise<Provider> {
+        const provider = this.providers.find((provider) => provider.cnpj === cnpj);
 
         return provider;
     }

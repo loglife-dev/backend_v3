@@ -26,8 +26,12 @@ class ProviderRepository extends BaseRepository<Provider> implements IProviderRe
         })
 
     }
-    findByEmail(email: string): Promise<Provider> {
+    async findByEmail(email: string): Promise<Provider> {
         return this.repository.findOne({ email })
+    }
+
+    async findByCnpj(cnpj: string): Promise<Provider> {
+        return this.repository.findOne({ cnpj })
     }
 }
 

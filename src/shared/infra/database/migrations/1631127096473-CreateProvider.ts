@@ -31,6 +31,11 @@ export class CreateProvider1631127096473 implements MigrationInterface {
                         isUnique: true,
                     },
                     {
+                        name: 'cnpj',
+                        type: 'varchar',
+                        isUnique: true,
+                    },
+                    {
                         name: 'material',
                         type: 'varchar',
                     },

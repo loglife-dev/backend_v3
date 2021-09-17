@@ -7,4 +7,5 @@ export interface IProviderRepository extends IBaseRepository<Provider> {
     Get():Promise<Provider[]>;
     findById(id: string): Promise<Provider>;
     findByEmail(email: string): Promise<Provider>;
+    findByCnpj(cnpj: string): Promise<Provider>;
 }

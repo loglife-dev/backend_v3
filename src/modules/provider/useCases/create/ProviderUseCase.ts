@@ -15,6 +15,7 @@ class CreateProviderUseCase {
         trading_name,
         hub_id,
         email,
+        cnpj,
         material,
         unit_cost,
         payment_conditional,
@@ -44,6 +45,18 @@ class CreateProviderUseCase {
             throw new AppError("fill in all fields")
         }
 
+        const emailAlreadyExists = await this.providerRepository.findByEmail(email);
+
+        if (emailAlreadyExists){
+            throw new AppError("Email already exists!")
+        }
+
+        const cnpjAlreadyExists = await this.providerRepository.findByCnpj(cnpj);
+
+        if (cnpjAlreadyExists){
+            throw new AppError("Cnpj already exists!")
+        }
+
         const provider = new Provider();
 
         Object.assign(provider, {
@@ -51,6 +64,7 @@ class CreateProviderUseCase {
             trading_name,
             hub_id,
             email,
+            cnpj,
             material,
             unit_cost,
             payment_conditional,

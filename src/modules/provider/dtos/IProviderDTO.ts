@@ -6,6 +6,7 @@ interface IProviderDTO {
     trading_name: string;
     hub_id: string;
     email: string;
+    cnpj: string;
     material: string;
     unit_cost: string;
     payment_conditional: string;
