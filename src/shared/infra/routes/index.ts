@@ -16,6 +16,8 @@ import { authenticateRoutes } from "./authenticate.routes";
 import { serviceRoutes } from "./service.routes";
 import { requestedServiceRoutes } from "./requestedService.routes";
 import { setToCollectRoutes } from "./setToCollect.Routes";
+import { collectServiceRoutes } from "./collectService.routes";
+
 const router = Router();
 router.use("/hub", hubRoutes);
 router.use("/city", cityRoutes);
@@ -34,5 +36,6 @@ router.use(authenticateRoutes);
 router.use("/service", serviceRoutes);
 router.use("/requested-service", requestedServiceRoutes);
 router.use("/set-collect", setToCollectRoutes);
+router.use("/collect-service", collectServiceRoutes);
 
 export { router }

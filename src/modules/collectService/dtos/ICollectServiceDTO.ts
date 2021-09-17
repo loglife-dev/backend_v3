@@ -1,0 +1,23 @@
+
+interface ICollectServiceDTO {
+    id?: string;
+    service_id: string;
+    collect_id: string;
+    arrival_latitude: string;
+    arrival_longitude: string;
+    arrival_timestamp: Date;
+    responsible_name: string;
+    responsible_cpf: string;
+    volume: Number;
+    sample: Number;
+    problem: string;
+    box_photo: string;
+    content_declaration: string;
+    receipt_photo: string;
+    departure_latitude: string;
+    departure_longitude: string;
+    departure_timestamp: Date;
+    observation: string;
+}
+
+export { ICollectServiceDTO }

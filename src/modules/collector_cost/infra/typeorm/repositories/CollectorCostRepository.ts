@@ -2,8 +2,6 @@ import { BaseRepository } from "../../../../../shared/infra/repositories/BaseRep
 import { ICollectorCostRepository } from "../../../repositories/ICollectorCostRepository";
 import { Collector_Cost } from "../entities/Collector_Cost";
 
-
-
 class CollectorCostRepository extends BaseRepository<Collector_Cost> implements ICollectorCostRepository {
     constructor() {
         super(Collector_Cost)

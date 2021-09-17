@@ -11,6 +11,8 @@ import { CollectorRepository } from "../../modules/collector/infra/typeorm/repos
 import { ICollectorRepository } from "../../modules/collector/repositories/ICollectorRepository";
 import { CollectorCostRepository } from "../../modules/collector_cost/infra/typeorm/repositories/CollectorCostRepository";
 import { ICollectorCostRepository } from "../../modules/collector_cost/repositories/ICollectorCostRepository";
+import { CollectServiceRepository } from "../../modules/collectService/infra/typeorm/repositories/CollectServiceRepository";
+import { ICollectServiceRepository } from "../../modules/collectService/repositories/ICollectServiceRepository";
 import { CustomerRepository } from "../../modules/customer/infra/typeorm/repositories/CustomerRepository";
 import { ICustomerRepository } from "../../modules/customer/repositories/ICustomerRepository";
 import { DriverRepository } from "../../modules/driver/infra/typeorm/repositories/DriverRepositories";
@@ -111,4 +113,9 @@ container.registerSingleton<IRequestedServiceRepository>(
 container.registerSingleton<ISetToCollectRepository>(
     "SetToCollectRepository",
     SetToCollectRepository
+)
+
+container.registerSingleton<ICollectServiceRepository>(
+    "CollectServiceRepository",
+    CollectServiceRepository
 )
