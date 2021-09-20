@@ -17,6 +17,9 @@ interface ICollectServiceDTO {
     departure_latitude: string;
     departure_longitude: string;
     departure_timestamp: Date;
+    unsuccess_latitude: Date;
+    unsuccess_longitude: Date;
+    unsuccess_timestamp: Date;
     observation: string;
 }
 

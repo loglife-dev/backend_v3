@@ -90,6 +90,21 @@ export class CreateCollectService1631889158757 implements MigrationInterface {
                         isNullable: true,
                     },
                     {
+                        name: 'unsuccess_latitude',
+                        type: 'timestamp',
+                        isNullable: true,
+                    },
+                    {
+                        name: 'unsuccess_longitude',
+                        type: 'timestamp',
+                        isNullable: true,
+                    },
+                    {
+                        name: 'unsuccess_timestamp',
+                        type: 'timestamp',
+                        isNullable: true,
+                    },
+                    {
                         name: 'observation',
                         type: 'text'
                     },

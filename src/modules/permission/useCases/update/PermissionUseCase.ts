@@ -13,6 +13,7 @@ class UpdatePermissionUseCase {
 
     async execute({
         id,
+        value,
         key,
         group,
         order,
@@ -32,6 +33,7 @@ class UpdatePermissionUseCase {
 
         Object.assign(permissionExists, {
             id,
+            value,
             key,
             group,
             order,

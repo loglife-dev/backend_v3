@@ -26,6 +26,9 @@ class CreateCollectServiceUseCase {
         departure_latitude,
         departure_longitude,
         departure_timestamp,
+        unsuccess_latitude,
+        unsuccess_longitude,
+        unsuccess_timestamp,
         observation,
     }: ICollectServiceDTO): Promise<CollectService> {
         const collectService = new CollectService();
@@ -47,6 +50,9 @@ class CreateCollectServiceUseCase {
             departure_latitude,
             departure_longitude,
             departure_timestamp,
+            unsuccess_latitude,
+            unsuccess_longitude,
+            unsuccess_timestamp,
             observation,
         });
         const createCollectService = await this.collectServiceRepository.Create(collectService);

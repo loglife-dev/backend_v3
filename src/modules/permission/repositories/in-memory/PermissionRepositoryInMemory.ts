@@ -12,12 +12,13 @@ class PermissionnRepositoryInMemory implements IPermissionRepository {
         return all;
     }
 
-    async Create({ id, key, group, order }: IPermissionDTO): Promise<Permission> {
+    async Create({ id, key, value, group, order }: IPermissionDTO): Promise<Permission> {
         const permission = new Permission();
 
         Object.assign(permission, {
             id: '1e0b9d6a-0739-11ec-9a03-0242ac130003',
             key,
+            value,
             group,
             order,
         });

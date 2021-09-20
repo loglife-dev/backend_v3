@@ -20,6 +20,7 @@ describe("Create Permission", () => {
         const permission: IPermissionDTO = {
             id: '1e0b9d6a-0739-11ec-9a03-0242ac130003',
             key: 'chave-wwl',
+            value: '10',
             group: 'test-permission',
             order: 1
         }
@@ -37,6 +38,7 @@ describe("Create Permission", () => {
             const permission: IPermissionDTO = {
                 id: '1e0b9d6a-0739-11ec-9a03-0242ac130003',
                 key: 'chave-wwl',
+                value: '10',
                 group: 'test-permission',
                 order: 1
             }

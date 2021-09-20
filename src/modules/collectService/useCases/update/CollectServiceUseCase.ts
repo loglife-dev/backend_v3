@@ -28,6 +28,9 @@ class UpdateCollectServiceUseCase {
         departure_latitude,
         departure_longitude,
         departure_timestamp,
+        unsuccess_latitude,
+        unsuccess_longitude,
+        unsuccess_timestamp,
         observation,
     }: ICollectServiceDTO): Promise<CollectService> {
         const collectService = await this.collectServiceRepository.findById(id);
@@ -54,6 +57,9 @@ class UpdateCollectServiceUseCase {
             departure_latitude,
             departure_longitude,
             departure_timestamp,
+            unsuccess_latitude,
+            unsuccess_longitude,
+            unsuccess_timestamp,
             observation,
         });
         const updateCollectService = await this.collectServiceRepository.Create(collectService);

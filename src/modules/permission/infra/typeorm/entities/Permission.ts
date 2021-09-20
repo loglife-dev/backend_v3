@@ -12,6 +12,9 @@ class Permission {
     key: string;
 
     @Column()
+    value: string;
+
+    @Column()
     group: string;
 
     @Column()

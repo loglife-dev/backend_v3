@@ -13,6 +13,7 @@ class CreatePermissionUseCase {
 
     async execute({
         key,
+        value,
         group,
         order,
 
@@ -32,6 +33,7 @@ class CreatePermissionUseCase {
 
         Object.assign(permission, {
             key,
+            value,
             group,
             order,
         });

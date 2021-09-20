@@ -4,18 +4,20 @@ import { CreatePermissionUseCase } from "./PermissionUseCase";
 
 class CreatePermissionController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { key, group, order } = request.body;
+        const { key, value, group, order } = request.body;
 
         const createPermissionUseCase = container.resolve(CreatePermissionUseCase);
 
         const permission = await createPermissionUseCase.execute({
             key,
+            value,
             group,
             order,
         });
 
         const permissionResponse = {
             key: permission.key,
+            value: permission.value,
             group: permission.group,
             order: permission.order,
         }

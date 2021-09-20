@@ -5,7 +5,8 @@ import { CreateCollectServiceUseCase } from "./CollectServiceUseCase";
 class CreateCollectServiceController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { service_id, collect_id, arrival_latitude, arrival_longitude, arrival_timestamp, responsible_name, responsible_cpf, volume,
-            sample, problem, box_photo, content_declaration, receipt_photo, departure_latitude, departure_longitude, departure_timestamp, observation } = request.body;
+            sample, problem, box_photo, content_declaration, receipt_photo, departure_latitude, departure_longitude, departure_timestamp, unsuccess_latitude,
+            unsuccess_longitude, unsuccess_timestamp, observation } = request.body;
 
         const createCollectServiceUseCase = container.resolve(CreateCollectServiceUseCase);
 
@@ -26,6 +27,9 @@ class CreateCollectServiceController {
             departure_latitude,
             departure_longitude,
             departure_timestamp,
+            unsuccess_latitude,
+            unsuccess_longitude,
+            unsuccess_timestamp,
             observation,
         });
 
@@ -46,6 +50,9 @@ class CreateCollectServiceController {
             departure_latitude: collectService.departure_latitude,
             departure_longitude: collectService.departure_longitude,
             departure_timestamp: collectService.departure_timestamp,
+            unsuccess_latitude: collectService.unsuccess_latitude,
+            unsuccess_longitude: collectService.unsuccess_longitude,
+            unsuccess_timestamp: collectService.unsuccess_timestamp,
             observation: collectService.observation,
         }
 

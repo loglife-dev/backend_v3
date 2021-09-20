@@ -65,6 +65,15 @@ class CollectService {
     departure_timestamp: Date;
 
     @Column()
+    unsuccess_latitude: Date;
+
+    @Column()
+    unsuccess_longitude: Date;
+
+    @Column()
+    unsuccess_timestamp: Date;
+    
+    @Column()
     observation: string;
 
     @CreateDateColumn()
