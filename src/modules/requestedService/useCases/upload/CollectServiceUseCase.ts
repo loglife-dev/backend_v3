@@ -1,0 +1,6 @@
+
+
+class UploadCollectServiceUseCase {
+
+}
+export { UploadCollectServiceUseCase }

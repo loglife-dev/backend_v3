@@ -3,7 +3,6 @@ import { Driver } from "../../infra/typeorm/entities/Driver";
 import { IDriverRepository } from "../../repositories/IDriverRepository";
 
 
-
 @injectable()
 class GetDriverUseCase {
     constructor(

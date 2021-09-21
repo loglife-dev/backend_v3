@@ -15,7 +15,7 @@ class GetUserController {
     }
 }
 
-class GetAllUserCotroller {
+class GetAllUserController {
     async handle(request: Request, response: Response): Promise<Response> {
 
         const getAllUserUseCase = container.resolve(GetAllUserUseCase)
@@ -26,4 +26,4 @@ class GetAllUserCotroller {
     }
 }
 
-export { GetUserController, GetAllUserCotroller }
+export { GetUserController, GetAllUserController }

@@ -3,7 +3,6 @@ import { ProviderRepositoryInMemory } from "../../modules/provider/repositories/
 import { CreateProviderUseCase } from "../../modules/provider/useCases/create/ProviderUseCase";
 import { DeleteProviderUseCase } from "../../modules/provider/useCases/delete/ProviderUseCase";
 
-
 let createProviderUseCase: CreateProviderUseCase;
 let providerRepositoryInMemory: ProviderRepositoryInMemory;
 let deleteProviderUseCase: DeleteProviderUseCase;

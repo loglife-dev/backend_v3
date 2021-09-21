@@ -48,6 +48,5 @@ describe("List all SetToCollect", () => {
         const findSetToCollect = await getSetToCollectUseCase.execute(setToCollect.id);
 
         expect(findSetToCollect.id).toBe("59fde46d-40ad-46ac-a674-a8506c4791f6");
-        console.log(setToCollect)
     })
 })

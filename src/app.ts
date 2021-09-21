@@ -13,13 +13,12 @@ import path from "path";
 
 import { AppError } from "./shared/errors/AppError";
 
-
 const app = express();
 app.use(cors())
 app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile))
 app.use(router);
-app.use('/files', express.static(path.resolve(__dirname, "tmp", "uploads")))
+
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
   if (err instanceof AppError) {
