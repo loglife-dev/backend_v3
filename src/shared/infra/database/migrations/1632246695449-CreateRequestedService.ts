@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateRequestedService1631799698648 implements MigrationInterface {
+export class CreateRequestedService1632246695449 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
@@ -151,7 +151,7 @@ export class CreateRequestedService1631799698648 implements MigrationInterface {
                         referencedColumnNames: ['id'],
                         columnNames: ['service_id'],
                         onUpdate: 'CASCADE',
-                        onDelete: 'SET NULL',
+                        onDelete: 'CASCADE',
                     },
                     {
                         name: 'FKBudget',
@@ -165,13 +165,17 @@ export class CreateRequestedService1631799698648 implements MigrationInterface {
                         name: 'FKSourceCollector',
                         referencedTableName: 'collector',
                         referencedColumnNames: ['id'],
-                        columnNames: ['source_collector_id']
+                        columnNames: ['source_collector_id'],
+                        onUpdate: 'CASCADE',
+                        onDelete: 'SET NULL'
                     },
                     {
                         name: 'FKDestinationCollector',
                         referencedTableName: 'collector',
                         referencedColumnNames: ['id'],
-                        columnNames: ['destination_collector_id']
+                        columnNames: ['destination_collector_id'],
+                        onUpdate: 'CASCADE',
+                        onDelete: 'SET NULL'
                     },
                     {
                         name: 'FKSourceBranch',
@@ -200,10 +204,11 @@ export class CreateRequestedService1631799698648 implements MigrationInterface {
                 ]
             })
         )
+
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('requested_service');
+        await queryRunner.dropTable('requested_service')
     }
 
 }

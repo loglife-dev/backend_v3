@@ -20,6 +20,7 @@ describe("Update service", () => {
             protocol: 1,
             step: "todo",
             customer_id: "fee4d482-744c-48a4-aa23-881859bb6074",
+            group_id: "fee4d482-744c-48a4-aa23-881859bb6074",
         }
         await createServiceUseCase.execute(service);
 
@@ -28,6 +29,7 @@ describe("Update service", () => {
             protocol: 1,
             step: "feito",
             customer_id: "fee4d482-744c-48a4-aa23-881859bb6074",
+            group_id: "fee4d482-744c-48a4-aa23-881859bb6074",
         })
         expect(updateService.step).toBe("feito")
     });

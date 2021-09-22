@@ -19,6 +19,7 @@ describe("Create Service", () => {
             protocol: 1,
             step: "todo",
             customer_id: "fee4d482-744c-48a4-aa23-881859bb6074",
+            group_id: "fee4d482-744c-48a4-aa23-881859bb6074",
         }
         await createServiceUseCase.execute(service);
         const findId = await serviceRepositoryInMemory.findByProtocol(service.protocol);
@@ -26,12 +27,13 @@ describe("Create Service", () => {
         expect(findId).toHaveProperty("id");
     });
 
-    it("should not be able to protocol a nonexistent service", async () => {
+    it("should not be able to create a protocol on a non-existent service", async () => {
         const service: IServiceDTO = {
             id: "59fde46d-40ad-46ac-a674-a8506c4791f6",
             protocol: 1,
             step: "todo",
             customer_id: "fee4d482-744c-48a4-aa23-881859bb6074",
+            group_id: "fee4d482-744c-48a4-aa23-881859bb6074",
         }
         await createServiceUseCase.execute(service);
 
@@ -41,6 +43,7 @@ describe("Create Service", () => {
                 protocol: 1,
                 step: "todo",
                 customer_id: "fee4d482-744c-48a4-aa23-881859bb6074",
+                group_id: "fee4d482-744c-48a4-aa23-881859bb6074",
             })
         ).rejects.toBeInstanceOf(AppError)
     })

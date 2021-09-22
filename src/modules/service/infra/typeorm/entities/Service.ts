@@ -1,6 +1,7 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm"
 import { Customer } from "../../../../customer/infra/typeorm/entities/Customer";
 import { v4 as uuidv4 } from 'uuid';
+import { ServiceGroup } from "../../../../serviceGroup/infra/typeorm/entities/ServiceGroup";
 @Entity('service')
 class Service {
     @PrimaryColumn()
@@ -18,6 +19,13 @@ class Service {
 
     @Column()
     customer_id: string;
+
+    @JoinColumn({ name: 'group_id' })
+    @OneToOne(() => ServiceGroup)
+    groupId: ServiceGroup
+    
+    @Column()
+    group_id: string;
 
     @CreateDateColumn()
     created_at: Date;

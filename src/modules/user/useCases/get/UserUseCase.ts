@@ -10,12 +10,16 @@ class GetUserUseCase {
         @inject("UserRepository")
         private readonly userRepository: IUserRepository) { }
 
-    async execute(id: string): Promise<User>{
+    async execute(id: string): Promise<User> {
         const user = await this.userRepository.findById(id);
+
+        if (!user) {
+            throw new AppError("User does not exists.")
+        }
 
         return user;
     }
-    
+
 }
 
 @injectable()

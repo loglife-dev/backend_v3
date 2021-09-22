@@ -22,6 +22,7 @@ describe("List all service", () => {
             protocol: 1,
             step: "todo",
             customer_id: "fee4d482-744c-48a4-aa23-881859bb6074",
+            group_id: "fee4d482-744c-48a4-aa23-881859bb6074",
         }
         await createServiceUseCase.execute(service);
 
@@ -36,6 +37,7 @@ describe("List all service", () => {
             protocol: 1,
             step: "todo",
             customer_id: "fee4d482-744c-48a4-aa23-881859bb6074",
+            group_id: "fee4d482-744c-48a4-aa23-881859bb6074",
         }
         await createServiceUseCase.execute(service);
 

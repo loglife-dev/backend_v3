@@ -1,6 +1,6 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateCollectService1631889158757 implements MigrationInterface {
+export class CreateCollectService1632247570105 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
@@ -126,7 +126,7 @@ export class CreateCollectService1631889158757 implements MigrationInterface {
                         referencedColumnNames: ['id'],
                         columnNames: ['service_id'],
                         onUpdate: 'CASCADE',
-                        onDelete: 'SET NULL'
+                        onDelete: 'CASCADE'
                     },
                     {
                         name: 'FKCollect',

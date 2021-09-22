@@ -1,6 +1,6 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateSetToCollect1631823635428 implements MigrationInterface {
+export class CreateSetToCollect1632246791109 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
@@ -58,7 +58,7 @@ export class CreateSetToCollect1631823635428 implements MigrationInterface {
                         referencedColumnNames: ['id'],
                         columnNames: ['service_id'],
                         onUpdate: 'CASCADE',
-                        onDelete: 'SET NULL',
+                        onDelete: 'CASCADE',
                     },
                     {
                         name: 'FKAddress',
@@ -90,7 +90,7 @@ export class CreateSetToCollect1631823635428 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('setToCollect')
+        await queryRunner.dropTable('setToCollect');
     }
 
 }

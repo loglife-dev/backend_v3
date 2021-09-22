@@ -19,6 +19,7 @@ class ServiceRepositoryInMemory implements IServiceRepository {
         protocol,
         step,
         customer_id,
+        group_id,        
     }: IServiceDTO): Promise<Service> {
         const service = new Service();
 
@@ -27,6 +28,7 @@ class ServiceRepositoryInMemory implements IServiceRepository {
             protocol,
             step,
             customer_id: "fee4d482-744c-48a4-aa23-881859bb6074",
+            group_id: "fee4d482-744c-48a4-aa23-881859bb6074",
         });
         this.services.push(service);
 

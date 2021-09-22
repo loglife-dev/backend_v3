@@ -4,6 +4,7 @@ interface IServiceDTO {
     protocol?: number;
     step: string;
     customer_id?: string;
+    group_id?: string;
 }
 
 export { IServiceDTO }
