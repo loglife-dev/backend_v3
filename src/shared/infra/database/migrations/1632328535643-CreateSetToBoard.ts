@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreateSetToBoard1632328535643 implements MigrationInterface {
 
@@ -14,7 +14,7 @@ export class CreateSetToBoard1632328535643 implements MigrationInterface {
                     },
                     {
                         name: 'service_id',
-                        type:  'uuid',
+                        type: 'uuid',
                         isNullable: false,
                     },
                     {
@@ -53,6 +53,22 @@ export class CreateSetToBoard1632328535643 implements MigrationInterface {
                         columnNames: ['service_id'],
                         onUpdate: 'CASCADE',
                         onDelete: 'CASCADE'
+                    },
+                    {
+                        name: 'FKBranch',
+                        referencedTableName: 'branch',
+                        referencedColumnNames: ['id'],
+                        columnNames: ['branch_id'],
+                        onUpdate: 'CASCADE',
+                        onDelete: 'SET NULL'
+                    },
+                    {
+                        name: 'FKDriver',
+                        referencedTableName: 'driver',
+                        referencedColumnNames: ['id'],
+                        columnNames: ['driver_id'],
+                        onUpdate: 'CASCADE',
+                        onDelete: 'SET NULL'
                     }
                 ]
             })
