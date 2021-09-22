@@ -29,6 +29,8 @@ import { ServiceRepository } from "../../modules/service/infra/typeorm/repositor
 import { IServiceRepository } from "../../modules/service/repositories/IServiceRepository";
 import { ServiceGroupRepository } from "../../modules/serviceGroup/infra/typeorm/repositories/ServiceGroupRepository";
 import { IServiceGroupRepository } from "../../modules/serviceGroup/repositories/IServiceGroupRepository";
+import { SetToBoardRepository } from "../../modules/setToBoard/infra/typeorm/repositories/SetToBoardRepository";
+import { ISetToBoardRepository } from "../../modules/setToBoard/repositories/ISetToBoardRepository";
 import { SetToCollectRepository } from "../../modules/setToCollect/infra/typeorm/repositories/SetToCollectRepository";
 import { ISetToCollectRepository } from "../../modules/setToCollect/repositories/ISetToCollectRepository";
 import { ShippingRepository } from "../../modules/shipping/infra/typeorm/repositories/ShippingRepository";
@@ -125,4 +127,9 @@ container.registerSingleton<ICollectServiceRepository>(
 container.registerSingleton<IServiceGroupRepository>(
     "ServiceGroupRepository",
     ServiceGroupRepository
+)
+
+container.registerSingleton<ISetToBoardRepository>(
+    "SetToBoardRepository",
+    SetToBoardRepository
 )

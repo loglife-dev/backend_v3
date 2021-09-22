@@ -2,7 +2,6 @@ import { BaseRepository } from "../../../../../shared/infra/repositories/BaseRep
 import { IBudgetRepository } from "../../../repositories/IBudgetRepository";
 import { Budget } from "../entities/Budget";
 
-
 class BudgetRepository extends BaseRepository<Budget> implements IBudgetRepository {
     constructor() {
         super(Budget)

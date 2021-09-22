@@ -2,7 +2,6 @@ import { BaseRepository } from "../../../../../shared/infra/repositories/BaseRep
 import { IServiceGroupRepository } from "../../../repositories/IServiceGroupRepository";
 import { ServiceGroup } from "../entities/ServiceGroup";
 
-
 class ServiceGroupRepository extends BaseRepository<ServiceGroup> implements IServiceGroupRepository {
     constructor() {
         super(ServiceGroup)
