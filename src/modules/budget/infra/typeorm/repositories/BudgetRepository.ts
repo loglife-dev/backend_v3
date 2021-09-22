@@ -10,7 +10,7 @@ class BudgetRepository extends BaseRepository<Budget> implements IBudgetReposito
 
     async Get(): Promise<Budget[]> {
         return this.repository.find({
-            relations: ["customerId", "hubId", "destinationHubId"],
+            relations: ["customerId", "sourceHubId", "destinationHubId"],
             order: {
                 service_type: 'ASC'
             }
@@ -20,7 +20,7 @@ class BudgetRepository extends BaseRepository<Budget> implements IBudgetReposito
     async findById(id: string): Promise<Budget> {
         return this.repository.findOne({
             where: { id },
-            relations: ["customerId", "hubId"],
+            relations: ["customerId",  "sourceHubId", "destinationHubId"],
             order: {
                 service_type: 'ASC'
             }
