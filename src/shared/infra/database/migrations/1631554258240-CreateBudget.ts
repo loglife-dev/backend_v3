@@ -104,10 +104,12 @@ export class CreateBudget1631554258240 implements MigrationInterface {
                     {
                         name: 'price_kg_extra',
                         type: 'float',
+                        isNullable: true,
                     },
                     {
                         name: 'transfer_budget',
                         type: 'float',
+                        isNullable: true,
                     },
                     {
                         name: 'price_add_collect',
