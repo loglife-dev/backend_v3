@@ -17,13 +17,14 @@ class Budget {
 
     @JoinColumn({ name: 'source_hub_id' })
     @OneToOne(() => Hub)
-    hubId: Hub;
+    sourceHubId: Hub;
 
     @Column()
     source_hub_id: string;
 
     @JoinColumn({ name: 'destination_hub_id' })
     @OneToOne(() => Hub)
+    destinationHubId: Hub
 
     @Column()
     destination_hub_id: string;
