@@ -37,7 +37,7 @@ class CreateRequestedServiceUseCase {
         collect_hour_end,
         delivery_date,
         delivery_hour,
-        observation,
+        observation
     }: IRequestedServiceDTO): Promise<RequestedService> {
         const requestedService = new RequestedService();
 

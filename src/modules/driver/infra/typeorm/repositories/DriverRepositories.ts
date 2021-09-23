@@ -9,22 +9,16 @@ class DriverRepository extends BaseRepository<Driver> implements IDriverReposito
     }
 
     async Get(): Promise<Driver[]> {
-        return this.repository.find({
-            relations: ["collectorId"],
-            order: {
-                firstname: 'ASC'
-            }
+        const driver = await this.repository.find({
+            relations:  ["collectorId"],
+           
         });
+        return driver;
     }
 
     async findById(id: string): Promise<Driver> {
-        return this.repository.findOne({
-            where: { id },
-            relations: ["collectorId"],
-            order: {
-                firstname: 'ASC'
-            }
-        })
+        const driver = await this.repository.findOne({ id })
+        return driver;
     }
 
     async findByCpf(cpf: string): Promise<Driver> {

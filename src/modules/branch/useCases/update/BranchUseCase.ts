@@ -46,7 +46,6 @@ class UpdateBranchUseCase {
             throw new AppError("Nickname already exists!");
         }
 
-
         Object.assign(branchExists, {
             id,
             nickname,

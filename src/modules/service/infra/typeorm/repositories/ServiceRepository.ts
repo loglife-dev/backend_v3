@@ -6,7 +6,7 @@ class ServiceRepository extends BaseRepository<Service> implements IServiceRepos
     constructor() {
         super(Service)
     }
-   
+
     async Get(): Promise<Service[]> {
         return this.repository.find({
             relations: ["customerId"],
@@ -35,6 +35,7 @@ class ServiceRepository extends BaseRepository<Service> implements IServiceRepos
             }
         })
     }
+
 
 }
 

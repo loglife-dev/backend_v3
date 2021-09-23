@@ -17,12 +17,13 @@ class CustomerRepository extends BaseRepository<Customer> implements ICustomerRe
     }
 
     async findById(id: string): Promise<Customer> {
-        return this.repository.findOne({ 
+        const customer = await this.repository.findOne({ 
             where: { id },
             order: {
                 trading_firstname: 'ASC'
             }
          });
+         return customer;
     }
 
     findByCnpjAndCpf(cnpj_cpf: string): Promise<Customer> {

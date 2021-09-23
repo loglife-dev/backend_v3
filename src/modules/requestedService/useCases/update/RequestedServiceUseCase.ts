@@ -1,5 +1,8 @@
+import { request } from "express";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
+import { Service } from "../../../service/infra/typeorm/entities/Service";
+import { IServiceRepository } from "../../../service/repositories/IServiceRepository";
 import { IRequestedServiceDTO } from "../../dtos/IRequestedServiceDTO";
 import { RequestedService } from "../../infra/typeorm/entities/RequestedService";
 import { IRequestedServiceRepository } from "../../repositories/IRequestdServiceRepository";
@@ -8,7 +11,9 @@ import { IRequestedServiceRepository } from "../../repositories/IRequestdService
 class UpdateRequestedServiceUseCase {
     constructor(
         @inject("RequestedServiceRepository")
-        private readonly requestedServiceRepository: IRequestedServiceRepository) { }
+        private readonly requestedServiceRepository: IRequestedServiceRepository,
+        @inject("ServiceRepository")
+        private readonly serviceRepository: IServiceRepository) { }
 
     async execute({
         id,
@@ -41,6 +46,7 @@ class UpdateRequestedServiceUseCase {
         delivery_hour,
         observation,
     }: IRequestedServiceDTO): Promise<RequestedService> {
+      
         const requestedService = await this.requestedServiceRepository.findById(id);
 
         if (!requestedService) {

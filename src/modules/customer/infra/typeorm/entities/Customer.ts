@@ -5,7 +5,7 @@ import { Hub } from "../../../../hub/infra/typeorm/entities/Hub";
 @Entity('customer')
 class Customer {
     @PrimaryColumn()
-    readonly id?: string;
+    id: string;
 
     @Column()
     type: string;

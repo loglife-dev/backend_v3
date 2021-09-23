@@ -6,7 +6,7 @@ import { Collector } from "../../../../collector/infra/typeorm/entities/Collecto
 @Entity('driver')
 class Driver {
     @PrimaryColumn()
-    readonly id?: string;
+    id: string;
 
     @Column()
     situation: string;
@@ -17,12 +17,12 @@ class Driver {
     @Column()
     lastname: string;
     
-    @Column()
-    collector_id: string;
-
     @JoinColumn({ name: 'collector_id'})
     @ManyToOne(() => Collector)
     collectorId: Collector
+    
+    @Column()
+    collector_id: string;
     
     @Column()
     cpf: string;
