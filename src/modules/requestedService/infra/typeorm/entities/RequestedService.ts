@@ -37,7 +37,7 @@ class RequestedService {
 
     @JoinColumn({ name: 'source_collector_id' })
     @OneToOne(() => Collector,{
-        eager: false
+        onUpdate: 'CASCADE'
     })
     sourceCollectorId: Collector;
 
@@ -46,29 +46,28 @@ class RequestedService {
 
     @JoinColumn({ name: 'destination_collector_id' })
     @OneToOne(() => Collector,{
-       eager: false,
-       nullable: false
+       onUpdate: 'CASCADE'
     })
     destinationCollectorId: Collector;
 
     @Column()
     destination_collector_id: string;
 
-    @JoinColumn({ name: 'source_branch_id' })
+    
     @OneToOne(() => Branch,{
-        eager: false,
-       nullable: false
+        onUpdate: 'CASCADE'
     })
+    @JoinColumn({ name: 'source_branch_id' })
     sourceBranchId: Branch;
 
     @Column()
     source_branch_id: string;
 
-    @JoinColumn({ name: 'source_branch_id' })
+    
     @OneToOne(() => Branch,{
-        eager: false,
-        nullable: false
+        onUpdate: 'CASCADE'
     })
+    @JoinColumn({ name: 'destination_branch_id' })
     destinationBranchId: Branch;
 
     @Column()

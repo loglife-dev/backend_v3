@@ -8,15 +8,15 @@ class Budget {
     @PrimaryColumn()
     id: string;
 
-    @JoinColumn({ name: 'customer_id' })
     @ManyToOne(() => Customer)
+    @JoinColumn({ name: 'customer_id' })
     customerId: Customer;
 
     @Column()
     customer_id: string;
 
-    @JoinColumn({ name: 'source_hub_id' })
     @OneToOne(() => Hub)
+    @JoinColumn({ name: 'source_hub_id' })
     sourceHubId: Hub;
 
     @Column()

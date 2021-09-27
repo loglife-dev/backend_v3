@@ -136,6 +136,13 @@ class UpdateRequestedServiceUseCase {
             ...requested,
             serviceId,
             budgetId,
+            sourceCollectorId,
+            destinationCollectorId,
+            sourceBranchId,
+            destinationBranchId,
+            providerId
+
+
                       
         })
 
