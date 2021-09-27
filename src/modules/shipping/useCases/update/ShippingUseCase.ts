@@ -32,17 +32,15 @@ class UpdateShippingUseCase {
             throw new AppError("Cnpj already exists!");
         }
 
-        Object.assign(shipping, {
-            id,
-            company_name,
-            trading_name,
-            cnpj,
-            email,
-            modal,
-            cellphone,
-            telephone,
-            observation,
-        });
+        shipping.company_name = company_name;
+        shipping.trading_name = trading_name;
+        shipping.cnpj = cnpj;
+        shipping.email = email;
+        shipping.modal = modal;
+        shipping.cellphone = cellphone;
+        shipping.telephone = telephone;
+        shipping.observation = observation;
+
         const updateShipping = await this.shippingRepository.Update(shipping);
 
         return updateShipping;

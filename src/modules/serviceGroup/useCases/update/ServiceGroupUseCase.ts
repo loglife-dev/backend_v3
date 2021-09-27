@@ -18,11 +18,9 @@ class UpdateServiceGroupUseCase {
         if (!group) {
             throw new AppError("ServiceGroup does not exists!");
         }
+     
+        group.service_list = service_list;
 
-        Object.assign(group, {
-            id,
-            service_list,
-        });
         const updateServiceGroup = await this.serviceGroupRepository.Update(group);
 
         return updateServiceGroup;

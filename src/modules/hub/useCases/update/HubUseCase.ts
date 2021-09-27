@@ -18,30 +18,23 @@ class UpdateHubUseCase {
     state,
     observation
   }: IHubUpdateDTO): Promise<Hub> {
-    const hubExist = await this.hubRepositories.findById(id);
+    const hub = await this.hubRepositories.findById(id);
 
-    if (!hubExist) {
+    if (!hub) {
       throw new AppError("Hub does not exists!");
     }
 
     const hubExistByName = await this.hubRepositories.findByName(name)
 
-    if (hubExistByName && hubExist.name !== name) {
+    if (hubExistByName && hub.name !== name) {
       throw new AppError("Hub already exists!");
     }
 
+    hub.name = name,
+    hub.state = state;
+    hub.observation = observation;
 
-    Object.assign(hubExist, {
-      id,
-      name,
-      state,
-      observation
-
-    });
-
-    const updatedHub = await this.hubRepositories.Update(
-      hubExist
-    );
+    const updatedHub = await this.hubRepositories.Update(hub);
 
     return updatedHub;
   }

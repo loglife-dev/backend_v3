@@ -18,30 +18,24 @@ class UpdatePermissionUseCase {
         group,
         order,
     }: IPermissionDTO): Promise<Permission> {
-        const permissionExists = await this.permissionRepository.findById(id)
+        const permission = await this.permissionRepository.findById(id)
 
-        if (!permissionExists) {
+        if (!permission) {
             throw new AppError("Permission does not exists!");
         }
 
         const permissionExistKey = await this.permissionRepository.findByKey(key)
 
-        if (permissionExistKey && permissionExists.key !== key) {
+        if (permissionExistKey && permission.key !== key) {
             throw new AppError("Key already exists!");
         }
 
+        permission.value = value,
+        permission.key = key;
+        permission.group = group;
+        permission.order = order;
 
-        Object.assign(permissionExists, {
-            id,
-            value,
-            key,
-            group,
-            order,
-        });
-
-        const updatePermission = await this.permissionRepository.Update(
-            permissionExists
-        );
+        const updatePermission = await this.permissionRepository.Update(permission);
 
         return updatePermission;
     }

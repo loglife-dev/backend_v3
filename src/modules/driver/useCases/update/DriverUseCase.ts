@@ -41,10 +41,11 @@ class UpdateDriverUseCase {
         driverExist.situation = situation;
         driverExist.firstname = firstname;
         driverExist.lastname = lastname;
+        driverExist.collector_id = collector_id;
         driverExist.cpf = cpf;
         driverExist.email = email;
         driverExist.observation = observation;
-
+        
         const UpdateResponse = await this.driverRepository.Update({
             ...driverExist,
             collector

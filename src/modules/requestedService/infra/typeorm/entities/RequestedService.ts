@@ -36,28 +36,39 @@ class RequestedService {
     destination_address_id: string[];
 
     @JoinColumn({ name: 'source_collector_id' })
-    @OneToOne(() => Collector)
+    @OneToOne(() => Collector,{
+        eager: false
+    })
     sourceCollectorId: Collector;
 
     @Column()
     source_collector_id: string;
 
     @JoinColumn({ name: 'destination_collector_id' })
-    @OneToOne(() => Collector)
+    @OneToOne(() => Collector,{
+       eager: false,
+       nullable: false
+    })
     destinationCollectorId: Collector;
 
     @Column()
     destination_collector_id: string;
 
     @JoinColumn({ name: 'source_branch_id' })
-    @OneToOne(() => Branch)
+    @OneToOne(() => Branch,{
+        eager: false,
+       nullable: false
+    })
     sourceBranchId: Branch;
 
     @Column()
     source_branch_id: string;
 
     @JoinColumn({ name: 'source_branch_id' })
-    @OneToOne(() => Branch)
+    @OneToOne(() => Branch,{
+        eager: false,
+        nullable: false
+    })
     destinationBranchId: Branch;
 
     @Column()

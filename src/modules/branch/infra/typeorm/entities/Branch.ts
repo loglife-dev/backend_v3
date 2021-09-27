@@ -6,7 +6,7 @@ import { Shipping } from "../../../../shipping/infra/typeorm/entities/Shipping";
 @Entity('branch')
 class Branch {
     @PrimaryColumn()
-    id?: string;
+    id: string;
 
     @Column()
     nickname: string;

@@ -19,12 +19,11 @@ class UserRepository extends BaseRepository<User> implements IUserRepository {
     }
 
     async findById(id: string): Promise<User> {
-        return this.repository.findOne({ 
+        const user = await this.repository.findOne({ 
             where: { id },
             relations: ["customerId", "collectorId", "driverId"]
-        },
-         
-        )
+        })
+        return user;
     }
 
     async findByEmail(email: string): Promise<User> {

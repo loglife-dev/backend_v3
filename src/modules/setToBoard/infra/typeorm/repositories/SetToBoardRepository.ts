@@ -12,7 +12,10 @@ class SetToBoardRepository extends BaseRepository<SetToBoard> implements ISetToB
     }
 
     async findById(id: string): Promise<SetToBoard> {
-        return this.repository.findOne({ id })
+        return this.repository.findOne({ 
+            where: { id },
+            relations: ["serviceId", "branchId", "driverId"]
+        })
     }
 
 }

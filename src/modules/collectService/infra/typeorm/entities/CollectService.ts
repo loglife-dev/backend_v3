@@ -8,12 +8,12 @@ class CollectService {
     @PrimaryColumn()
     id: string;
 
-    @JoinColumn({ name: 'service_id' })
-    @OneToOne(() => Service)
-    serviceId: Service
-
     @Column()
     service_id: string;
+    
+    @JoinColumn({ name: 'service_id' })
+    @OneToOne(() => Service)
+    serviceId: Service;
 
     @JoinColumn({ name: 'collect_id' })
     @OneToOne(() => SetToCollect)
