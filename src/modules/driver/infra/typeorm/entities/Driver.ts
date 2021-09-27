@@ -2,7 +2,6 @@ import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToOne, One
 import { v4 as uuidv4 } from 'uuid'
 import { Collector } from "../../../../collector/infra/typeorm/entities/Collector";
 
-
 @Entity('driver')
 class Driver {
     @PrimaryColumn()
@@ -16,14 +15,16 @@ class Driver {
 
     @Column()
     lastname: string;
-    
-    @JoinColumn({ name: 'collector_id'})
-    @ManyToOne(() => Collector)
-    collectorId: Collector
-    
+
     @Column()
     collector_id: string;
-    
+   
+    @ManyToOne(() => Collector,{
+        eager: true
+    })
+    @JoinColumn({ name: 'collector_id' })
+    collector: Collector;
+
     @Column()
     cpf: string;
 

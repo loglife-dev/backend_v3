@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, Unique, UpdateDateColumn } from "typeorm"
+import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToOne, OneToMany, PrimaryColumn, Unique, UpdateDateColumn } from "typeorm"
 import { v4 as uuidv4 } from 'uuid'
+import { Driver } from "../../../../driver/infra/typeorm/entities/Driver";
 
 @Entity('collector')
 class Collector {

@@ -9,7 +9,6 @@ class BaseRepository<T> implements IBaseRepository<T> {
     constructor(entity: EntityTarget<T>) {
         this.repository = getRepository(entity);
     }
-    
 
     public async Create(entity: T): Promise<T> {
         const entityCreate = this.repository.create(entity);
