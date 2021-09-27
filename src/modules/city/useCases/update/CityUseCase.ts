@@ -46,7 +46,10 @@ class UpdateCityUseCase {
         city.observation = observation;
 
 
-        const updatedCity = await this.cityRepository.Update(city);
+        const updatedCity = await this.cityRepository.Update({
+            ...city,
+            hubId,
+        });
 
         return updatedCity;
     }
