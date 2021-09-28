@@ -54,7 +54,7 @@ export class CreateService1632246579913 implements MigrationInterface {
                     },
                     {
                         name: 'FKServiceGroup',
-                        referencedTableName: 'service_group',
+                        referencedTableName: 'serviceGroup',
                         referencedColumnNames: ['id'],
                         columnNames: ['group_id'],
                         onUpdate: 'CASCADE',

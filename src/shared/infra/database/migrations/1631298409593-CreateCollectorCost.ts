@@ -5,7 +5,7 @@ export class CreateCollectorCost1631298409593 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'collector_cost',
+                name: 'collectorCost',
                 columns: [
                     {
                         name: 'id',
@@ -84,7 +84,7 @@ export class CreateCollectorCost1631298409593 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('collector_cost')
+        await queryRunner.dropTable('collectorCost')
     }
 
 }

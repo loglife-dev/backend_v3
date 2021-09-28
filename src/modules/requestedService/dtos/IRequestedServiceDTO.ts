@@ -2,7 +2,7 @@
 
 interface IRequestedServiceDTO {
     id?: string;
-    service_id: string;
+    service_id?: string;
     budget_id: string;
     source_address_id: string[];
     destination_address_id: string[];

@@ -1,6 +1,7 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuidv4 } from 'uuid';
-@Entity('service_group')
+
+@Entity('serviceGroup')
 class ServiceGroup {
 
     @PrimaryColumn()

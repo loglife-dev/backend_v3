@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { City } from "../../../../city/infra/entities/City";
 import { Collector } from "../../../../collector/infra/typeorm/entities/Collector";
 
-@Entity('collector_cost')
+@Entity('collectorCost')
 class Collector_Cost {
     @PrimaryColumn()
     id: string;

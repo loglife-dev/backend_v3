@@ -141,9 +141,6 @@ class UpdateRequestedServiceUseCase {
             sourceBranchId,
             destinationBranchId,
             providerId
-
-
-                      
         })
 
         return updateRequested;

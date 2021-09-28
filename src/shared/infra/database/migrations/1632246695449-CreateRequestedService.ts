@@ -5,7 +5,7 @@ export class CreateRequestedService1632246695449 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'requested_service',
+                name: 'requestedService',
                 columns: [
                     {
                         name: 'id',
@@ -208,7 +208,7 @@ export class CreateRequestedService1632246695449 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('requested_service')
+        await queryRunner.dropTable('requestedService')
     }
 
 }

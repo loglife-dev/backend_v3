@@ -1,4 +1,8 @@
+import { request } from "express";
 import { inject, injectable } from "tsyringe";
+import { ICustomerRepository } from "../../../customer/repositories/ICustomerRepository";
+import { Service } from "../../../service/infra/typeorm/entities/Service";
+import { IServiceRepository } from "../../../service/repositories/IServiceRepository";
 import { IRequestedServiceDTO } from "../../dtos/IRequestedServiceDTO";
 import { RequestedService } from "../../infra/typeorm/entities/RequestedService";
 import { IRequestedServiceRepository } from "../../repositories/IRequestdServiceRepository";
@@ -74,6 +78,7 @@ class CreateRequestedServiceUseCase {
         const createRequestedService = await this.requestedServiceRepository.Create(requestedService);
 
         return requestedService;
+
     }
 
 }

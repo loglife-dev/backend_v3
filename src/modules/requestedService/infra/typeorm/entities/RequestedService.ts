@@ -6,7 +6,7 @@ import { Provider } from "../../../../provider/infra/typeorm/entities/Provider";
 import { Service } from "../../../../service/infra/typeorm/entities/Service";
 import { v4 as uuidv4 } from 'uuid';
 
-@Entity('requested_service')
+@Entity('requestedService')
 class RequestedService {
     @PrimaryColumn()
     id: string;

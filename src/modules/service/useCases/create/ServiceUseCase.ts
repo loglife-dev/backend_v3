@@ -32,7 +32,7 @@ class CreateServiceUseCase {
             protocol,
             step,
             customer_id,
-            group_id,
+            group_id: null
         });
         const createService = await this.serviceRepository.Create(service);
 
