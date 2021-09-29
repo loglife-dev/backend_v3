@@ -37,7 +37,7 @@ export class CreateCollectService1632247570105 implements MigrationInterface {
                     {
                         name: 'responsible_name',
                         type: 'varchar',
-                        isUnique: true,
+                        isNullable: true,
                     },
                     {
                         name: 'responsible_cpf',
@@ -106,7 +106,8 @@ export class CreateCollectService1632247570105 implements MigrationInterface {
                     },
                     {
                         name: 'observation',
-                        type: 'text'
+                        type: 'text',
+                        isNullable: true,
                     },
                     {
                         name: 'created_at',

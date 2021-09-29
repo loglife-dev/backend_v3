@@ -10,7 +10,7 @@ class CreateSetToBoardUseCase {
         private readonly setToBoardRepository: ISetToBoardRepository) { }
 
     async execute({
-        service_id,
+        group_id,
         step,
         branch_id,
         driver_id,
@@ -19,7 +19,7 @@ class CreateSetToBoardUseCase {
         const setToBoard = new SetToBoard();
 
         Object.assign(setToBoard, {
-            service_id,
+            group_id,
             step,
             branch_id,
             driver_id,

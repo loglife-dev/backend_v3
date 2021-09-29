@@ -10,7 +10,7 @@ class CreateSetToBoardController {
         const serviceGroup = new ServiceGroup()
         const serviceRepository = new ServiceRepository();
         const serviceGroupRepository = new ServiceGroupRepository()
-        const { service_list, step, branch_id, driver_id, observation } = request.body;
+        const { service_list, branch_id, driver_id, observation } = request.body;
         const createSetToBoardUseCase = container.resolve(CreateSetToBoardUseCase);
 
         Object.assign(serviceGroup, {
@@ -23,24 +23,24 @@ class CreateSetToBoardController {
             service.group_id = serviceGroup.id
             service.step = 'set-to-board'
             await serviceRepository.Update(service);
-
-            const board = await createSetToBoardUseCase.execute({
-                service_id: serviceID,
-                step: 'TODO',
-                branch_id,
-                driver_id,
-                observation,
-            });
-            
-            const boardResponse = {
-                service_id: board.service_id,
-                step: board.step,
-                branch_id: board.branch_id,
-                driver_id: board.driver_id,
-                observation: board.observation,
-            };
-            return response.status(201).json(boardResponse);
         }
+
+        const board = await createSetToBoardUseCase.execute({
+            group_id: serviceGroup.id,
+            step: 'TODO',
+            branch_id,
+            driver_id,
+            observation,
+        });
+        
+        const boardResponse = {
+            group_id: board.group_id,
+            step: board.step,
+            branch_id: board.branch_id,
+            driver_id: board.driver_id,
+            observation: board.observation,
+        };
+        return response.status(201).json(boardResponse);
 
     }
 }

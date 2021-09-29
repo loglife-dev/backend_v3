@@ -13,7 +13,7 @@ export class CreateSetToBoard1632328535643 implements MigrationInterface {
                         isPrimary: true,
                     },
                     {
-                        name: 'service_id',
+                        name: 'group_id',
                         type: 'uuid',
                         isNullable: false,
                     },
@@ -47,10 +47,10 @@ export class CreateSetToBoard1632328535643 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        name: 'FKService',
-                        referencedTableName: 'service',
+                        name: 'FKGroup',
+                        referencedTableName: 'serviceGroup',
                         referencedColumnNames: ['id'],
-                        columnNames: ['service_id'],
+                        columnNames: ['group_id'],
                         onUpdate: 'CASCADE',
                         onDelete: 'CASCADE'
                     },

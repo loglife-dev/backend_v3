@@ -124,7 +124,7 @@ class UpdateRequestedServiceUseCase {
         requested.isopor3l = isopor3l;
         requested.isopor7l = isopor7l;
         requested.terciaria3l = terciaria3l;
-        requested.terciaria8l = terciaria3l;
+        requested.terciaria8l = terciaria8l;
         requested.collect_date = collect_date;
         requested.collect_hour_start = collect_hour_start;
         requested.collect_hour_end = collect_hour_end;

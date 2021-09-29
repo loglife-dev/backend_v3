@@ -1,20 +1,20 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { Branch } from "../../../../branch/infra/typeorm/entities/Branch";
 import { Driver } from "../../../../driver/infra/typeorm/entities/Driver";
-import { Service } from "../../../../service/infra/typeorm/entities/Service";
 import { v4 as uuidv4 } from 'uuid'
+import { ServiceGroup } from "../../../../serviceGroup/infra/typeorm/entities/ServiceGroup";
 
 @Entity("setToBoard")
 class SetToBoard {
     @PrimaryColumn()
     id: string;
 
-    @JoinColumn({ name: 'service_id' })
-    @OneToOne(() => Service)
-    serviceId: Service;
+    @JoinColumn({ name: 'group_id' })
+    @OneToOne(() => ServiceGroup)
+    serviceGroupId: ServiceGroup;
 
     @Column()
-    service_id: string;
+    group_id: string;
 
     @Column()
     step: string;

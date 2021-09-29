@@ -80,6 +80,21 @@ export class CreateBoardService1632924869648 implements MigrationInterface {
                         isNullable: true,
                     },
                     {
+                        name: 'departure_latitude',
+                        type: 'varchar',
+                        isNullable: true,
+                    },
+                    {
+                        name: 'departure_longitude',
+                        type: 'varchar',
+                        isNullable: true,
+                    },
+                    {
+                        name: 'departure_timestamp',
+                        type: 'timestamp',
+                        isNullable: true,
+                    },
+                    {
                         name: 'board_observation',
                         type: 'text',
                         isNullable: true,
@@ -88,6 +103,16 @@ export class CreateBoardService1632924869648 implements MigrationInterface {
                         name: 'validate_observation',
                         type: 'text',
                         isNullable: true,
+                    },
+                    {
+                        name: 'created_at',
+                        type: 'timestamp',
+                        default: 'now()'
+                    },
+                    {
+                        name: 'updated_at',
+                        type: 'timestamp',
+                        default: 'now()'
                     }
                 ],
                 foreignKeys: [

@@ -2,7 +2,7 @@
 
 interface ISetToBoardDTO {
     id?: string;
-    service_id: string;
+    group_id: string;
     step: string;
     branch_id: string;
     driver_id: string;
