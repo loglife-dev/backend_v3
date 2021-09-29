@@ -14,7 +14,6 @@ class AddressRepositoryInMemory implements IAddressRepository {
 
     async Create({
         id,
-        customer_id,
         type,
         cnpj_cpf,
         trading_name,
@@ -43,7 +42,6 @@ class AddressRepositoryInMemory implements IAddressRepository {
 
         Object.assign(address, {
             id: "59fde46d-40ad-46ac-a674-a8506c4791f6",
-            customer_id: "fee4d482-744c-48a4-aa23-881859bb6074",
             type,
             cnpj_cpf,
             trading_name,
@@ -53,7 +51,6 @@ class AddressRepositoryInMemory implements IAddressRepository {
             responsible_telephone,
             cep,
             state,
-            city_id: "09feae4e-2707-40ab-a9cd-098437332f8d",
             street,
             number,
             neighborhood,

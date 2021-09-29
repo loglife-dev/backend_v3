@@ -10,9 +10,9 @@ import { v4 as uuidv4 } from 'uuid';
 class RequestedService {
     @PrimaryColumn()
     id: string;
-
+    
+    @OneToOne(() => Service, requested => RequestedService)
     @JoinColumn({ name: 'service_id' })
-    @OneToOne(() => Service)
     serviceId: Service;
 
     @Column()

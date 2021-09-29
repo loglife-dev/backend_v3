@@ -8,18 +8,18 @@ class CreateRequestedServiceController {
     async handle(request: Request, response: Response): Promise<Response> {
         const service = new Service()
         const serviceRepository = new ServiceRepository();
-        const {customer_id, budget_id, source_address_id, destination_address_id, source_collector_id, destination_collector_id, source_branch_id,
+        const { customer_id, budget_id, source_address_id, destination_address_id, source_collector_id, destination_collector_id, source_branch_id,
             destination_branch_id, provider_id, deadline, service_type, franchising, modal, vehicle, caixa_termica, embalagem_secundaria, gelo_seco,
             gelox, isopor3l, isopor7l, terciaria3l, terciaria8l, collect_date, collect_hour_start, collect_hour_end, delivery_date, delivery_hour, observation
         } = request.body;
 
-       Object.assign(service,{
-           step: 'Servico-solicitado',
-           customer_id: customer_id,
-           group_id: null
-       });
-       await serviceRepository.Create(service);        
-    
+        Object.assign(service, {
+            step: 'Servico-solicitado',
+            customer_id: customer_id,
+            group_id: null
+        });
+        await serviceRepository.Create(service);
+
         const createRequestedServiceUseCase = container.resolve(CreateRequestedServiceUseCase);
 
         const requested = await createRequestedServiceUseCase.execute({
@@ -82,8 +82,8 @@ class CreateRequestedServiceController {
             delivery_hour: delivery_hour,
             observation: requested.observation,
         }
-      
-        return response.status(201).json(requestedResponse); 
+
+        return response.status(201).json(requestedResponse);
     }
 }
 

@@ -5,7 +5,7 @@ import { UpdateSetToCollectUseCase } from "./SetToCollectUseCase";
 class UpdateSetToCollectController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { id } = request.params;
-        const { service_id, step, address_id, provider_id, driver_id, observation } = request.body;
+        const { service_id, step, address_id, provider_id, driver_id, observation} = request.body;
 
         const updateSetToCollectUseCase = container.resolve(UpdateSetToCollectUseCase);
 

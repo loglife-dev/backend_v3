@@ -20,7 +20,7 @@ describe("Create Customer", () => {
     it("should be able to create a new customer", async () => {
 
         const customer: ICustomerDTO = {
-            id: '59fde46d-40ad-46,ac-a674-a8506c4791f6',
+            id: "09feae4e-2707-40ab-a9cd-098437332f8d",
             type: "fisica",
             situation: "obs",
             trading_firstname: "name empresa",

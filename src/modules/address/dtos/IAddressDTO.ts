@@ -2,7 +2,7 @@
 
 interface IAddressDTO {
     id?: string
-    customer_id: string;
+    customer_id?: string;
     type: string
     cnpj_cpf: string;
     trading_name: string;
@@ -12,7 +12,7 @@ interface IAddressDTO {
     responsible_telephone: string;
     cep: string;
     state: string;
-    city_id: string;
+    city_id?: string;
     street: string;
     number: string;
     neighborhood: string;
