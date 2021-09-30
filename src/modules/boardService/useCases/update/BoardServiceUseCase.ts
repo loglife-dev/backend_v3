@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
+import { SetToBoard } from "../../../setToBoard/infra/typeorm/entities/SetToBoard";
 import { ISetToBoardRepository } from "../../../setToBoard/repositories/ISetToBoardRepository";
 import { IBoardServiceDTO } from "../../dtos/BoardServiceDTO";
 import { BoardService } from "../../infra/typeorm/entities/BoardService";
@@ -12,7 +13,7 @@ class UpdateBoardServiceUseCase {
         @inject("BoardServiceRepository")
         private readonly boardServiceRepository: IBoardServiceRepository,
         @inject("SetToBoardRepository")
-        private readonly setToBoardServiceRepository: ISetToBoardRepository ) { }
+        private readonly setToBoardServiceRepository: ISetToBoardRepository) { }
 
     async execute({
         id,
@@ -37,7 +38,7 @@ class UpdateBoardServiceUseCase {
         validate_observation,
     }: IBoardServiceDTO): Promise<BoardService> {
         const boardService = await this.boardServiceRepository.findById(id)
-        
+
         if (!boardService) {
             throw new AppError("BoardService does not exists!");
         }
@@ -65,6 +66,6 @@ class UpdateBoardServiceUseCase {
         const updateBoardService = await this.boardServiceRepository.Update(boardService);
 
         return updateBoardService;
-    }   
+    }
 }
 export { UpdateBoardServiceUseCase }

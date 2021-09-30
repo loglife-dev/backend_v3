@@ -33,10 +33,13 @@ class UpdateBoardServiceController {
             const service = await serviceRepository.findById(serviceID);
             service.step = 'board-FINISH'
             await serviceRepository.Update(service);
+     
+            const boardService = await boardServiceRepository.Get()
+           
+            
 
-            //const boardService = await boardServiceRepository.findById(id);
-
-            await updateBoardServiceUseCase.execute({
+            
+            /*await updateBoardServiceUseCase.execute({
                 id,
                 service_id: serviceID,
                 board_id,
@@ -54,7 +57,7 @@ class UpdateBoardServiceController {
                 departure_timestamp,
                 board_observation,
                 validate_observation,
-            })
+            })*/
         }
 
         return response.sendStatus(200);

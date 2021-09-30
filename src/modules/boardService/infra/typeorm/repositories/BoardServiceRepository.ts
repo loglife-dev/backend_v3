@@ -9,16 +9,18 @@ class BoardServiceRepository extends BaseRepository<BoardService> implements IBo
    
 
     async Get(): Promise<BoardService[]> {
-        return this.repository.find({ 
-            relations: ["serviceId", "setToBoardId"],
+        return this.repository.find({
+            select: ["id", "board_id"],
+            
             order: {
-                created_at: 'ASC'
+                id: 'ASC'
             }
         });
     }
 
     async findById(id: string): Promise<BoardService> {
         return this.repository.findOne({
+            select: ["id"],
             where: { id },
             relations: ["serviceId", "setToBoardId"],
             order: {
