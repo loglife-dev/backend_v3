@@ -20,7 +20,7 @@ class RequestedServiceRepository extends BaseRepository<RequestedService> implem
 
     async findById(id: string): Promise<RequestedService> {
         return this.repository.findOne({
-            where: { id },
+            where: { service_id: id },
             relations: ["serviceId", "budgetId", "sourceCollectorId",
                 "destinationCollectorId", "sourceBranchId",
                 "destinationBranchId", "providerId"],
