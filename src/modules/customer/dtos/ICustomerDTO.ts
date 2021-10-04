@@ -8,6 +8,7 @@ export interface ICustomerDTO {
     trading_firstname: string;
     company_lastname: string;
     cnpj_cpf: string;
+    cost_center: string;
     deadline_delivery: Date;
     operational_email: string;
     financial_email: string;

@@ -14,7 +14,6 @@ class CreateServiceUseCase {
         protocol,
         step,
         customer_id,
-        group_id,
     }: IServiceDTO): Promise<Service> {
 
         if (step == "" || customer_id == "") {
@@ -32,7 +31,6 @@ class CreateServiceUseCase {
             protocol,
             step,
             customer_id,
-            group_id: null
         });
         const createService = await this.serviceRepository.Create(service);
 

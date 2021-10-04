@@ -1,6 +1,5 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { Service } from "../../../../service/infra/typeorm/entities/Service";
-import { SetToBoard } from "../../../../setToBoard/infra/typeorm/entities/SetToBoard";
 import { v4 as uuidv4 } from 'uuid'
 @Entity('boardService')
 class BoardService {
@@ -13,10 +12,6 @@ class BoardService {
 
     @Column()
     service_id: string;
-
-    @OneToOne(() => SetToBoard)
-    @JoinColumn({ name: "board_id" })
-    setToBoardId: SetToBoard
 
     @Column()
     board_id: string;

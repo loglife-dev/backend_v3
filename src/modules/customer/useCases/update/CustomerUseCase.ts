@@ -20,6 +20,7 @@ class UpdateCustomerUseCase {
     trading_firstname,
     company_lastname,
     cnpj_cpf,
+    cost_center,
     deadline_delivery,
     operational_email,
     financial_email,
@@ -60,6 +61,7 @@ class UpdateCustomerUseCase {
     customer.trading_firstname = trading_firstname;
     customer.company_lastname = company_lastname;
     customer.cnpj_cpf = cnpj_cpf;
+    customer.cost_center = cost_center;
     customer.deadline_delivery = deadline_delivery;
     customer.operational_email = operational_email;
     customer.financial_email = financial_email;

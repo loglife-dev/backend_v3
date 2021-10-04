@@ -5,7 +5,7 @@ import { CreateCustomerUseCase } from "./CustomerUseCase";
 
 class CreateCustomerController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { type, situation, trading_firstname, company_lastname, cnpj_cpf, deadline_delivery, operational_email,
+        const { type, situation, trading_firstname, company_lastname, cnpj_cpf, cost_center, deadline_delivery, operational_email,
             financial_email, cellphone, telephone, cep, state, city, street, number, neighborhood, complement,
             municipal_register, state_register, icms, iss, payment_conditional, day_expiration_1, day_expiration_2,
             payment_type, emission_type, observation } = request.body;
@@ -18,6 +18,7 @@ class CreateCustomerController {
             trading_firstname,
             company_lastname,
             cnpj_cpf,
+            cost_center,
             deadline_delivery,
             operational_email,
             financial_email,
@@ -48,6 +49,7 @@ class CreateCustomerController {
             trading_firstname: customer.trading_firstname,
             company_lastname: customer.company_lastname,
             cnpj_cpf: customer.cnpj_cpf,
+            cost_center: customer.cost_center,
             deadline_delivery: customer.deadline_delivery,
             operational_email: customer.operational_email,
             financial_email: customer.financial_email,

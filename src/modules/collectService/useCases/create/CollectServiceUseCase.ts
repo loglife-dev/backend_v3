@@ -11,7 +11,6 @@ class CreateCollectServiceUseCase {
 
     async execute({
         service_id,
-        collect_id,
         arrival_latitude,
         arrival_longitude,
         arrival_timestamp,
@@ -35,7 +34,6 @@ class CreateCollectServiceUseCase {
 
         Object.assign(collectService, {
             service_id,
-            collect_id,
             arrival_latitude,
             arrival_longitude,
             arrival_timestamp,

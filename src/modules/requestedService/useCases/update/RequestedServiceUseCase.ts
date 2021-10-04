@@ -59,7 +59,7 @@ class UpdateRequestedServiceUseCase {
         observation,
     }: IRequestedServiceDTO): Promise<RequestedService> {
 
-        const requested = await this.requestedServiceRepository.findById(service_id);
+        const requested = await this.requestedServiceRepository.findById(id);
 
         if (!requested) {
             throw new AppError("RequestedService does not exists!");

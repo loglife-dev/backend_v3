@@ -23,7 +23,10 @@ class Customer {
         unique: true
     })
     cnpj_cpf: string;
-    
+
+    @Column()
+    cost_center: string;
+
 
     @Column()
     deadline_delivery: Date;

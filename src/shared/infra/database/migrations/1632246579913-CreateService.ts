@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreateService1632246579913 implements MigrationInterface {
 
@@ -28,11 +28,6 @@ export class CreateService1632246579913 implements MigrationInterface {
                         isNullable: false,
                     },
                     {
-                        name: 'group_id',
-                        type: 'uuid',
-                        isNullable: true,
-                    },
-                    {
                         name: 'created_at',
                         type: 'timestamp',
                         default: 'now()',
@@ -52,14 +47,6 @@ export class CreateService1632246579913 implements MigrationInterface {
                         onUpdate: 'CASCADE',
                         onDelete: 'SET NULL',
                     },
-                    {
-                        name: 'FKServiceGroup',
-                        referencedTableName: 'serviceGroup',
-                        referencedColumnNames: ['id'],
-                        columnNames: ['group_id'],
-                        onUpdate: 'CASCADE',
-                        onDelete: 'SET NULL',
-                    }
                 ]
             })
         )

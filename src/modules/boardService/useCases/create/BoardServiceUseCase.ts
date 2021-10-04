@@ -30,9 +30,7 @@ class CreateBoardServiceUseCase {
         board_observation,
         validate_observation,
     }: IBoardServiceDTO): Promise<BoardService> {
-        const boardService = new BoardService();
-
-        Object.assign(boardService, {
+        const createBoard = await this.boardServiceRepository.create({
             service_id,
             board_id,
             arrival_latitude,
@@ -52,8 +50,7 @@ class CreateBoardServiceUseCase {
             departure_timestamp,
             board_observation,
             validate_observation,
-        });
-        const createBoard = await this.boardServiceRepository.Create(boardService);
+        })
 
         return createBoard
 

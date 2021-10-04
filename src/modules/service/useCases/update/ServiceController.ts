@@ -5,7 +5,7 @@ import { UpdateServiceUseCase } from "./ServiceUseCase";
 class UpdateServiceController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { id } = request.params;
-        const { step, customer_id, group_id } = request.body;
+        const { step, customer_id } = request.body;
 
         const updateServiceUseCase = container.resolve(UpdateServiceUseCase);
 
@@ -13,8 +13,6 @@ class UpdateServiceController {
             id,
             step,
             customer_id,
-            group_id,
-
         });
         return response.json(service);
     }

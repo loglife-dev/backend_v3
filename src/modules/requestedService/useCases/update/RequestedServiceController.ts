@@ -14,8 +14,7 @@ class UpdateRequestedServiceController {
 
         if (hasValidate === true) {
             const serviceId = await serviceRepository.findById(service_id);
-            serviceId.step = 'em andamento';
-            await serviceRepository.Update(serviceId);
+            console.log(serviceId)
         }
 
         if (hasCancelled === true) {

@@ -1,7 +1,6 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm"
 import { v4 as uuidv4 } from 'uuid';
 import { Service } from "../../../../service/infra/typeorm/entities/Service";
-import { SetToCollect } from "../../../../setToCollect/infra/typeorm/entities/SetToCollect";
 
 @Entity('collectService')
 class CollectService {
@@ -14,13 +13,6 @@ class CollectService {
     @JoinColumn({ name: 'service_id' })
     @OneToOne(() => Service)
     serviceId: Service;
-
-    @JoinColumn({ name: 'collect_id' })
-    @OneToOne(() => SetToCollect)
-    collectId: SetToCollect
-    
-    @Column()
-    collect_id: string;
 
     @Column()
     arrival_latitude: string;

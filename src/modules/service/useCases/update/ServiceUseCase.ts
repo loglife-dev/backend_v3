@@ -16,8 +16,7 @@ class UpdateServiceUseCase {
     async execute({
         id,
         step,
-        customer_id,
-        group_id,
+        customer_id
     }: IServiceDTO): Promise<Service> {
         const service = await this.serviceRepository.findById(id);
 
@@ -26,13 +25,11 @@ class UpdateServiceUseCase {
         }
 
         const customerId = await this.customerRepository.findById(customer_id);
-        
+
         service.step = step;
         service.customer_id = customer_id;
-        service.group_id = group_id;
 
-        
-        const updateService =  await this.serviceRepository.Update({
+        const updateService = await this.serviceRepository.Update({
             ...service,
             customerId,
         });

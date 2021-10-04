@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreateCollectService1632247570105 implements MigrationInterface {
 
@@ -14,11 +14,6 @@ export class CreateCollectService1632247570105 implements MigrationInterface {
                     },
                     {
                         name: 'service_id',
-                        type: 'uuid',
-                        isNullable: false,
-                    },
-                    {
-                        name: 'collect_id',
                         type: 'uuid',
                         isNullable: false,
                     },
@@ -128,14 +123,6 @@ export class CreateCollectService1632247570105 implements MigrationInterface {
                         columnNames: ['service_id'],
                         onUpdate: 'CASCADE',
                         onDelete: 'CASCADE'
-                    },
-                    {
-                        name: 'FKCollect',
-                        referencedTableName: 'setToCollect',
-                        referencedColumnNames: ['id'],
-                        columnNames: ['collect_id'],
-                        onUpdate: 'CASCADE',
-                        onDelete: 'SET NULL'
                     }
                 ]
             })

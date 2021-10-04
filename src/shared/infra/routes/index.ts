@@ -15,10 +15,7 @@ import { budgetRoutes } from "./budget.routes";
 import { authenticateRoutes } from "./authenticate.routes";
 import { serviceRoutes } from "./service.routes";
 import { requestedServiceRoutes } from "./requestedService.routes";
-import { setToCollectRoutes } from "./setToCollect.Routes";
 import { collectServiceRoutes } from "./collectService.routes";
-import { serviceGroupRoutes } from "./serviceGroup.routes";
-import { setToBoardRoutes } from "./setToBoard.routes";
 import { boardServiceRoutes } from "./boardService.routes";
 
 const router = Router();
@@ -38,10 +35,7 @@ router.use("/budget", budgetRoutes);
 router.use(authenticateRoutes);
 router.use("/service", serviceRoutes);
 router.use("/requested-service", requestedServiceRoutes);
-router.use("/set-collect", setToCollectRoutes);
 router.use("/collect-service", collectServiceRoutes);
-router.use("/service-group", serviceGroupRoutes);
-router.use("/set-board", setToBoardRoutes);
 router.use("/board-service", boardServiceRoutes);
 
 export { router }

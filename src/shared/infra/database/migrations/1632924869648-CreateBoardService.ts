@@ -18,11 +18,6 @@ export class CreateBoardService1632924869648 implements MigrationInterface {
                         isNullable: false,
                     },
                     {
-                        name: 'board_id',
-                        type: 'uuid',
-                        isNullable: false,
-                    },
-                    {
                         name: 'arrival_latitude',
                         type: 'varchar'
                     },
@@ -121,14 +116,6 @@ export class CreateBoardService1632924869648 implements MigrationInterface {
                         referencedTableName: 'service',
                         referencedColumnNames: ['id'],
                         columnNames: ['service_id'],
-                        onUpdate: 'CASCADE',
-                        onDelete: 'SET NULL'
-                    },
-                    {
-                        name: 'FKSetToBoard',
-                        referencedTableName: 'setToBoard',
-                        referencedColumnNames: ['id'],
-                        columnNames: ['board_id'],
                         onUpdate: 'CASCADE',
                         onDelete: 'SET NULL'
                     }

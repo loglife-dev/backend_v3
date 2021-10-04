@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
 import { IServiceRepository } from "../../../service/repositories/IServiceRepository";
-import { ISetToCollectRepository } from "../../../setToCollect/repositories/ISetToCollectRepository";
+
 import { ICollectServiceDTO } from "../../dtos/ICollectServiceDTO";
 import { CollectService } from "../../infra/typeorm/entities/CollectService";
 import { ICollectServiceRepository } from "../../repositories/ICollectServiceRepository";
@@ -12,14 +12,11 @@ class UpdateCollectServiceUseCase {
         @inject("CollectServiceRepository")
         private readonly collectServiceRepository: ICollectServiceRepository,
         @inject("ServiceRepository")
-        private readonly serviceRepository: IServiceRepository,
-        @inject("SetToCollectRepository")
-        private readonly setToCollectRepository: ISetToCollectRepository) { }
+        private readonly serviceRepository: IServiceRepository) { }
 
     async execute({
         id,
         service_id,
-        collect_id,
         arrival_latitude,
         arrival_longitude,
         arrival_timestamp,
@@ -51,14 +48,7 @@ class UpdateCollectServiceUseCase {
             throw new AppError("ServiceId does not exists!");
         }
 
-        const collectId = await this.setToCollectRepository.findById(collect_id);
-
-        if (!collectId) {
-            throw new AppError("CollectId does not exists!");
-        }
-
         collectService.service_id = service_id;
-        collectService.collect_id = collect_id;
         collectService.arrival_latitude = arrival_latitude;
         collectService.arrival_longitude = arrival_longitude;
         collectService.arrival_timestamp = arrival_timestamp;
@@ -81,7 +71,6 @@ class UpdateCollectServiceUseCase {
         const updateCollectService = await this.collectServiceRepository.Create({
             ...collectService,
             serviceId,
-            collectId,
         });
 
         return updateCollectService;

@@ -1,14 +1,12 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ServiceRepository } from "../../../service/infra/typeorm/repositories/ServiceRepository";
-import { SetToCollectRepository } from "../../../setToCollect/infra/typeorm/repositories/SetToCollectRepository";
 import { CreateCollectServiceUseCase } from "./CollectServiceUseCase";
 
 class CreateCollectServiceController {
     async handle(request: Request, response: Response): Promise<Response> {
         const serviceRepository = new ServiceRepository();
-        const setToCollectRepository = new SetToCollectRepository();
-        const { service_id, collect_id, arrival_latitude, arrival_longitude, arrival_timestamp, responsible_name, responsible_cpf, volume,
+        const { service_id, arrival_latitude, arrival_longitude, arrival_timestamp, responsible_name, responsible_cpf, volume,
             sample, problem, box_photo, content_declaration, receipt_photo, departure_latitude, departure_longitude, departure_timestamp, unsuccess_latitude,
             unsuccess_longitude, unsuccess_timestamp, observation, hasValidate } = request.body;
 
@@ -16,15 +14,10 @@ class CreateCollectServiceController {
         serviceId.step = 'Collect-service';
         await serviceRepository.Update(serviceId);
 
-        const collect = await setToCollectRepository.findById(collect_id);
-        collect.step = 'GOING';
-        await setToCollectRepository.Update(collect);
-
         const createCollectServiceUseCase = container.resolve(CreateCollectServiceUseCase);
 
         const collectService = await createCollectServiceUseCase.execute({
             service_id,
-            collect_id,
             arrival_latitude,
             arrival_longitude,
             arrival_timestamp,
@@ -47,7 +40,6 @@ class CreateCollectServiceController {
 
         const collectServiceResponse = {
             service_id: collectService.service_id,
-            collect_id: collectService.collect_id,
             arrival_latitude: collectService.arrival_latitude,
             arrival_longitude: collectService.arrival_longitude,
             arrival_timestamp: collectService.arrival_timestamp,

@@ -1,7 +1,7 @@
+import { response } from "express";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
-import { SetToBoard } from "../../../setToBoard/infra/typeorm/entities/SetToBoard";
-import { ISetToBoardRepository } from "../../../setToBoard/repositories/ISetToBoardRepository";
+import { IServiceRepository } from "../../../service/repositories/IServiceRepository";
 import { IBoardServiceDTO } from "../../dtos/BoardServiceDTO";
 import { BoardService } from "../../infra/typeorm/entities/BoardService";
 import { IBoardServiceRepository } from "../../repositories/IBoardServiceRepository";
@@ -12,13 +12,12 @@ class UpdateBoardServiceUseCase {
     constructor(
         @inject("BoardServiceRepository")
         private readonly boardServiceRepository: IBoardServiceRepository,
-        @inject("SetToBoardRepository")
-        private readonly setToBoardServiceRepository: ISetToBoardRepository) { }
+        @inject("ServiceRepository")
+        private readonly serviceRepository: IServiceRepository) { }
 
     async execute({
         id,
         service_id,
-        board_id,
         arrival_latitude,
         arrival_longitude,
         arrival_timestamp,
@@ -36,36 +35,41 @@ class UpdateBoardServiceUseCase {
         departure_timestamp,
         board_observation,
         validate_observation,
-    }: IBoardServiceDTO): Promise<BoardService> {
-        const boardService = await this.boardServiceRepository.findById(id)
+    }: IBoardServiceDTO): Promise<BoardService[]> {
+        const data = await this.boardServiceRepository.findByBoardId(board_id);
 
-        if (!boardService) {
-            throw new AppError("BoardService does not exists!");
-        }
+        const board = await this.setToBoardRepository.findById(board_id);
+        board.step = 'DONE';
+        await this.setToBoardRepository.Update(board);
 
-        boardService.service_id = service_id;
-        boardService.board_id = board_id;
-        boardService.arrival_latitude = arrival_latitude;
-        boardService.arrival_longitude = arrival_longitude;
-        boardService.arrival_timestamp = arrival_timestamp;
-        boardService.operational_number = operational_number;
-        boardService.cte = cte;
-        boardService.cte_loglife = cte_loglife;
-        boardService.board_volume = board_volume;
-        boardService.board_weight = board_weight;
-        boardService.cte_photo = cte_photo;
-        boardService.real_weight = real_weight;
-        boardService.taxed_weight = taxed_weight;
-        boardService.cte_transfer_cost = cte_transfer_cost;
-        boardService.departure_latitude = departure_latitude;
-        boardService.departure_longitude = departure_longitude;
-        boardService.departure_timestamp = departure_timestamp;
-        boardService.board_observation = board_observation;
-        boardService.validate_observation = validate_observation;
+        const serviceGroup = await this.serviceGroupRepository.findById(board.group_id);
 
-        const updateBoardService = await this.boardServiceRepository.Update(boardService);
+        serviceGroup.service_list.map(async res => {
+            const service = await this.serviceRepository.findById(res);
+            service.step = 'BOARD'
+            await this.serviceRepository.Update(service);
+        })
 
-        return updateBoardService;
+        data.forEach(async res => {
+            res.cte_photo = cte_photo;
+            res.service_id = service_id;
+            res.board_id = board_id;
+            res.operational_number = operational_number;
+            res.cte = cte;
+            res.cte_loglife = cte_loglife;
+            res.board_volume = board_volume;
+            res.board_weight = board_weight;
+            res.cte_photo = cte_photo;
+            res.real_weight = real_weight;
+            res.taxed_weight = taxed_weight;
+            res.cte_transfer_cost = cte_transfer_cost;
+            res.board_observation = board_observation;
+            res.validate_observation = validate_observation;
+            await this.boardServiceRepository.save(res)
+        });
+
+
+        return data
     }
 }
 export { UpdateBoardServiceUseCase }

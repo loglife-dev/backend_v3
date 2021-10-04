@@ -2,7 +2,6 @@
 interface ICollectServiceDTO {
     id?: string;
     service_id: string;
-    collect_id: string;
     arrival_latitude: string;
     arrival_longitude: string;
     arrival_timestamp: Date;
