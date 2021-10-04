@@ -10,25 +10,20 @@ class BoardServiceRepository extends BaseRepository<BoardService> implements IBo
         super(BoardService)
     }
 
-
-    async findByBoardId(board_id: string): Promise<BoardService[]> {
+    async findByBoardId(service_id: string): Promise<BoardService> {
         return this.repository.createQueryBuilder()
             .select("boardService")
             .from(BoardService, "boardService")
-            .where("boardService.board_id =:id", { id: board_id })
-            .getMany()
+            .where("boardService.service_id =:id", { id: service_id })
+            .getOne()
 
-    }
-
-    async All(): Promise<BoardService[]> {
-        const boardServices = await this.repository.find();
-
-        return boardServices;
     }
 
     async create({
         service_id,
-        board_id,
+        address_id,
+        driver_id,
+        step,
         arrival_latitude,
         arrival_longitude,
         arrival_timestamp,
@@ -49,7 +44,9 @@ class BoardServiceRepository extends BaseRepository<BoardService> implements IBo
     }: IBoardServiceDTO): Promise<BoardService> {
         const boardService = this.repository.create({
             service_id,
-            board_id,
+            address_id,
+            driver_id,
+            step,
             arrival_latitude,
             arrival_longitude,
             arrival_timestamp,
@@ -74,34 +71,22 @@ class BoardServiceRepository extends BaseRepository<BoardService> implements IBo
         return boardService;
     }
 
-    async save(boardService: BoardService): Promise<BoardService> {
-        const boardServices = await this.repository.save(boardService)
-
-        return boardServices;
-    }
 
     async findById(id: string): Promise<BoardService> {
         return this.repository.findOne({
             where: { id },
-            relations: ["serviceId", "setToBoardId"],
+            relations: ["serviceId", "addressId", "driverId"],
             order: {
                 created_at: 'ASC'
             }
         })
     }
 
-    async UpdateByBoardId(boardService: BoardService): Promise<void> {
-        await this.repository.createQueryBuilder()
-            .update(BoardService)
-            .set(request.body)
-            .where("board_id = :board_id")
-            .execute()
-    }
-
     async Get(): Promise<BoardService[]> {
         return this.repository.find({
+            relations: ["serviceId", "addressId", "driverId"],
             order: {
-                id: 'ASC'
+                created_at: 'ASC'
             }
         });
     }

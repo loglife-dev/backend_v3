@@ -18,6 +18,7 @@ class RequestedServiceRepository extends BaseRepository<RequestedService> implem
         })
     }
 
+
     async findById(id: string): Promise<RequestedService> {
         return this.repository.findOne({
             where: { service_id: id },

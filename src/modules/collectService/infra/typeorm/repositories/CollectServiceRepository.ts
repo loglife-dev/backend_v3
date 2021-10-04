@@ -9,7 +9,7 @@ class CollectServiceRepository extends BaseRepository<CollectService> implements
 
     async Get(): Promise<CollectService[]> {
         return this.repository.find({
-            relations: ["serviceId"],
+            relations: ["serviceId", "addressId", "driverId"],
             order: {
                 service_id: 'ASC'
             }
@@ -19,7 +19,7 @@ class CollectServiceRepository extends BaseRepository<CollectService> implements
     async findById(id: string): Promise<CollectService> {
         return this.repository.findOne({
             where: { id },
-            relations: ["serviceId"],
+            relations: ["serviceId", "addressId", "driverId"],
             order: {
                 service_id: 'ASC'
             }

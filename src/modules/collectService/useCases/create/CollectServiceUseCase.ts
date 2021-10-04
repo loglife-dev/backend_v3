@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import { IServiceRepository } from "../../../service/repositories/IServiceRepository";
 import { ICollectServiceDTO } from "../../dtos/ICollectServiceDTO";
 import { CollectService } from "../../infra/typeorm/entities/CollectService";
 import { ICollectServiceRepository } from "../../repositories/ICollectServiceRepository";
@@ -7,10 +8,15 @@ import { ICollectServiceRepository } from "../../repositories/ICollectServiceRep
 class CreateCollectServiceUseCase {
     constructor(
         @inject("CollectServiceRepository")
-        private readonly collectServiceRepository: ICollectServiceRepository) { }
+        private readonly collectServiceRepository: ICollectServiceRepository,
+        @inject("ServiceRepository")
+        private readonly serviceRepository: IServiceRepository) { }
 
     async execute({
         service_id,
+        address_id,
+        driver_id,
+        step,
         arrival_latitude,
         arrival_longitude,
         arrival_timestamp,
@@ -32,8 +38,15 @@ class CreateCollectServiceUseCase {
     }: ICollectServiceDTO): Promise<CollectService> {
         const collectService = new CollectService();
 
+        const serviceId = await this.serviceRepository.findById(service_id);
+        serviceId.step = 'Collect-service';
+        await this.serviceRepository.Update(serviceId);
+
         Object.assign(collectService, {
-            service_id,
+            service_id: serviceId.id,
+            address_id,
+            driver_id,
+            step,
             arrival_latitude,
             arrival_longitude,
             arrival_timestamp,

@@ -1,7 +1,8 @@
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
+import { IAddressRepository } from "../../../address/repositories/IAddressRepository";
+import { IDriverRepository } from "../../../driver/repositories/IDriverRepository";
 import { IServiceRepository } from "../../../service/repositories/IServiceRepository";
-
 import { ICollectServiceDTO } from "../../dtos/ICollectServiceDTO";
 import { CollectService } from "../../infra/typeorm/entities/CollectService";
 import { ICollectServiceRepository } from "../../repositories/ICollectServiceRepository";
@@ -12,11 +13,18 @@ class UpdateCollectServiceUseCase {
         @inject("CollectServiceRepository")
         private readonly collectServiceRepository: ICollectServiceRepository,
         @inject("ServiceRepository")
-        private readonly serviceRepository: IServiceRepository) { }
+        private readonly serviceRepository: IServiceRepository,
+        @inject("AddressRepository")
+        private readonly addressRepository: IAddressRepository,
+        @inject("DriverRepository")
+        private readonly driverRepository: IDriverRepository) { }
 
     async execute({
         id,
         service_id,
+        address_id,
+        driver_id,
+        step,
         arrival_latitude,
         arrival_longitude,
         arrival_timestamp,
@@ -42,13 +50,26 @@ class UpdateCollectServiceUseCase {
             throw new AppError("CollectService does not exists!");
         }
 
-        const serviceId = await this.serviceRepository.findById(service_id);
+        const addressId = await this.addressRepository.findById(address_id);
 
-        if (!serviceId) {
-            throw new AppError("ServiceId does not exists!");
+        if (!addressId) {
+            throw new AppError("AddressId does not exists!");
         }
 
-        collectService.service_id = service_id;
+        const driverId = await this.driverRepository.findById(driver_id);
+
+        if (!driverId) {
+            throw new AppError("DriverId does not exists!");
+        }
+
+        const service = await this.serviceRepository.findById(service_id);
+        service.step = 'Collect-Service'
+        await this.serviceRepository.Update(service);
+
+        collectService.service_id = service.id;
+        collectService.address_id = address_id,
+        collectService.driver_id = driver_id,
+        collectService.step = step,
         collectService.arrival_latitude = arrival_latitude;
         collectService.arrival_longitude = arrival_longitude;
         collectService.arrival_timestamp = arrival_timestamp;
@@ -68,10 +89,11 @@ class UpdateCollectServiceUseCase {
         collectService.unsuccess_timestamp = unsuccess_timestamp;
         collectService.observation = observation;
 
-        const updateCollectService = await this.collectServiceRepository.Create({
+        const updateCollectService = await this.collectServiceRepository.Update({
             ...collectService,
-            serviceId,
-        });
+            addressId,
+            driverId,
+        })
 
         return updateCollectService;
     }

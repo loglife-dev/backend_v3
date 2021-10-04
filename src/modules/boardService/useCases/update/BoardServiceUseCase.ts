@@ -1,6 +1,7 @@
-import { response } from "express";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
+import { IAddressRepository } from "../../../address/repositories/IAddressRepository";
+import { IDriverRepository } from "../../../driver/repositories/IDriverRepository";
 import { IServiceRepository } from "../../../service/repositories/IServiceRepository";
 import { IBoardServiceDTO } from "../../dtos/BoardServiceDTO";
 import { BoardService } from "../../infra/typeorm/entities/BoardService";
@@ -13,11 +14,18 @@ class UpdateBoardServiceUseCase {
         @inject("BoardServiceRepository")
         private readonly boardServiceRepository: IBoardServiceRepository,
         @inject("ServiceRepository")
-        private readonly serviceRepository: IServiceRepository) { }
+        private readonly serviceRepository: IServiceRepository,
+        @inject("AddressRepository")
+        private readonly addressRepository: IAddressRepository,
+        @inject("DriverRepository")
+        private readonly driverRepository: IDriverRepository) { }
 
     async execute({
         id,
         service_id,
+        address_id,
+        driver_id,
+        step,
         arrival_latitude,
         arrival_longitude,
         arrival_timestamp,
@@ -35,41 +43,52 @@ class UpdateBoardServiceUseCase {
         departure_timestamp,
         board_observation,
         validate_observation,
-    }: IBoardServiceDTO): Promise<BoardService[]> {
-        const data = await this.boardServiceRepository.findByBoardId(board_id);
+    }: IBoardServiceDTO): Promise<BoardService> {
+        const boardService = await this.boardServiceRepository.findByBoardId(service_id)
 
-        const board = await this.setToBoardRepository.findById(board_id);
-        board.step = 'DONE';
-        await this.setToBoardRepository.Update(board);
+        if (!boardService) {
+            throw new AppError("BoardService does not exists!")
+        }
 
-        const serviceGroup = await this.serviceGroupRepository.findById(board.group_id);
+        const serviceId = await this.serviceRepository.findById(service_id);
+        if (!serviceId) {
+            throw new AppError("ServiceId does not exists!")
+        }
 
-        serviceGroup.service_list.map(async res => {
-            const service = await this.serviceRepository.findById(res);
-            service.step = 'BOARD'
-            await this.serviceRepository.Update(service);
+        const addressId = await this.addressRepository.findById(address_id);
+        if (!addressId) {
+            throw new AppError("AddressId does not exists!")
+        }
+
+        const driverId = await this.driverRepository.findById(driver_id);
+        if (!driverId) {
+            throw new AppError("DriverId does not exists!")
+        }
+  
+        boardService.service_id = service_id;
+        boardService.address_id = address_id;
+        boardService.driver_id = driver_id;
+        boardService.step = step;
+        boardService.operational_number = operational_number;
+        boardService.cte = cte;
+        boardService.cte_loglife = cte_loglife;
+        boardService.board_volume = board_volume;
+        boardService.board_weight = board_weight;
+        boardService.cte_photo = cte_photo;
+        boardService.real_weight = real_weight;
+        boardService.taxed_weight = taxed_weight;
+        boardService.cte_transfer_cost = cte_transfer_cost;
+        boardService.board_observation = board_observation;
+        boardService.validate_observation = validate_observation;
+
+        const updateBoard = await this.boardServiceRepository.Update({
+            ...boardService,
+            serviceId,
+            addressId,
+            driverId
         })
 
-        data.forEach(async res => {
-            res.cte_photo = cte_photo;
-            res.service_id = service_id;
-            res.board_id = board_id;
-            res.operational_number = operational_number;
-            res.cte = cte;
-            res.cte_loglife = cte_loglife;
-            res.board_volume = board_volume;
-            res.board_weight = board_weight;
-            res.cte_photo = cte_photo;
-            res.real_weight = real_weight;
-            res.taxed_weight = taxed_weight;
-            res.cte_transfer_cost = cte_transfer_cost;
-            res.board_observation = board_observation;
-            res.validate_observation = validate_observation;
-            await this.boardServiceRepository.save(res)
-        });
-
-
-        return data
+        return updateBoard
     }
 }
 export { UpdateBoardServiceUseCase }

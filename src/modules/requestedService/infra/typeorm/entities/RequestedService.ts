@@ -11,7 +11,10 @@ class RequestedService {
     @PrimaryColumn()
     id: string;
     
-    @OneToOne(() => Service, requested => RequestedService)
+    @OneToOne(() => Service, service => service.requestedServiceId,{
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+    })
     @JoinColumn({ name: 'service_id' })
     serviceId: Service;
 

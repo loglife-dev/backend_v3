@@ -59,16 +59,10 @@ class UpdateRequestedServiceUseCase {
         observation,
     }: IRequestedServiceDTO): Promise<RequestedService> {
 
-        const requested = await this.requestedServiceRepository.findById(id);
+        const requested = await this.requestedServiceRepository.findById(service_id)
 
         if (!requested) {
             throw new AppError("RequestedService does not exists!");
-        }
-
-        const serviceId = await this.serviceRepository.findById(service_id);
-
-        if (!serviceId) {
-            throw new AppError("ServiceId does not exists!");
         }
 
         const budgetId = await this.budgetRepository.findById(budget_id);
@@ -134,7 +128,6 @@ class UpdateRequestedServiceUseCase {
 
         const updateRequested = await this.requestedServiceRepository.Update({
             ...requested,
-            serviceId,
             budgetId,
             sourceCollectorId,
             destinationCollectorId,

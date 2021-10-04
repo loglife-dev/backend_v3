@@ -1,6 +1,8 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { Service } from "../../../../service/infra/typeorm/entities/Service";
 import { v4 as uuidv4 } from 'uuid'
+import { Address } from "../../../../address/infra/entities/Address";
+import { Driver } from "../../../../driver/infra/typeorm/entities/Driver";
 @Entity('boardService')
 class BoardService {
     @PrimaryColumn()
@@ -13,8 +15,22 @@ class BoardService {
     @Column()
     service_id: string;
 
+    @JoinColumn({ name: 'address_id' })
+    @OneToOne(() => Address)
+    addressId: Address
+
     @Column()
-    board_id: string;
+    address_id: string;
+
+    @JoinColumn({ name: 'driver_id' })
+    @OneToOne(() => Driver)
+    driverId: Driver
+
+    @Column()
+    driver_id: string;
+
+    @Column()
+    step: string;
 
     @Column()
     arrival_latitude: string;

@@ -6,10 +6,6 @@ export interface IBoardServiceRepository extends IBaseRepository<BoardService> {
 
     Get(): Promise<BoardService[]>;
     findById(id: string): Promise<BoardService>;
-
-
-    findByBoardId(board_id: string): Promise<BoardService[]>;
+    findByBoardId(service_id: string): Promise<BoardService>;
     create(data: IBoardServiceDTO): Promise<BoardService>;
-    save(boardService: BoardService): Promise<BoardService>;
-    All(): Promise<BoardService[]>;
 }

@@ -83,7 +83,7 @@ class UpdateProviderUseCase {
         provider.neighborhood = neighborhood;
         provider.complement = complement;
         provider.business_open = business_open;
-        provider.business_close = business_close=
+        provider.business_close = business_close;
         provider.saturday_open = saturday_open;
         provider.saturday_close = saturday_close;
         provider.sunday_open = sunday_open;

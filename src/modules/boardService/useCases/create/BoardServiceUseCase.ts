@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import { IServiceRepository } from "../../../service/repositories/IServiceRepository";
 import { IBoardServiceDTO } from "../../dtos/BoardServiceDTO";
 import { BoardService } from "../../infra/typeorm/entities/BoardService";
 import { IBoardServiceRepository } from "../../repositories/IBoardServiceRepository";
@@ -7,11 +8,15 @@ import { IBoardServiceRepository } from "../../repositories/IBoardServiceReposit
 class CreateBoardServiceUseCase {
     constructor(
         @inject("BoardServiceRepository")
-        private readonly boardServiceRepository: IBoardServiceRepository) { }
+        private readonly boardServiceRepository: IBoardServiceRepository,
+        @inject("ServiceRepository")
+        private readonly serviceRepository: IServiceRepository) { }
 
     async execute({
         service_id,
-        board_id,
+        address_id,
+        driver_id,
+        step,
         arrival_latitude,
         arrival_longitude,
         arrival_timestamp,
@@ -30,9 +35,16 @@ class CreateBoardServiceUseCase {
         board_observation,
         validate_observation,
     }: IBoardServiceDTO): Promise<BoardService> {
+
+        const serviceId = await this.serviceRepository.findById(service_id);
+        serviceId.step = 'board-service'
+        await this.serviceRepository.Update(serviceId);
+
         const createBoard = await this.boardServiceRepository.create({
-            service_id,
-            board_id,
+            service_id: serviceId.id,
+            address_id,
+            driver_id,
+            step,
             arrival_latitude,
             arrival_longitude,
             arrival_timestamp,

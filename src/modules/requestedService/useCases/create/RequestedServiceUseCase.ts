@@ -40,6 +40,7 @@ class CreateRequestedServiceUseCase {
         observation
     }: IRequestedServiceDTO): Promise<RequestedService> {
         const requestedService = new RequestedService();
+    
 
         Object.assign(requestedService, {
             service_id,

@@ -15,6 +15,6 @@ boardServiceRoutes.get("/", getAllBoardServiceController.handle);
 boardServiceRoutes.get("/:id", getBoardServiceController.handle);
 boardServiceRoutes.post("/", createBoardServiceController.handle);
 boardServiceRoutes.put("/:id", updateBoardServiceController.handle);
-boardServiceRoutes.delete("/", deleteBoardServiceController.handle);
+boardServiceRoutes.delete("/:id", deleteBoardServiceController.handle);
 
 export { boardServiceRoutes }

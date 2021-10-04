@@ -18,6 +18,20 @@ export class CreateBoardService1632924869648 implements MigrationInterface {
                         isNullable: false,
                     },
                     {
+                        name: 'address_id',
+                        type: 'uuid',
+                        isNullable: false,
+                    },
+                    {
+                        name: 'driver_id',
+                        type: 'uuid',
+                        isNullable: false,
+                    },
+                    {
+                        name: 'step',
+                        type: 'varchar',
+                    },
+                    {
                         name: 'arrival_latitude',
                         type: 'varchar'
                     },
@@ -117,7 +131,23 @@ export class CreateBoardService1632924869648 implements MigrationInterface {
                         referencedColumnNames: ['id'],
                         columnNames: ['service_id'],
                         onUpdate: 'CASCADE',
-                        onDelete: 'SET NULL'
+                        onDelete: 'CASCADE'
+                    },
+                    {
+                        name: 'FKAddress',
+                        referencedTableName: 'address',
+                        referencedColumnNames: ['id'],
+                        columnNames: ['address_id'],
+                        onUpdate: 'CASCADE',
+                        onDelete: 'SET NULL',
+                    },
+                    {
+                        name: 'FKDriver',
+                        referencedTableName: 'driver',
+                        referencedColumnNames: ['id'],
+                        columnNames: ['driver_id'],
+                        onUpdate: 'CASCADE',
+                        onDelete: 'SET NULL',
                     }
                 ]
             })

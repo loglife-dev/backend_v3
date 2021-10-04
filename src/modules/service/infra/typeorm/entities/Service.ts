@@ -13,9 +13,12 @@ class Service {
     @Column()
     step: string;
 
-    @OneToOne(() => RequestedService, requestedService => requestedService.serviceId,
-        { eager: true })
-    requestedService: RequestedService;
+    @OneToOne(() => RequestedService, requestedService => requestedService.serviceId,  { 
+        eager: true,
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+    })
+    requestedServiceId: RequestedService;
 
     @JoinColumn({ name: 'customer_id' })
     @OneToOne(() => Customer)

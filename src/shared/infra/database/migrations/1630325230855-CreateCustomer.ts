@@ -34,6 +34,10 @@ export class CreateCustomer1630325230855 implements MigrationInterface {
                         isUnique: true,
                     },
                     {
+                        name: 'cost_center',
+                        type: 'varchar'
+                    },
+                    {
                         name: 'deadline_delivery',
                         type: 'timestamp',
                     },
