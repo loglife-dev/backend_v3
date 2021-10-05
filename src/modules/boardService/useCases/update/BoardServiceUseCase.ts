@@ -44,15 +44,11 @@ class UpdateBoardServiceUseCase {
         board_observation,
         validate_observation,
     }: IBoardServiceDTO): Promise<BoardService> {
-        const boardService = await this.boardServiceRepository.findByBoardId(service_id)
+        const boardService = await this.boardServiceRepository.findById(service_id)
+        console.log(boardService)
 
         if (!boardService) {
             throw new AppError("BoardService does not exists!")
-        }
-
-        const serviceId = await this.serviceRepository.findById(service_id);
-        if (!serviceId) {
-            throw new AppError("ServiceId does not exists!")
         }
 
         const addressId = await this.addressRepository.findById(address_id);
@@ -64,7 +60,7 @@ class UpdateBoardServiceUseCase {
         if (!driverId) {
             throw new AppError("DriverId does not exists!")
         }
-  
+        
         boardService.service_id = service_id;
         boardService.address_id = address_id;
         boardService.driver_id = driver_id;
@@ -83,7 +79,6 @@ class UpdateBoardServiceUseCase {
 
         const updateBoard = await this.boardServiceRepository.Update({
             ...boardService,
-            serviceId,
             addressId,
             driverId
         })

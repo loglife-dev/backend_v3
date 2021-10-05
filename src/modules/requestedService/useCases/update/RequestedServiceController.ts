@@ -12,10 +12,10 @@ class UpdateRequestedServiceController {
             gelox, isopor3l, isopor7l, terciaria3l, terciaria8l, collect_date, collect_hour_start, collect_hour_end, delivery_date, delivery_hour, observation,
             hasValidate, hasCancelled } = request.body;
 
-        console.log("chegou")
+   
         if (hasValidate === true) {
             const serviceId = await serviceRepository.findById(service_id);
-            serviceId.step = 'teste';
+            serviceId.step = 'Requested-service-validate';
             await serviceRepository.Update(serviceId)
         }
 
@@ -28,7 +28,7 @@ class UpdateRequestedServiceController {
         const updateRequestedServiceUseCase = container.resolve(UpdateRequestedServiceUseCase)
 
         const updateRequestedService = await updateRequestedServiceUseCase.execute({
-            service_id,
+            service_id: id,
             budget_id,
             source_address_id,
             destination_address_id,

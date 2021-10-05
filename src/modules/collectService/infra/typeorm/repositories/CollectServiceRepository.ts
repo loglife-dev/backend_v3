@@ -18,7 +18,7 @@ class CollectServiceRepository extends BaseRepository<CollectService> implements
 
     async findById(id: string): Promise<CollectService> {
         return this.repository.findOne({
-            where: { id },
+            where: { service_id: id },
             relations: ["serviceId", "addressId", "driverId"],
             order: {
                 service_id: 'ASC'

@@ -13,7 +13,7 @@ class UpdateCollectServiceController {
         const updateCollectServiceUseCase = container.resolve(UpdateCollectServiceUseCase)
 
         const collectService = await updateCollectServiceUseCase.execute({
-            service_id,
+            service_id: id,
             address_id,
             driver_id,
             step,

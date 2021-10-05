@@ -74,7 +74,7 @@ class BoardServiceRepository extends BaseRepository<BoardService> implements IBo
 
     async findById(id: string): Promise<BoardService> {
         return this.repository.findOne({
-            where: { id },
+            where: { service_id: id },
             relations: ["serviceId", "addressId", "driverId"],
             order: {
                 created_at: 'ASC'
