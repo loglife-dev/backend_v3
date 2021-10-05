@@ -29,6 +29,7 @@ class UpdateRequestedServiceUseCase {
 
     async execute({
         id,
+        service_id,
         budget_id,
         source_address_id,
         destination_address_id,
@@ -57,20 +58,20 @@ class UpdateRequestedServiceUseCase {
         delivery_hour,
         observation,
     }: IRequestedServiceDTO): Promise<RequestedService> {
-
-        const requested = await this.requestedServiceRepository.findById(id)
-
+        
+        const requested = await this.requestedServiceRepository.findById(service_id);
+        
         if (!requested) {
             throw new AppError("RequestedService does not exists!");
         }
 
+        const serviceId = await this.serviceRepository.findById(service_id)
         const budgetId = await this.budgetRepository.findById(budget_id);
         const sourceCollectorId = await this.collectorRepository.findById(source_collector_id);
         const destinationCollectorId = await this.collectorRepository.findById(destination_collector_id)
         const sourceBranchId = await this.branchRepository.findById(source_branch_id)
         const destinationBranchId = await this.branchRepository.findById(destination_branch_id);
         const providerId = await this.providerRepository.findById(provider_id);
-
 
         requested.budget_id = budget_id;
         requested.source_address_id = source_address_id;

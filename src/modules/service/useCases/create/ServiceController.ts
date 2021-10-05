@@ -11,14 +11,12 @@ class CreateServiceController {
             protocol,
             step,
             customer_id,
-            group_id,
         });
 
         const serviceResponse = {
             protocol: service.protocol,
             step: service.step,
             customer_id: service.customer_id,
-            group_id: service.group_id,
         };
         return response.status(201).json(serviceResponse);
 

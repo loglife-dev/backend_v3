@@ -12,23 +12,56 @@ class UpdateRequestedServiceController {
             gelox, isopor3l, isopor7l, terciaria3l, terciaria8l, collect_date, collect_hour_start, collect_hour_end, delivery_date, delivery_hour, observation,
             hasValidate, hasCancelled } = request.body;
 
-
         if (hasValidate === true) {
             const serviceId = await serviceRepository.findById(id);
-            serviceId.step = 'Requested-service-validate';
+            serviceId.step = 'toCollectService';
             await serviceRepository.Update(serviceId)
+
+            const updateRequestedServiceUseCase = container.resolve(UpdateRequestedServiceUseCase)
+
+            const updateRequested = await updateRequestedServiceUseCase.execute({
+                service_id: serviceId.id,
+                budget_id,
+                source_address_id,
+                destination_address_id,
+                source_collector_id,
+                destination_collector_id,
+                source_branch_id,
+                destination_branch_id,
+                provider_id,
+                deadline,
+                service_type,
+                franchising,
+                modal,
+                vehicle,
+                caixa_termica,
+                embalagem_secundaria,
+                gelo_seco,
+                gelox,
+                isopor3l,
+                isopor7l,
+                terciaria3l,
+                terciaria8l,
+                collect_date,
+                collect_hour_start,
+                collect_hour_end,
+                delivery_date,
+                delivery_hour,
+                observation,
+            })
+            return response.json(updateRequested);
         }
 
         if (hasCancelled === true) {
             const serviceId = await serviceRepository.findById(id)
-            serviceId.step = 'Cancelado';
+            serviceId.step = 'cancelledService';
             await serviceRepository.Update(serviceId);
         }
 
         const updateRequestedServiceUseCase = container.resolve(UpdateRequestedServiceUseCase)
 
-        const updateRequestedService = await updateRequestedServiceUseCase.execute({
-            id,
+        const updateRequested = await updateRequestedServiceUseCase.execute({
+            service_id: id,
             budget_id,
             source_address_id,
             destination_address_id,
@@ -57,7 +90,9 @@ class UpdateRequestedServiceController {
             delivery_hour,
             observation,
         })
-        return response.json(updateRequestedService);
+        return response.json(updateRequested);
+
+
     }
 }
 
