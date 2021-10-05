@@ -65,35 +65,10 @@ class UpdateRequestedServiceUseCase {
         }
 
         const budgetId = await this.budgetRepository.findById(budget_id);
-
-        if (!budgetId) {
-            throw new AppError("BudgetId does not exists!");
-        }
-
         const sourceCollectorId = await this.collectorRepository.findById(source_collector_id);
-
-        if (!sourceCollectorId) {
-            throw new AppError("SourceCollectorId does not exists!");
-        }
-
         const destinationCollectorId = await this.collectorRepository.findById(destination_collector_id)
-
-        if (!destinationCollectorId) {
-            throw new AppError("destinationCollectorId does not exists!");
-        }
-
         const sourceBranchId = await this.branchRepository.findById(source_branch_id)
-
-        if (!sourceBranchId) {
-            throw new AppError("sourceBranchId does not exists!");
-        }
-
         const destinationBranchId = await this.branchRepository.findById(destination_branch_id);
-
-        if (!destinationBranchId) {
-            throw new AppError("DestinationBranchId does not exists!");
-        }
-
         const providerId = await this.providerRepository.findById(provider_id);
 
 

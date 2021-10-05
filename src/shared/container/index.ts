@@ -3,6 +3,8 @@ import { AddressRepository } from "../../modules/address/infra/repositories/Addr
 import { IAddressRepository } from "../../modules/address/repositories/IAddressRepository";
 import { AllocateServiceRepository } from "../../modules/allocateService/infra/typeom/repositories/AllocateServiceRepository";
 import { IAllocateServiceRepository } from "../../modules/allocateService/repositories/IAllocateServiceRepository";
+import { AvailableServiceRepository } from "../../modules/availableService/infra/typeorm/repositories/AvailableServiceRepository";
+import { IAvailableServiceRepository } from "../../modules/availableService/repositories/IAvaiableServiceRepository";
 import { BoardServiceRepository } from "../../modules/boardService/infra/typeorm/repositories/BoardServiceRepository";
 import { IBoardServiceRepository } from "../../modules/boardService/repositories/IBoardServiceRepository";
 import { BranchRepository } from "../../modules/branch/infra/typeorm/repositories/BranchRepository";
@@ -125,4 +127,9 @@ container.registerSingleton<IBoardServiceRepository>(
 container.registerSingleton<IAllocateServiceRepository>(
     "AllocateServiceRepository",
     AllocateServiceRepository
+)
+
+container.registerSingleton<IAvailableServiceRepository>(
+    "AvailableServiceRepository",
+    AvailableServiceRepository
 )
