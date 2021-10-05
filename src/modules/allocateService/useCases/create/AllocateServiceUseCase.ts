@@ -12,13 +12,13 @@ class CreateAllocateServiceUseCase {
         @inject("AllocateServiceRepository")
         private readonly allocateServiceRepository: IAllocateServiceRepository,
         @inject("ServiceRepository")
-        private serviceRepository: IServiceRepository,
-        @inject("boardServiceRepository")
+        private readonly serviceRepository: IServiceRepository,
+        @inject("BoardServiceRepository")
         private readonly boardServiceRepository: IBoardServiceRepository) { }
 
     async execute({
         service_id,
-        allocated_filight,
+        allocated_flight,
         availability_date,
         availability_hour,
         observation,
@@ -34,8 +34,8 @@ class CreateAllocateServiceUseCase {
 
         const allocateService = new AllocateService();
         Object.assign(allocateService, {
-            service_id,
-            allocated_filight,
+            service_id: serviceId.id,
+            allocated_flight,
             availability_date,
             availability_hour,
             observation,
@@ -43,7 +43,7 @@ class CreateAllocateServiceUseCase {
         const createAllocate = await this.allocateServiceRepository.Create(allocateService);
 
         return createAllocate;
-    }
+    }9
 }
 
 export { CreateAllocateServiceUseCase }

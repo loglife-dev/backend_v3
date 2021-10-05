@@ -29,7 +29,6 @@ class UpdateRequestedServiceUseCase {
 
     async execute({
         id,
-        service_id,
         budget_id,
         source_address_id,
         destination_address_id,
@@ -59,8 +58,8 @@ class UpdateRequestedServiceUseCase {
         observation,
     }: IRequestedServiceDTO): Promise<RequestedService> {
 
-        const requested = await this.requestedServiceRepository.findById(service_id)
-        
+        const requested = await this.requestedServiceRepository.findById(id)
+
         if (!requested) {
             throw new AppError("RequestedService does not exists!");
         }
@@ -97,36 +96,35 @@ class UpdateRequestedServiceUseCase {
 
         const providerId = await this.providerRepository.findById(provider_id);
 
-        Object.assign(requested, {
-            service_id,
-            budget_id,
-            source_address_id,
-            destination_address_id,
-            source_collector_id,
-            destination_collector_id,
-            source_branch_id,
-            destination_branch_id,
-            provider_id,
-            deadline,
-            service_type,
-            franchising,
-            modal,
-            vehicle,
-            caixa_termica,
-            embalagem_secundaria,
-            gelo_seco,
-            gelox,
-            isopor3l,
-            isopor7l,
-            terciaria3l,
-            terciaria8l,
-            collect_date,
-            collect_hour_start,
-            collect_hour_end,
-            delivery_date,
-            delivery_hour,
-            observation,
-        })
+
+        requested.budget_id = budget_id;
+        requested.source_address_id = source_address_id;
+        requested.destination_address_id = destination_address_id;
+        requested.source_collector_id = source_collector_id;
+        requested.destination_collector_id = destination_collector_id;
+        requested.source_branch_id = source_branch_id;
+        requested.destination_branch_id = destination_branch_id;
+        requested.provider_id = provider_id;
+        requested.deadline = deadline;
+        requested.service_type = service_type;
+        requested.franchising = franchising;
+        requested.modal = modal;
+        requested.vehicle = vehicle;
+        requested.caixa_termica = caixa_termica;
+        requested.embalagem_secundaria = embalagem_secundaria;
+        requested.gelo_seco = gelo_seco;
+        requested.gelox = gelox;
+        requested.isopor3l = isopor3l;
+        requested.isopor7l = isopor7l;
+        requested.terciaria3l = terciaria3l;
+        requested.terciaria8l = terciaria8l;
+        requested.collect_date = collect_date;
+        requested.collect_hour_start = collect_hour_start;
+        requested.collect_hour_end = collect_hour_end;
+        requested.delivery_date = delivery_date;
+        requested.delivery_hour = delivery_hour;
+        requested.observation = observation;
+
 
         const updateRequested = await this.requestedServiceRepository.Update({
             ...requested,

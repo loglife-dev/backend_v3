@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, JoinTable, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm"
+import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm"
 import { Service } from "../../../../service/infra/typeorm/entities/Service";
 import { v4 as uuidv4 } from 'uuid'
 
@@ -7,7 +7,7 @@ class AllocateService {
     @PrimaryColumn()
     id: string;
 
-    @JoinTable({ name: 'service_id' })
+    @JoinColumn({ name: 'service_id' })
     @OneToOne(() => Service)
     serviceId: Service
 
@@ -15,7 +15,7 @@ class AllocateService {
     service_id: string;
 
     @Column()
-    allocated_filight: string;
+    allocated_flight: string;
 
     @Column()
     availability_date: Date;

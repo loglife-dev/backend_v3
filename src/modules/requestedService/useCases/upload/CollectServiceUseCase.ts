@@ -1,6 +1,0 @@
-
-
-class UploadCollectServiceUseCase {
-
-}
-export { UploadCollectServiceUseCase }

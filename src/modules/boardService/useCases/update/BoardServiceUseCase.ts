@@ -22,13 +22,9 @@ class UpdateBoardServiceUseCase {
 
     async execute({
         id,
-        service_id,
         address_id,
         driver_id,
         step,
-        arrival_latitude,
-        arrival_longitude,
-        arrival_timestamp,
         operational_number,
         cte,
         cte_loglife,
@@ -38,14 +34,10 @@ class UpdateBoardServiceUseCase {
         real_weight,
         taxed_weight,
         cte_transfer_cost,
-        departure_latitude,
-        departure_longitude,
-        departure_timestamp,
         board_observation,
         validate_observation,
     }: IBoardServiceDTO): Promise<BoardService> {
-        const boardService = await this.boardServiceRepository.findById(service_id)
-        console.log(boardService)
+        const boardService = await this.boardServiceRepository.findById(id)
 
         if (!boardService) {
             throw new AppError("BoardService does not exists!")
@@ -60,8 +52,7 @@ class UpdateBoardServiceUseCase {
         if (!driverId) {
             throw new AppError("DriverId does not exists!")
         }
-        
-        boardService.service_id = service_id;
+
         boardService.address_id = address_id;
         boardService.driver_id = driver_id;
         boardService.step = step;

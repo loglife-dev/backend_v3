@@ -8,22 +8,22 @@ class AllocateServiceRepository extends BaseRepository<AllocateService> implemen
     }
 
     async Get(): Promise<AllocateService[]> {
-        return this.repository.find({
-            relations: ['serviceId'],
-            order: {
-                allocated_filight: 'ASC'
-            }
-        })
+       return this.repository.find({
+           relations: ["serviceId"],
+           order: {
+               service_id: 'ASC'
+           }
+       })
     }
 
     async findById(id: string): Promise<AllocateService> {
-        return this.repository.findOne({
-            where: { id },
-            relations: ['serviceId'],
-            order: {
-                allocated_filight: 'ASC'
-            }
-        })
+       return this.repository.findOne({
+           where: { service_id: id},
+           relations: ["serviceId"],
+           order: {
+               service_id: 'ASC'
+           }
+       })
     }
 
 }
