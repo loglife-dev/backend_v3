@@ -1,6 +1,8 @@
 import { container } from "tsyringe";
 import { AddressRepository } from "../../modules/address/infra/repositories/AddressRepository";
 import { IAddressRepository } from "../../modules/address/repositories/IAddressRepository";
+import { AllocateServiceRepository } from "../../modules/allocateService/infra/typeom/repositories/AllocateServiceRepository";
+import { IAllocateServiceRepository } from "../../modules/allocateService/repositories/IAllocateServiceRepository";
 import { BoardServiceRepository } from "../../modules/boardService/infra/typeorm/repositories/BoardServiceRepository";
 import { IBoardServiceRepository } from "../../modules/boardService/repositories/IBoardServiceRepository";
 import { BranchRepository } from "../../modules/branch/infra/typeorm/repositories/BranchRepository";
@@ -118,4 +120,9 @@ container.registerSingleton<ICollectServiceRepository>(
 container.registerSingleton<IBoardServiceRepository>(
     "BoardServiceRepository",
     BoardServiceRepository
+)
+
+container.registerSingleton<IAllocateServiceRepository>(
+    "AllocateServiceRepository",
+    AllocateServiceRepository
 )

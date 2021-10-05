@@ -85,7 +85,10 @@ class UpdateBranchUseCase {
         branch.sunday_close = sunday_close;
         branch.observation = observation;
 
-        const updateBranch = await this.branchRepository.Update(branch);
+        const updateBranch = await this.branchRepository.Update({
+            ...branch,
+            hubId
+        });
 
         return updateBranch;
 

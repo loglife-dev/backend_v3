@@ -17,6 +17,7 @@ import { serviceRoutes } from "./service.routes";
 import { requestedServiceRoutes } from "./requestedService.routes";
 import { collectServiceRoutes } from "./collectService.routes";
 import { boardServiceRoutes } from "./boardService.routes";
+import { allocateServiceRoutes } from "./allocateService.routes";
 
 const router = Router();
 router.use("/hub", hubRoutes);
@@ -37,5 +38,6 @@ router.use("/service", serviceRoutes);
 router.use("/requested-service", requestedServiceRoutes);
 router.use("/collect-service", collectServiceRoutes);
 router.use("/board-service", boardServiceRoutes);
+router.use("/allocate-service", allocateServiceRoutes);
 
 export { router }

@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { ServiceRepository } from "../../../service/infra/typeorm/repositories/ServiceRepository";
 import { CreateBoardServiceUseCase } from "./BoardServiceUseCase";
 
 class CreateBoardServiceController {
