@@ -1,14 +1,14 @@
 import { inject, injectable } from "tsyringe";
 import { IServiceRepository } from "../../../service/repositories/IServiceRepository";
-import { ICollectServiceDTO } from "../../dtos/ICollectServiceDTO";
-import { CollectService } from "../../infra/typeorm/entities/CollectService";
-import { ICollectServiceRepository } from "../../repositories/ICollectServiceRepository";
+import { IDeliveryServiceDTO } from "../../dtos/IDeliveryServiceDTO";
+import { DeliveryService } from "../../infra/typeorm/entities/DeliveryService";
+import { IDeliveryServiceRepository } from "../../repositories/IDeliveryServiceRepository";
 
 @injectable()
-class CreateCollectServiceUseCase {
+class CreateDeliveryServiceUseCase {
     constructor(
-        @inject("CollectServiceRepository")
-        private readonly collectServiceRepository: ICollectServiceRepository,
+        @inject("DeliverySerivceRepository")
+        private readonly deliveryServiceRepository: IDeliveryServiceRepository,
         @inject("ServiceRepository")
         private readonly serviceRepository: IServiceRepository) { }
 
@@ -16,60 +16,50 @@ class CreateCollectServiceUseCase {
         service_id,
         address_id,
         driver_id,
+        step,
         arrival_latitude,
         arrival_longitude,
         arrival_timestamp,
         responsible_name,
         responsible_cpf,
-        volume,
-        sample,
+        delivery_volume,
         problem,
         box_photo,
         content_declaration,
-        receipt_photo,
         departure_latitude,
         departure_longitude,
         departure_timestamp,
-        unsuccess_latitude,
-        unsuccess_longitude,
-        unsuccess_timestamp,
         observation,
-    }: ICollectServiceDTO): Promise<CollectService> {
-        const collectService = new CollectService();
+    }: IDeliveryServiceDTO): Promise<DeliveryService> {
+        const deliveryService = new DeliveryService();
 
         const serviceId = await this.serviceRepository.findById(service_id);
-        serviceId.step = 'collectingService';
+        serviceId.step = 'deliveringService'
         await this.serviceRepository.Update(serviceId);
 
-        Object.assign(collectService, {
+        Object.assign(deliveryService, {
             service_id,
             address_id,
             driver_id,
-            step: 'GOING',
+            step,
             arrival_latitude,
             arrival_longitude,
             arrival_timestamp,
             responsible_name,
             responsible_cpf,
-            volume,
-            sample,
+            delivery_volume,
             problem,
             box_photo,
             content_declaration,
-            receipt_photo,
             departure_latitude,
             departure_longitude,
             departure_timestamp,
-            unsuccess_latitude,
-            unsuccess_longitude,
-            unsuccess_timestamp,
             observation,
         });
-        const createCollectService = await this.collectServiceRepository.Create(collectService);
+        const createDelivery = await this.deliveryServiceRepository.Create(deliveryService);
 
-        return createCollectService;
-
+        return createDelivery;
     }
 }
 
-export { CreateCollectServiceUseCase }
+export { CreateDeliveryServiceUseCase }

@@ -1,6 +1,5 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, Unique, UpdateDateColumn } from "typeorm"
 import { v4 as uuidv4 } from 'uuid'
-import { Hub } from "../../../../hub/infra/typeorm/entities/Hub";
 
 @Entity('customer')
 class Customer {

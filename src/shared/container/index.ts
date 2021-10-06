@@ -21,6 +21,8 @@ import { CollectServiceRepository } from "../../modules/collectService/infra/typ
 import { ICollectServiceRepository } from "../../modules/collectService/repositories/ICollectServiceRepository";
 import { CustomerRepository } from "../../modules/customer/infra/typeorm/repositories/CustomerRepository";
 import { ICustomerRepository } from "../../modules/customer/repositories/ICustomerRepository";
+import { DeliveryServiceRepository } from "../../modules/deliveryService/infra/typeorm/repositories/DeliveryServiceRepository";
+import { IDeliveryServiceRepository } from "../../modules/deliveryService/repositories/IDeliveryServiceRepository";
 import { DriverRepository } from "../../modules/driver/infra/typeorm/repositories/DriverRepositories";
 import { IDriverRepository } from "../../modules/driver/repositories/IDriverRepository";
 import { HubRepository } from "../../modules/hub/infra/typeorm/repositories/HubRepositories";
@@ -139,4 +141,9 @@ container.registerSingleton<IAvailableServiceRepository>(
 container.registerSingleton<ILandingServiceRepository>(
     "LandingServiceRepository",
     LandingServiceRepository
+)
+
+container.registerSingleton<IDeliveryServiceRepository>(
+    "DeliveryServiceRepository",
+    DeliveryServiceRepository
 )
