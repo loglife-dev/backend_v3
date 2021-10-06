@@ -41,7 +41,6 @@ class CreateRequestedServiceUseCase {
     }: IRequestedServiceDTO): Promise<RequestedService> {
         const requestedService = new RequestedService();
     
-
         Object.assign(requestedService, {
             service_id,
             budget_id,

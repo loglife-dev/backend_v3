@@ -19,6 +19,7 @@ import { collectServiceRoutes } from "./collectService.routes";
 import { boardServiceRoutes } from "./boardService.routes";
 import { allocateServiceRoutes } from "./allocateService.routes";
 import { availableServiceRoutes } from "./availableService.routes";
+import { landingServiceRoutes } from "./landingService.routes";
 
 const router = Router();
 router.use("/hub", hubRoutes);
@@ -41,5 +42,6 @@ router.use("/collect-service", collectServiceRoutes);
 router.use("/board-service", boardServiceRoutes);
 router.use("/allocate-service", allocateServiceRoutes);
 router.use("/available-service", availableServiceRoutes);
+router.use("/landing-service", landingServiceRoutes);
 
 export { router }

@@ -25,6 +25,8 @@ import { DriverRepository } from "../../modules/driver/infra/typeorm/repositorie
 import { IDriverRepository } from "../../modules/driver/repositories/IDriverRepository";
 import { HubRepository } from "../../modules/hub/infra/typeorm/repositories/HubRepositories";
 import { IHubRepository } from "../../modules/hub/repositories/IHubRepositories";
+import { LandingServiceRepository } from "../../modules/landingService/infra/typeorm/repositories/LandingServiceRepository";
+import { ILandingServiceRepository } from "../../modules/landingService/repositories/ILandingServiceRepository";
 import { PermissionRepository } from "../../modules/permission/infra/typeorm/repositories/PermissionRepository";
 import { IPermissionRepository } from "../../modules/permission/repositories/IPermissionRepository";
 import { ProviderRepository } from "../../modules/provider/infra/typeorm/repositories/ProviderRepository";
@@ -132,4 +134,9 @@ container.registerSingleton<IAllocateServiceRepository>(
 container.registerSingleton<IAvailableServiceRepository>(
     "AvailableServiceRepository",
     AvailableServiceRepository
+)
+
+container.registerSingleton<ILandingServiceRepository>(
+    "LandingServiceRepository",
+    LandingServiceRepository
 )

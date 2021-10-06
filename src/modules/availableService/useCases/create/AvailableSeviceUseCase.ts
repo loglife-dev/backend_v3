@@ -20,12 +20,12 @@ class CreateAvailableServiceUseCase {
     }: IAvaiableServiceDTO): Promise<AvailableService> {
 
         const serviceId = await this.serviceRepository.findById(service_id)
-        serviceId.step = 'available-service'
+        serviceId.step = 'toLandingService'
         await this.serviceRepository.Update(serviceId);
 
         const availableService = new AvailableService();
         Object.assign(availableService, {
-            service_id: serviceId,
+            service_id,
             landing_availability_date,
             landing_availability_hour,
             observation,

@@ -63,12 +63,12 @@ class UpdateCollectServiceUseCase {
         }
 
         const service = await this.serviceRepository.findById(service_id);
-        service.step = 'collect-Service ok'
+        service.step =  'toBoardService'
         await this.serviceRepository.Update(service);
 
         collectService.address_id = address_id,
         collectService.driver_id = driver_id,
-        collectService.step = step,
+        collectService.step = step;
         collectService.arrival_latitude = arrival_latitude;
         collectService.arrival_longitude = arrival_longitude;
         collectService.arrival_timestamp = arrival_timestamp;

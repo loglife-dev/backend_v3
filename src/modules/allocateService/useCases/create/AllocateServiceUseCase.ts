@@ -1,6 +1,4 @@
 import { inject, injectable } from "tsyringe";
-import { AppError } from "../../../../shared/errors/AppError";
-import { IBoardServiceRepository } from "../../../boardService/repositories/IBoardServiceRepository";
 import { IServiceRepository } from "../../../service/repositories/IServiceRepository";
 import { IAllocateServiceDTO } from "../../dtos/IAllocateServiceDTO";
 import { AllocateService } from "../../infra/typeom/entities/AllocateService";
@@ -12,9 +10,7 @@ class CreateAllocateServiceUseCase {
         @inject("AllocateServiceRepository")
         private readonly allocateServiceRepository: IAllocateServiceRepository,
         @inject("ServiceRepository")
-        private readonly serviceRepository: IServiceRepository,
-        @inject("BoardServiceRepository")
-        private readonly boardServiceRepository: IBoardServiceRepository) { }
+        private readonly serviceRepository: IServiceRepository) { }
 
     async execute({
         service_id,
@@ -25,16 +21,12 @@ class CreateAllocateServiceUseCase {
     }: IAllocateServiceDTO): Promise<AllocateService> {
 
         const serviceId = await this.serviceRepository.findById(service_id);
-        serviceId.step = 'allocate-service'
+        serviceId.step = 'toAvailableService'
         await this.serviceRepository.Update(serviceId)
-
-        const boardService = await this.boardServiceRepository.findById(service_id);
-        boardService.step = 'allocate'
-        await this.boardServiceRepository.Update(boardService);
 
         const allocateService = new AllocateService();
         Object.assign(allocateService, {
-            service_id: serviceId.id,
+            service_id,
             allocated_flight,
             availability_date,
             availability_hour,
@@ -43,7 +35,7 @@ class CreateAllocateServiceUseCase {
         const createAllocate = await this.allocateServiceRepository.Create(allocateService);
 
         return createAllocate;
-    }9
+    } 
 }
 
 export { CreateAllocateServiceUseCase }

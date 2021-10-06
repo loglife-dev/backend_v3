@@ -39,14 +39,14 @@ class CreateCollectServiceUseCase {
         const collectService = new CollectService();
 
         const serviceId = await this.serviceRepository.findById(service_id);
-        serviceId.step = 'Collect-service';
+        serviceId.step = 'collectingService';
         await this.serviceRepository.Update(serviceId);
 
         Object.assign(collectService, {
             service_id: serviceId.id,
             address_id,
             driver_id,
-            step,
+            step: 'GOING',
             arrival_latitude,
             arrival_longitude,
             arrival_timestamp,

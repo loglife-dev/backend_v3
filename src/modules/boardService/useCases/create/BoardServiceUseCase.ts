@@ -37,11 +37,11 @@ class CreateBoardServiceUseCase {
     }: IBoardServiceDTO): Promise<BoardService> {
 
         const serviceId = await this.serviceRepository.findById(service_id);
-        serviceId.step = 'board-service'
+        serviceId.step = 'boardingService'
         await this.serviceRepository.Update(serviceId);
 
         const createBoard = await this.boardServiceRepository.create({
-            service_id: serviceId.id,
+            service_id,
             address_id,
             driver_id,
             step,
