@@ -7,7 +7,7 @@ import { IDeliveryServiceRepository } from "../../repositories/IDeliveryServiceR
 @injectable()
 class CreateDeliveryServiceUseCase {
     constructor(
-        @inject("DeliverySerivceRepository")
+        @inject("DeliveryServiceRepository")
         private readonly deliveryServiceRepository: IDeliveryServiceRepository,
         @inject("ServiceRepository")
         private readonly serviceRepository: IServiceRepository) { }
@@ -16,20 +16,9 @@ class CreateDeliveryServiceUseCase {
         service_id,
         address_id,
         driver_id,
-        step,
         arrival_latitude,
         arrival_longitude,
         arrival_timestamp,
-        responsible_name,
-        responsible_cpf,
-        delivery_volume,
-        problem,
-        box_photo,
-        content_declaration,
-        departure_latitude,
-        departure_longitude,
-        departure_timestamp,
-        observation,
     }: IDeliveryServiceDTO): Promise<DeliveryService> {
         const deliveryService = new DeliveryService();
 
@@ -41,20 +30,10 @@ class CreateDeliveryServiceUseCase {
             service_id,
             address_id,
             driver_id,
-            step,
+            step: 'GOING',
             arrival_latitude,
             arrival_longitude,
             arrival_timestamp,
-            responsible_name,
-            responsible_cpf,
-            delivery_volume,
-            problem,
-            box_photo,
-            content_declaration,
-            departure_latitude,
-            departure_longitude,
-            departure_timestamp,
-            observation,
         });
         const createDelivery = await this.deliveryServiceRepository.Create(deliveryService);
 
