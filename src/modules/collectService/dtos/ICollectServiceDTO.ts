@@ -13,9 +13,9 @@ interface ICollectServiceDTO {
     volume: Number;
     sample: Number;
     problem: string;
-    box_photo: string;
-    content_declaration: string;
-    receipt_photo: string;
+    box_photo?: string;
+    content_declaration?: string;
+    receipt_photo?: string;
     departure_latitude: string;
     departure_longitude: string;
     departure_timestamp: Date;

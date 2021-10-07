@@ -39,7 +39,7 @@ class UpdateCollectServiceUseCase {
         unsuccess_timestamp,
         observation,
     }: ICollectServiceDTO): Promise<CollectService> {
-        const collectService = await this.collectServiceRepository.findQuery(service_id, address_id)
+       /* const collectService = await this.collectServiceRepository.findQuery(service_id, address_id)
     
         if (!collectService) {
             throw new AppError("CollectService does not exists!");
@@ -85,7 +85,8 @@ class UpdateCollectServiceUseCase {
             driverId,
         })
 
-        return updateCollectService;
+        return updateCollectService;*/
+        return
     }
 }
 export { UpdateCollectServiceUseCase }
