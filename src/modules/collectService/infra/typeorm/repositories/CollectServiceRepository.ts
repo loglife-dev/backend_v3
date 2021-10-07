@@ -7,6 +7,14 @@ class CollectServiceRepository extends BaseRepository<CollectService> implements
         super(CollectService)
     }
 
+    async findQuery(service_id: string, address_id: string): Promise<CollectService> {
+        return this.repository.createQueryBuilder()
+            .where("service_id =:service_id AND address_id =:address_id", { service_id: service_id, address_id: address_id})
+            .getOne()
+    }
+
+
+
     async Get(): Promise<CollectService[]> {
         return this.repository.find({
             relations: ["serviceId", "addressId", "driverId"],
@@ -19,6 +27,7 @@ class CollectServiceRepository extends BaseRepository<CollectService> implements
     async findById(id: string): Promise<CollectService> {
         return this.repository.findOne({
             where: { service_id: id },
+            
             relations: ["serviceId", "addressId", "driverId"],
             order: {
                 service_id: 'ASC'

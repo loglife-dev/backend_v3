@@ -18,7 +18,7 @@ export class CreateLandingService1633462050824 implements MigrationInterface {
                         isNullable: false,
                     },
                     {
-                        name: 'address_id',
+                        name: 'branch_id',
                         type: 'uuid',
                         isNullable: false,
                     },
@@ -99,10 +99,10 @@ export class CreateLandingService1633462050824 implements MigrationInterface {
                         onDelete: 'CASCADE'
                     },
                     {
-                        name: 'FKAddress',
-                        referencedTableName: 'address',
+                        name: 'FKBranch',
+                        referencedTableName: 'branch',
                         referencedColumnNames: ['id'],
-                        columnNames: ['address_id'],
+                        columnNames: ['branch_id'],
                         onUpdate: 'CASCADE',
                         onDelete: 'SET NULL'
                     },

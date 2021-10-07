@@ -5,4 +5,5 @@ export interface ICollectServiceRepository extends IBaseRepository<CollectServic
 
     Get(): Promise<CollectService[]>;
     findById(id: string): Promise<CollectService>;
+    findQuery(service_id: string, address_id: string): Promise<CollectService>
 }

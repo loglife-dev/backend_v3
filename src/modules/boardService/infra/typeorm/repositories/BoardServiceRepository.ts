@@ -19,59 +19,6 @@ class BoardServiceRepository extends BaseRepository<BoardService> implements IBo
 
     }
 
-    async create({
-        service_id,
-        address_id,
-        driver_id,
-        step,
-        arrival_latitude,
-        arrival_longitude,
-        arrival_timestamp,
-        operational_number,
-        cte,
-        cte_loglife,
-        board_volume,
-        board_weight,
-        cte_photo,
-        real_weight,
-        taxed_weight,
-        cte_transfer_cost,
-        departure_latitude,
-        departure_longitude,
-        departure_timestamp,
-        board_observation,
-        validate_observation,
-    }: IBoardServiceDTO): Promise<BoardService> {
-        const boardService = this.repository.create({
-            service_id,
-            address_id,
-            driver_id,
-            step,
-            arrival_latitude,
-            arrival_longitude,
-            arrival_timestamp,
-            operational_number,
-            cte,
-            cte_loglife,
-            board_volume,
-            board_weight,
-            cte_photo,
-            real_weight,
-            taxed_weight,
-            cte_transfer_cost,
-            departure_latitude,
-            departure_longitude,
-            departure_timestamp,
-            board_observation,
-            validate_observation,
-        });
-
-        await this.repository.save(boardService)
-
-        return boardService;
-    }
-
-
     async findById(id: string): Promise<BoardService> {
         return this.repository.findOne({
             where: { service_id: id },

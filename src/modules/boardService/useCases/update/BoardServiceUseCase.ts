@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
 import { IAddressRepository } from "../../../address/repositories/IAddressRepository";
+import { IBranchRepository } from "../../../branch/repositories/IBranchRepository";
 import { IDriverRepository } from "../../../driver/repositories/IDriverRepository";
 import { IServiceRepository } from "../../../service/repositories/IServiceRepository";
 import { IBoardServiceDTO } from "../../dtos/BoardServiceDTO";
@@ -15,14 +16,14 @@ class UpdateBoardServiceUseCase {
         private readonly boardServiceRepository: IBoardServiceRepository,
         @inject("ServiceRepository")
         private readonly serviceRepository: IServiceRepository,
-        @inject("AddressRepository")
-        private readonly addressRepository: IAddressRepository,
+        @inject("BranchRepository")
+        private readonly branchRepository: IBranchRepository,
         @inject("DriverRepository")
         private readonly driverRepository: IDriverRepository) { }
 
     async execute({
         id,
-        address_id,
+        branch_id,
         driver_id,
         step,
         operational_number,
@@ -43,17 +44,18 @@ class UpdateBoardServiceUseCase {
             throw new AppError("BoardService does not exists!")
         }
 
-        const addressId = await this.addressRepository.findById(address_id);
-        if (!addressId) {
-            throw new AppError("AddressId does not exists!")
+        const branchId = await  this.branchRepository.findById(branch_id);
+        if (!branchId) {
+            throw new AppError("BranchId does not exists!")
         }
+
 
         const driverId = await this.driverRepository.findById(driver_id);
         if (!driverId) {
             throw new AppError("DriverId does not exists!")
         }
 
-        boardService.address_id = address_id;
+        boardService.branch_id = branch_id;
         boardService.driver_id = driver_id;
         boardService.step = step;
         boardService.operational_number = operational_number;
@@ -70,7 +72,6 @@ class UpdateBoardServiceUseCase {
 
         const updateBoard = await this.boardServiceRepository.Update({
             ...boardService,
-            addressId,
             driverId
         })
 

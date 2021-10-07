@@ -1,8 +1,8 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm"
-import { Address } from "../../../../address/infra/entities/Address";
 import { Driver } from "../../../../driver/infra/typeorm/entities/Driver";
 import { Service } from "../../../../service/infra/typeorm/entities/Service";
 import { v4 as uuidv4 } from 'uuid'
+import { Branch } from "../../../../branch/infra/typeorm/entities/Branch";
 
 @Entity("landingService")
 class LandingService {
@@ -16,12 +16,12 @@ class LandingService {
     @Column()
     service_id: string;
 
-    @JoinColumn({ name: 'address_id' })
-    @OneToOne(() => Address)
-    addressId: Address
+    @JoinColumn({ name: 'branch_id' })
+    @OneToOne(() => Branch)
+    branchId: Branch
 
     @Column()
-    address_id: string;
+    branch_id: string;
 
     @JoinColumn({ name: 'driver_id' })
     @OneToOne(() => Driver)

@@ -20,7 +20,6 @@ class UpdateCollectServiceUseCase {
         private readonly driverRepository: IDriverRepository) { }
 
     async execute({
-        id,
         service_id,
         address_id,
         driver_id,
@@ -44,8 +43,8 @@ class UpdateCollectServiceUseCase {
         unsuccess_timestamp,
         observation,
     }: ICollectServiceDTO): Promise<CollectService> {
-        const collectService = await this.collectServiceRepository.findById(service_id);
-
+        const collectService = await this.collectServiceRepository.findQuery(service_id, address_id)
+    
         if (!collectService) {
             throw new AppError("CollectService does not exists!");
         }

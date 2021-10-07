@@ -14,7 +14,7 @@ class CreateBoardServiceUseCase {
 
     async execute({
         service_id,
-        address_id,
+        branch_id,
         driver_id,
         step,
         arrival_latitude,
@@ -40,9 +40,11 @@ class CreateBoardServiceUseCase {
         serviceId.step = 'boardingService'
         await this.serviceRepository.Update(serviceId);
 
-        const createBoard = await this.boardServiceRepository.create({
+        const createBoardService = new BoardService()
+
+        Object.assign(createBoardService,{
             service_id,
-            address_id,
+            branch_id,
             driver_id,
             step,
             arrival_latitude,
@@ -63,6 +65,7 @@ class CreateBoardServiceUseCase {
             board_observation,
             validate_observation,
         })
+        const createBoard = await this.boardServiceRepository.Create(createBoardService)
 
         return createBoard
 

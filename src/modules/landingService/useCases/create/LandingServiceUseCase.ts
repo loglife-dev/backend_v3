@@ -14,7 +14,7 @@ class CreateLandingServiceUseCase {
 
     async execute({
         service_id,
-        address_id,
+        branch_id,
         driver_id,
         step,
         arrival_latitude,
@@ -36,7 +36,7 @@ class CreateLandingServiceUseCase {
 
         Object.assign(landingService, {
             service_id,
-            address_id,
+            branch_id,
             driver_id,
             step,
             arrival_latitude,

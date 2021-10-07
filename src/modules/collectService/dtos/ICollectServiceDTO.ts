@@ -5,10 +5,10 @@ interface ICollectServiceDTO {
     address_id: string;
     driver_id: string;
     step?: string;
-    arrival_latitude: string;
-    arrival_longitude: string;
-    arrival_timestamp: Date;
-    responsible_name: string;
+    arrival_latitude?: string;
+    arrival_longitude?: string;
+    arrival_timestamp?: Date;
+    responsible_name?: string;
     responsible_cpf: string;
     volume: Number;
     sample: Number;

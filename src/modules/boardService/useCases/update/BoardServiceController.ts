@@ -7,7 +7,7 @@ class UpdateBoardServiceController {
     async handle(request: Request, response: Response): Promise<Response> {
         const serviceRepository = new ServiceRepository()
         const { id } = request.params
-        const { address_id, driver_id, operational_number, cte, cte_loglife,
+        const { branch_id, driver_id, operational_number, cte, cte_loglife,
             board_volume, board_weight, cte_photo, real_weight, taxed_weight, cte_transfer_cost, board_observation, 
             validate_observation, hasValidate } = request.body;
 
@@ -22,7 +22,7 @@ class UpdateBoardServiceController {
 
         const updateResponse = await updateBoardServiceUseCase.execute({
             id,
-            address_id,
+            branch_id,
             driver_id,
             step: 'DONE',
             operational_number,

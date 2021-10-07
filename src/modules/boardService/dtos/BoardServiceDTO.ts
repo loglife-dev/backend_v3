@@ -3,9 +3,9 @@
 interface IBoardServiceDTO {
     id?: string;
     service_id?: string;
-    address_id: string;
-    driver_id: string;
-    step: string;
+    branch_id?: string;
+    driver_id?: string;
+    step?: string;
     arrival_latitude?: string;
     arrival_longitude?: string;
     arrival_timestamp?: Date;
