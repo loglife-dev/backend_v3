@@ -24,10 +24,6 @@ class UpdateCollectServiceUseCase {
         address_id,
         driver_id,
         step,
-        arrival_latitude,
-        arrival_longitude,
-        arrival_timestamp,
-        responsible_name,
         responsible_cpf,
         volume,
         sample,
@@ -68,10 +64,6 @@ class UpdateCollectServiceUseCase {
         collectService.address_id = address_id,
         collectService.driver_id = driver_id,
         collectService.step = step;
-        collectService.arrival_latitude = arrival_latitude;
-        collectService.arrival_longitude = arrival_longitude;
-        collectService.arrival_timestamp = arrival_timestamp;
-        collectService.responsible_name = responsible_name;
         collectService.responsible_cpf = responsible_cpf;
         collectService.volume = volume;
         collectService.sample = sample;
