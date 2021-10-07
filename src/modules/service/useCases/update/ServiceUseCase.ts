@@ -9,14 +9,11 @@ import { IServiceRepository } from "../../repositories/IServiceRepository";
 class UpdateServiceUseCase {
     constructor(
         @inject("ServiceRepository")
-        private readonly serviceRepository: IServiceRepository,
-        @inject("CustomerRepository")
-        private readonly customerRepository: ICustomerRepository) { }
+        private readonly serviceRepository: IServiceRepository) { }
 
     async execute({
         id,
         step,
-        customer_id
     }: IServiceDTO): Promise<Service> {
         const service = await this.serviceRepository.findById(id);
 
@@ -24,15 +21,9 @@ class UpdateServiceUseCase {
             throw new AppError("Service does not exists!");
         }
 
-        const customerId = await this.customerRepository.findById(customer_id);
-
         service.step = step;
-        service.customer_id = customer_id;
 
-        const updateService = await this.serviceRepository.Update({
-            ...service,
-            customerId,
-        });
+        const updateService = await this.serviceRepository.Update(service);
 
         return updateService;
     }

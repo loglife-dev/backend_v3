@@ -2,7 +2,6 @@ import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
 import { IAddressRepository } from "../../../address/repositories/IAddressRepository";
 import { IDriverRepository } from "../../../driver/repositories/IDriverRepository";
-import { IServiceRepository } from "../../../service/repositories/IServiceRepository";
 import { ICollectServiceDTO } from "../../dtos/ICollectServiceDTO";
 import { CollectService } from "../../infra/typeorm/entities/CollectService";
 import { ICollectServiceRepository } from "../../repositories/ICollectServiceRepository";
@@ -12,8 +11,6 @@ class UpdateCollectServiceUseCase {
     constructor(
         @inject("CollectServiceRepository")
         private readonly collectServiceRepository: ICollectServiceRepository,
-        @inject("ServiceRepository")
-        private readonly serviceRepository: IServiceRepository,
         @inject("AddressRepository")
         private readonly addressRepository: IAddressRepository,
         @inject("DriverRepository")
@@ -57,11 +54,7 @@ class UpdateCollectServiceUseCase {
         if (!driverId) {
             throw new AppError("DriverId does not exists!");
         }
-
-        const service = await this.serviceRepository.findById(service_id);
-        service.step = 'toBoardService'
-        await this.serviceRepository.Update(service);
-
+   
         collectService.address_id = address_id,
         collectService.driver_id = driver_id,
         collectService.step = step;
