@@ -24,6 +24,7 @@ class UpdateCollectServiceUseCase {
         address_id,
         driver_id,
         step,
+        responsible_name,
         responsible_cpf,
         volume,
         sample,
@@ -40,7 +41,7 @@ class UpdateCollectServiceUseCase {
         observation,
     }: ICollectServiceDTO): Promise<CollectService> {
         const collectService = await this.collectServiceRepository.findQuery(service_id, address_id)
-
+       
         if (!collectService) {
             throw new AppError("CollectService does not exists!");
         }
@@ -64,6 +65,7 @@ class UpdateCollectServiceUseCase {
         collectService.address_id = address_id,
         collectService.driver_id = driver_id,
         collectService.step = step;
+        collectService.responsible_name = responsible_name;
         collectService.responsible_cpf = responsible_cpf;
         collectService.volume = volume;
         collectService.sample = sample;

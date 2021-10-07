@@ -6,7 +6,7 @@ import multerS3 from 'multer-s3';
 
 const storageTypes = {
   storage: multer.diskStorage({
-    destination: path.resolve(__dirname, "..", "tmp") ,
+    destination: path.resolve(__dirname, "..", "tmp", "img") ,
     filename (request, file: Express.Multer.File, callback){
       const fileHash = crypto.randomBytes(16).toString("hex");
       const fileName = `${fileHash}-${file.originalname}`
@@ -19,7 +19,7 @@ const storageTypes = {
 };
 
 module.exports = {
-  dest: path.resolve(__dirname, "..", "tmp"),
+  dest: path.resolve(__dirname, "..", "tmp", "img"),
   storage: storageTypes[process.env.STORAGE_TYPE],
   fileFilter: (req, file: Express.Multer.File, cb) => {
     const allowedMimes = [
