@@ -8,7 +8,6 @@ import { IBoardServiceDTO } from "../../dtos/BoardServiceDTO";
 import { BoardService } from "../../infra/typeorm/entities/BoardService";
 import { IBoardServiceRepository } from "../../repositories/IBoardServiceRepository";
 
-
 @injectable()
 class UpdateBoardServiceUseCase {
     constructor(

@@ -9,7 +9,7 @@ class LandingServiceRepository extends BaseRepository<LandingService> implements
 
     async Get(): Promise<LandingService[]> {
         return this.repository.find({
-            relations: ["serviceId", "addressId", "driverId"],
+            relations: ["serviceId", "branchId", "driverId"],
             order: {
                 created_at: 'ASC'
             }
@@ -19,7 +19,7 @@ class LandingServiceRepository extends BaseRepository<LandingService> implements
     async findById(id: string): Promise<LandingService> {
         return this.repository.findOne({
             where: { service_id: id },
-            relations: ["serviceId", "addressId", "driverId"],
+            relations: ["serviceId", "branchId", "driverId"],
             order: {
                 created_at: 'ASC'
             }

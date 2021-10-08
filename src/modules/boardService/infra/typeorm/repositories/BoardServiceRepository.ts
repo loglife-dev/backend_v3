@@ -22,7 +22,7 @@ class BoardServiceRepository extends BaseRepository<BoardService> implements IBo
     async findById(id: string): Promise<BoardService> {
         return this.repository.findOne({
             where: { service_id: id },
-            relations: ["serviceId", "addressId", "driverId"],
+            relations: ["serviceId", "branchId", "driverId"],
             order: {
                 created_at: 'ASC'
             }
@@ -31,7 +31,7 @@ class BoardServiceRepository extends BaseRepository<BoardService> implements IBo
 
     async Get(): Promise<BoardService[]> {
         return this.repository.find({
-            relations: ["serviceId", "addressId", "driverId"],
+            relations: ["serviceId", "branchId", "driverId"],
             order: {
                 created_at: 'ASC'
             }

@@ -7,15 +7,24 @@ class UpdateBoardServiceController {
     async handle(request: Request, response: Response): Promise<Response> {
         const serviceRepository = new ServiceRepository()
         const { id } = request.params
+        const files = request.files as any;
         const { branch_id, driver_id, operational_number, cte, cte_loglife,
-            board_volume, board_weight, cte_photo, real_weight, taxed_weight, cte_transfer_cost, board_observation, 
+            board_volume, board_weight, real_weight, taxed_weight, cte_transfer_cost, board_observation,
             validate_observation, hasValidate } = request.body;
 
-        if(hasValidate ===  true){
+        if (hasValidate === true) {
             const serviceId = await serviceRepository.findById(id);
             serviceId.step = 'toAllocateService'
             await serviceRepository.Update(serviceId);
 
+        }
+
+        let cte_photo = ''
+
+        for (let file of files) {
+            if (file.fieldname === 'cte_photo') {
+                cte_photo = file.key
+            }
         }
 
         const updateBoardServiceUseCase = container.resolve(UpdateBoardServiceUseCase);
