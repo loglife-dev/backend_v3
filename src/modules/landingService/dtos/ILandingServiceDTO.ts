@@ -4,7 +4,7 @@ interface ILandingServiceDTO {
     service_id?: string;
     branch_id?: string;
     driver_id?: string;
-    step: string;
+    step?: string;
     arrival_latitude?: string;
     arrival_longitude?: string;
     arrival_timestamp?: Date;

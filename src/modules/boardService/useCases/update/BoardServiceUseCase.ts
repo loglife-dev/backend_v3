@@ -24,7 +24,6 @@ class UpdateBoardServiceUseCase {
         id,
         branch_id,
         driver_id,
-        step,
         operational_number,
         cte,
         cte_loglife,
@@ -56,7 +55,7 @@ class UpdateBoardServiceUseCase {
 
         boardService.branch_id = branch_id;
         boardService.driver_id = driver_id;
-        boardService.step = step;
+        boardService.step = 'DONE'
         boardService.operational_number = operational_number;
         boardService.cte = cte;
         boardService.cte_loglife = cte_loglife;

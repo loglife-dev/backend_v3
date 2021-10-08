@@ -42,7 +42,7 @@ class CreateBoardServiceUseCase {
 
         const createBoardService = new BoardService()
 
-        Object.assign(createBoardService,{
+        Object.assign(createBoardService, {
             service_id,
             branch_id,
             driver_id,
@@ -51,7 +51,7 @@ class CreateBoardServiceUseCase {
             arrival_longitude,
             arrival_timestamp,
             operational_number,
-            cte,
+            cte: "GOING",
             cte_loglife,
             board_volume,
             board_weight,

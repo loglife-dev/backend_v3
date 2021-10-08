@@ -16,7 +16,6 @@ class UpdateLandingServiceUseCase {
     async execute({
         id,
         service_id,
-        step,
         landing_volume,
         box_break,
         cargo_photo,
@@ -35,7 +34,7 @@ class UpdateLandingServiceUseCase {
         serviceId.step = 'toDeliveryService'
         await this.serviceRepository.Update(serviceId);
 
-        landingService.step = step;
+        landingService.step = 'DONE';
         landingService.landing_volume = landing_volume;
         landingService.box_break = box_break;
         landingService.cargo_photo = cargo_photo;

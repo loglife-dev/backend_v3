@@ -4,7 +4,7 @@ import { CreateBoardServiceUseCase } from "./BoardServiceUseCase";
 
 class CreateBoardServiceController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { service_id, branch_id,  driver_id,  step,  arrival_latitude, arrival_longitude, arrival_timestamp, operational_number, cte, cte_loglife,
+        const { service_id, branch_id,  driver_id,  arrival_latitude, arrival_longitude, arrival_timestamp, operational_number, cte, cte_loglife,
             board_volume, board_weight, cte_photo, real_weight, taxed_weight, cte_transfer_cost, board_observation, validate_observation,
             departure_latitude, departure_longitude, departure_timestamp } = request.body;
 
@@ -14,7 +14,6 @@ class CreateBoardServiceController {
             service_id,
             branch_id,
             driver_id,
-            step,
             arrival_latitude,
             arrival_longitude,
             arrival_timestamp,

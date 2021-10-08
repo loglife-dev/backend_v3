@@ -6,7 +6,7 @@ class UpdateLandingServiceController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { id } = request.params;
         const files = request.file as any;
-        const { step, landing_volume, box_break, departure_latitude, departure_longitude,
+        const { landing_volume, box_break, departure_latitude, departure_longitude,
             departure_timestamp, observation } = request.body;
 
         let cargo_photo = ''
@@ -20,7 +20,6 @@ class UpdateLandingServiceController {
         const updateLandingServiceUseCase = container.resolve(UpdateLandingServiceUseCase);
         const updateLanding = await updateLandingServiceUseCase.execute({
             id,
-            step,
             landing_volume,
             box_break,
             cargo_photo: cargo_photo,
