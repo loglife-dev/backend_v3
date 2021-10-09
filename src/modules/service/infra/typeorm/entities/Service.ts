@@ -2,6 +2,11 @@ import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, OneToOne, Prim
 import { Customer } from "../../../../customer/infra/typeorm/entities/Customer";
 import { v4 as uuidv4 } from 'uuid';
 import { RequestedService } from "../../../../requestedService/infra/typeorm/entities/RequestedService";
+import { CollectService } from "../../../../collectService/infra/typeorm/entities/CollectService";
+import { BoardService } from "../../../../boardService/infra/typeorm/entities/BoardService";
+import { LandingService } from "../../../../landingService/infra/typeorm/entities/LandingService";
+import { DeliveryService } from "../../../../deliveryService/infra/typeorm/entities/DeliveryService";
+
 @Entity('service')
 class Service {
     @PrimaryColumn()
@@ -13,12 +18,24 @@ class Service {
     @Column()
     step: string;
 
-    @OneToOne(() => RequestedService, requestedService => requestedService.serviceId,  { 
+    @OneToOne(() => RequestedService, requestedService => requestedService.serviceId, {
         eager: true,
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
     })
     requestedServiceId: RequestedService;
+
+    @OneToOne(() => CollectService, collectService => collectService.serviceId)
+    collectServiceId: CollectService;
+
+    @OneToOne(() => BoardService, boardService => boardService.serviceId)
+    boardServiceId: BoardService;
+
+    @OneToOne(() => LandingService, landingService => landingService.serviceId)
+    landingServiceId: LandingService;
+
+    @OneToOne(() => DeliveryService, deliveryService => deliveryService.serviceId)
+    deliveryServiceId: DeliveryService;
 
     @JoinColumn({ name: 'customer_id' })
     @OneToOne(() => Customer)
