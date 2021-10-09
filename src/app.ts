@@ -8,9 +8,11 @@ import swaggerFile from "./swagger.json";
 import { router } from "./shared/infra/routes";
 import cors from 'cors'
 import path from "path";
+import {createConnection} from "typeorm"
 
 import { AppError } from "./shared/errors/AppError";
 
+createConnection();
 const app = express();
 app.use(cors())
 app.use(express.json());

@@ -9,7 +9,7 @@
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "test": "jest",
-    "seed": "ts-node-dev ./node_modules/typeorm-seeding/dist/cli.js seed"
+    "seed": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed"
   },
   "dependencies": {
     "aws-sdk": "^2.991.0",
