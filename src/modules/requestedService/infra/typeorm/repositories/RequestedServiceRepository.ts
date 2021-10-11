@@ -1,4 +1,4 @@
-import { LessThanOrEqual, MoreThan, MoreThanOrEqual } from "typeorm";
+import { Between, LessThanOrEqual, MoreThanOrEqual } from "typeorm";
 import { BaseRepository } from "../../../../../shared/infra/repositories/BaseRepositories";
 import { IRequestedServiceRepository } from "../../../repositories/IRequestdServiceRepository";
 import { RequestedService } from "../entities/RequestedService";
@@ -34,7 +34,7 @@ class RequestedServiceRepository extends BaseRepository<RequestedService> implem
 
     async filterSla(startFilter: string, endFilter: string): Promise<RequestedService[]> {
         return this.repository.find({
-            where: { collect_date: MoreThanOrEqual(startFilter) },
+            where: { collect_date: Between(MoreThanOrEqual(startFilter), LessThanOrEqual(endFilter))  },
             relations: ["serviceId", "budgetId", "sourceCollectorId", "destinationCollectorId", "sourceBranchId", "destinationBranchId", "providerId"],
             order: {
                 service_id: "ASC",
