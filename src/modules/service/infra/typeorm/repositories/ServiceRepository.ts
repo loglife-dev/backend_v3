@@ -10,7 +10,7 @@ class ServiceRepository extends BaseRepository<Service> implements IServiceRepos
     async Get(): Promise<Service[]> {
         return this.repository.find({
             relations: ["customerId", "requestedServiceId", "collectServiceId",
-                "boardServiceId", "landingServiceId", "deliveryServiceId"],
+                "boardServiceId", "landingServiceId", "deliveryServiceId", "allocateServiceId", "availableServiceId"],
             order: {
                 protocol: 'ASC'
             }
@@ -21,7 +21,7 @@ class ServiceRepository extends BaseRepository<Service> implements IServiceRepos
         return this.repository.findOne({
             where: { id },
             relations: ["customerId", "requestedServiceId", "collectServiceId",
-                "boardServiceId", "landingServiceId", "deliveryServiceId"],
+                "boardServiceId", "landingServiceId", "deliveryServiceId", "allocateServiceId", "availableServiceId"],
             order: {
                 protocol: 'ASC'
             }
@@ -32,7 +32,7 @@ class ServiceRepository extends BaseRepository<Service> implements IServiceRepos
         return this.repository.findOne({
             where: { protocol },
             relations: ["customerId", "requestedServiceId", "collectServiceId",
-                "boardServiceId", "landingServiceId", "deliveryServiceId"],
+                "boardServiceId", "landingServiceId", "deliveryServiceId", "allocateServiceId", "availableServiceId"],
             order: {
                 protocol: 'ASC'
             }

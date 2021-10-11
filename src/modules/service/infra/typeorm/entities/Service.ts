@@ -6,6 +6,8 @@ import { CollectService } from "../../../../collectService/infra/typeorm/entitie
 import { BoardService } from "../../../../boardService/infra/typeorm/entities/BoardService";
 import { LandingService } from "../../../../landingService/infra/typeorm/entities/LandingService";
 import { DeliveryService } from "../../../../deliveryService/infra/typeorm/entities/DeliveryService";
+import { AllocateService } from "../../../../allocateService/infra/typeom/entities/AllocateService";
+import { AvailableService } from "../../../../availableService/infra/typeorm/entities/AvailableService";
 
 @Entity('service')
 class Service {
@@ -36,6 +38,12 @@ class Service {
 
     @OneToOne(() => DeliveryService, deliveryService => deliveryService.serviceId)
     deliveryServiceId: DeliveryService;
+
+    @OneToOne(() => AllocateService, allocateService => allocateService.serviceId)
+    allocateServiceId: AllocateService;
+
+    @OneToOne(() => AvailableService, availableService => availableService.serviceId)
+    availableServiceId: AvailableService;
 
     @JoinColumn({ name: 'customer_id' })
     @OneToOne(() => Customer)
