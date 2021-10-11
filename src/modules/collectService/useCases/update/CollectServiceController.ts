@@ -7,7 +7,7 @@ class UpdateCollectServiceController {
         const { id } = request.params
         const files = request.files as any;
         console.log(files)
-        const { service_id, address_id, driver_id, responsible_name, responsible_cpf, volume, sample, problem, departure_latitude, departure_longitude, departure_timestamp, unsuccess_latitude,
+        const { service_id, address_id, driver_id, provider_id, responsible_name, responsible_cpf, volume, sample, problem, departure_latitude, departure_longitude, departure_timestamp, unsuccess_latitude,
             unsuccess_longitude, unsuccess_timestamp, observation, hasUnsuccess } = request.body;
 
         let box_photo = ''
@@ -33,6 +33,7 @@ class UpdateCollectServiceController {
             service_id: id,
             address_id,
             driver_id,
+            provider_id,
             step: hasUnsuccess ? 'UNSUCCESS' : 'DONE',
             responsible_name,
             responsible_cpf,

@@ -20,6 +20,7 @@ class UpdateCollectServiceUseCase {
         service_id,
         address_id,
         driver_id,
+        provider_id,
         step,
         responsible_name,
         responsible_cpf,
@@ -57,6 +58,7 @@ class UpdateCollectServiceUseCase {
    
         collectService.address_id = address_id,
         collectService.driver_id = driver_id,
+        collectService.provider_id = provider_id;
         collectService.step = step;
         collectService.responsible_name = responsible_name;
         collectService.responsible_cpf = responsible_cpf;

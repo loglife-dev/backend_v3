@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Address } from "../../../../address/infra/entities/Address";
 import { Driver } from "../../../../driver/infra/typeorm/entities/Driver";
 import { Service } from "../../../../service/infra/typeorm/entities/Service";
-
+import { Provider } from "../../../../provider/infra/typeorm/entities/Provider";
 @Entity('collectService')
 class CollectService {
     @PrimaryColumn()
@@ -29,6 +29,13 @@ class CollectService {
 
     @Column()
     driver_id: string;
+
+    @JoinColumn({ name: 'provider_id' })
+    @OneToOne(() => Provider)
+    providerId: Provider;
+
+    @Column()
+    provider_id: string;
 
     @Column()
     step: string;

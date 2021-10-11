@@ -28,6 +28,11 @@ export class CreateCollectService1632247570105 implements MigrationInterface {
                         isNullable: false,
                     },
                     {
+                        name: 'provider_id',
+                        type: 'uuid',
+                        isNullable: true,
+                    },
+                    {
                         name: 'step',
                         type: 'varchar',
                     },
@@ -151,6 +156,14 @@ export class CreateCollectService1632247570105 implements MigrationInterface {
                         referencedTableName: 'driver',
                         referencedColumnNames: ['id'],
                         columnNames: ['driver_id'],
+                        onUpdate: 'CASCADE',
+                        onDelete: 'SET NULL',
+                    },
+                    {
+                        name: 'FKProvider',
+                        referencedTableName: 'provider',
+                        referencedColumnNames: ['id'],
+                        columnNames: ['provider_id'],
                         onUpdate: 'CASCADE',
                         onDelete: 'SET NULL',
                     }

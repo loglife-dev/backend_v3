@@ -4,6 +4,7 @@ interface ICollectServiceDTO {
     service_id?: string;
     address_id?: string;
     driver_id: string;
+    provider_id: string;
     step?: string;
     arrival_latitude?: string;
     arrival_longitude?: string;
