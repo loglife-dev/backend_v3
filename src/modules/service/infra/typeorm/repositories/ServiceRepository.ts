@@ -17,6 +17,9 @@ class ServiceRepository extends BaseRepository<Service> implements IServiceRepos
         })
     }
 
+  
+
+
     async findById(id: string): Promise<Service> {
         return this.repository.findOne({
             where: { id },

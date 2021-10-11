@@ -5,4 +5,5 @@ export interface IRequestedServiceRepository extends IBaseRepository<RequestedSe
 
     Get(): Promise<RequestedService[]>;
     findById(id: string): Promise<RequestedService>
+    filterSla(startFilter: string, endFilter: string): Promise<RequestedService[]>;
 }
