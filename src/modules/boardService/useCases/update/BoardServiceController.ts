@@ -9,12 +9,19 @@ class UpdateBoardServiceController {
         const { id } = request.params
         const files = request.files as any;
         const { branch_id, driver_id, operational_number, cte, cte_loglife,
-            board_volume, board_weight, real_weight, taxed_weight, cte_transfer_cost, board_observation,
+            board_volume, board_weight, real_weight, taxed_weight, cte_transfer_cost, departure_latitude, departure_longitude,
+            departure_timestamp, board_observation,
             validate_observation, hasValidate } = request.body;
 
-        if (hasValidate === true) {
+
+        if (hasValidate) {
             const serviceId = await serviceRepository.findById(id);
             serviceId.step = 'toAllocateService'
+            await serviceRepository.Update(serviceId);
+
+        } else {
+            const serviceId = await serviceRepository.findById(id);
+            serviceId.step = 'toBoardValidate'
             await serviceRepository.Update(serviceId);
 
         }
@@ -38,10 +45,13 @@ class UpdateBoardServiceController {
             cte, cte_loglife,
             board_volume,
             board_weight,
-            cte_photo,
+            cte_photo: cte_photo,
             real_weight,
             taxed_weight,
             cte_transfer_cost,
+            departure_latitude,
+            departure_longitude,
+            departure_timestamp,
             board_observation,
             validate_observation,
         })

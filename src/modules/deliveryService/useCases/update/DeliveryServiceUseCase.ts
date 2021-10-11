@@ -1,5 +1,4 @@
 import { inject, injectable } from "tsyringe";
-import { IServiceRepository } from "../../../service/repositories/IServiceRepository";
 import { IDeliveryServiceDTO } from "../../dtos/IDeliveryServiceDTO";
 import { DeliveryService } from "../../infra/typeorm/entities/DeliveryService";
 import { IDeliveryServiceRepository } from "../../repositories/IDeliveryServiceRepository";
@@ -8,9 +7,7 @@ import { IDeliveryServiceRepository } from "../../repositories/IDeliveryServiceR
 class UpdateDeliveryServiceUseCase {
     constructor(
         @inject("DeliveryServiceRepository")
-        private readonly deliveryServiceRepository: IDeliveryServiceRepository,
-        @inject("ServiceRepository")
-        private readonly serviceRepository: IServiceRepository) { }
+        private readonly deliveryServiceRepository: IDeliveryServiceRepository) { }
 
     async execute({
         id,
@@ -27,10 +24,6 @@ class UpdateDeliveryServiceUseCase {
         observation,
     }: IDeliveryServiceDTO): Promise<DeliveryService> {
         const delivery = await this.deliveryServiceRepository.findById(id);
-
-        const serviceId = await this.serviceRepository.findById(id);
-        serviceId.step = 'finishedService'
-        await this.serviceRepository.Update(serviceId);
 
         delivery.step = step;
         delivery.responsible_name = responsible_name

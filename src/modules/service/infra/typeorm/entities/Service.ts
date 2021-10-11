@@ -33,17 +33,17 @@ class Service {
     @OneToOne(() => BoardService, boardService => boardService.serviceId)
     boardServiceId: BoardService;
 
-    @OneToOne(() => LandingService, landingService => landingService.serviceId)
-    landingServiceId: LandingService;
-
-    @OneToOne(() => DeliveryService, deliveryService => deliveryService.serviceId)
-    deliveryServiceId: DeliveryService;
-
     @OneToOne(() => AllocateService, allocateService => allocateService.serviceId)
     allocateServiceId: AllocateService;
 
     @OneToOne(() => AvailableService, availableService => availableService.serviceId)
     availableServiceId: AvailableService;
+
+    @OneToOne(() => LandingService, landingService => landingService.serviceId)
+    landingServiceId: LandingService;
+
+    @OneToOne(() => DeliveryService, deliveryService => deliveryService.serviceId)
+    deliveryServiceId: DeliveryService;
 
     @JoinColumn({ name: 'customer_id' })
     @OneToOne(() => Customer)

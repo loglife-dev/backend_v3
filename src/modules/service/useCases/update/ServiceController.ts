@@ -15,10 +15,10 @@ class UpdateServiceController {
             } else if (isServiceType === 'DEDICADO') {
                 newStep = 'toDeliveryService'
             }
-        } else if (isStep === 'unsuccessService') {
-            newStep = 'unsuccessService'
         } else if (isStep === 'deliveringService') {
             newStep = 'finishedService'
+        } else if (isStep === 'unsuccessService') {
+            newStep = 'unsuccessService'
         }
 
         const updateServiceUseCase = container.resolve(UpdateServiceUseCase);

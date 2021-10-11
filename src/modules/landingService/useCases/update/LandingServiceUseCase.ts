@@ -15,7 +15,6 @@ class UpdateLandingServiceUseCase {
 
     async execute({
         id,
-        service_id,
         landing_volume,
         box_break,
         cargo_photo,

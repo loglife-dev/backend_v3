@@ -21,6 +21,7 @@ import { allocateServiceRoutes } from "./allocateService.routes";
 import { availableServiceRoutes } from "./availableService.routes";
 import { landingServiceRoutes } from "./landingService.routes";
 import { deliveryServiceRoutes } from "./deliveryService.routes";
+import { slaReportRoutes } from "./report/sla.routes";
 
 const router = Router();
 router.use("/hub", hubRoutes);
@@ -45,5 +46,6 @@ router.use("/allocate-service", allocateServiceRoutes);
 router.use("/available-service", availableServiceRoutes);
 router.use("/landing-service", landingServiceRoutes);
 router.use("/delivery-service", deliveryServiceRoutes);
+router.use("/report/sla", slaReportRoutes);
 
 export { router }
