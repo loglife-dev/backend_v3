@@ -9,8 +9,8 @@ class GetCollectServiceUseCase {
         @inject("CollectServiceRepository")
         private readonly collectServiceRepository: ICollectServiceRepository) { }
 
-    async execute(id: string): Promise<CollectService> {
-        const collectService = await this.collectServiceRepository.findById(id)
+    async execute(id: string): Promise<CollectService[]> {
+        const collectService = await this.collectServiceRepository.findAllIds(id)
 
         if (!collectService) {
             throw new AppError("CollectService does not exists!")
@@ -32,5 +32,6 @@ class GetAllCollectServiceUseCase {
         return collectService
     }
 }
+
 
 export { GetCollectServiceUseCase, GetAllCollectServiceUseCase }

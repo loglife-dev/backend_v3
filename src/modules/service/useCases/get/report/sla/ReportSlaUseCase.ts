@@ -1,20 +1,25 @@
-import { response } from "express";
 import { inject, injectable } from "tsyringe";
-import { handleSlaTransfer } from "../../../../../../utils/report/Sla";
+import { handleSla, handleSlaTransfer } from "../../../../../../utils/report/Sla";
+import { ICollectServiceRepository } from "../../../../../collectService/repositories/ICollectServiceRepository";
 import { ServiceRepository } from "../../../../infra/typeorm/repositories/ServiceRepository";
 
 @injectable()
 class GetReportSlaUseCase {
     constructor(
         @inject("ServiceRepository")
-        private readonly serviceRepository: ServiceRepository) { }
+        private readonly serviceRepository: ServiceRepository,
+        @inject("CollectServiceRepository")
+        private readonly collectServiceRepository: ICollectServiceRepository) { }
 
     async execute({
+        service_id,
         startFilter,
         endFilter,
     }): Promise<any[]> {
         const services = await this.serviceRepository.filterSla(startFilter, endFilter)
 
+        const collectService = await this.collectServiceRepository.findAllIds(service_id)
+        
         const serviceList = services.map(service => {
             if (service.step === 'finishedService') {
                 return service;
@@ -36,16 +41,18 @@ class GetReportSlaUseCase {
                 destinationBranch: service.requestedServiceId.destination_branch_id,
                 estimatedTimeAvailable: estimatedTimeAvailable,
                 realTimeAvailable: realTimeAvailable,
-                slaTransfer: await handleSlaTransfer(service.requestedServiceId.service_type, realTimeAvailable, estimatedTimeAvailable) ,
+                slaTransfer: await handleSlaTransfer(service.requestedServiceId.service_type, realTimeAvailable, estimatedTimeAvailable),
                 sourceCollector: service.requestedServiceId.source_collector_id,
                 expectedCollectTime: service.requestedServiceId.collect_hour_end,
+                slaCollect: await handleSla(collectService, service.requestedServiceId.collect_hour_end),
                 destinationCollector: service.requestedServiceId.destination_collector_id,
                 expectedDeliveryTime: service.requestedServiceId.delivery_hour,
+                slaDelivery: await handleSla(collectService, service.requestedServiceId.collect_hour_end),
 
             })
         })
 
-        
+
         return serviceList;
     }
 

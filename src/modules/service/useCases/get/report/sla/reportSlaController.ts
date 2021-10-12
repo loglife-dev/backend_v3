@@ -4,10 +4,11 @@ import { GetReportSlaUseCase } from "./ReportSlaUseCase";
 
 class ReportSlaController {
     async handle(request: Request, response: Response): Promise<Response> {
-    const { startFilter, endFilter } = request.body;
+    const { service_id, startFilter, endFilter } = request.body;
     const getReportSlaUseCase = container.resolve(GetReportSlaUseCase)
 
     const get = await getReportSlaUseCase.execute({
+        service_id,
         startFilter,
         endFilter
     })
