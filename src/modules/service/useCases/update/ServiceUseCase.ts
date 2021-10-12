@@ -14,6 +14,7 @@ class UpdateServiceUseCase {
     async execute({
         id,
         step,
+        collect_date,
     }: IServiceDTO): Promise<Service> {
         const service = await this.serviceRepository.findById(id);
 
@@ -22,6 +23,7 @@ class UpdateServiceUseCase {
         }
 
         service.step = step;
+        service.collect_date = collect_date;
 
         const updateService = await this.serviceRepository.Update(service);
 

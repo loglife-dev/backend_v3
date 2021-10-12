@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { ReportSlaController } from "../../../../modules/requestedService/useCases/get/report/sla/reportSlaController";
+import { ReportSlaController } from "../../../../modules/service/useCases/get/report/sla/reportSlaController";
 
 
 const slaReportRoutes = Router();

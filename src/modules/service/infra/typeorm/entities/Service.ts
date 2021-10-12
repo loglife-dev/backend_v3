@@ -52,6 +52,9 @@ class Service {
     @Column()
     customer_id: string;
 
+    @Column()
+    collect_date: Date;
+
     @CreateDateColumn()
     created_at: Date;
 

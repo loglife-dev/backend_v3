@@ -1,3 +1,4 @@
+import { Between } from "typeorm";
 import { BaseRepository } from "../../../../../shared/infra/repositories/BaseRepositories";
 import { IServiceRepository } from "../../../repositories/IServiceRepository";
 import { Service } from "../entities/Service";
@@ -39,6 +40,18 @@ class ServiceRepository extends BaseRepository<Service> implements IServiceRepos
             order: {
                 protocol: 'ASC'
             }
+        })
+    }
+
+    async filterSla(startFilter: string, endFilter: string): Promise<Service[]> {
+        return this.repository.find({
+            where: { collect_date: Between((startFilter), (endFilter)) },
+            relations: ["customerId", "requestedServiceId", "collectServiceId",
+                "boardServiceId", "allocateServiceId", "availableServiceId", "landingServiceId", "deliveryServiceId"],
+            order: {
+                protocol: "ASC",
+            }
+
         })
     }
 

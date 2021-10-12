@@ -2,8 +2,6 @@ import { IBaseRepository } from "../../../shared/infra/repositories/IBaseReposit
 import { RequestedService } from "../infra/typeorm/entities/RequestedService";
 
 export interface IRequestedServiceRepository extends IBaseRepository<RequestedService> {
-
     Get(): Promise<RequestedService[]>;
     findById(id: string): Promise<RequestedService>
-    filterSla(startFilter: string, endFilter: string): Promise<RequestedService[]>;
 }

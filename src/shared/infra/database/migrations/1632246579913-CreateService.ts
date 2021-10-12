@@ -28,6 +28,10 @@ export class CreateService1632246579913 implements MigrationInterface {
                         isNullable: false,
                     },
                     {
+                        name: 'collect_date',
+                        type: 'timestamp',                        
+                    },
+                    {
                         name: 'created_at',
                         type: 'timestamp',
                         default: 'now()',

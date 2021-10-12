@@ -5,7 +5,7 @@ import { UpdateServiceUseCase } from "./ServiceUseCase";
 class UpdateServiceController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { id } = request.params;
-        const { isStep, isServiceType } = request.body;
+        const { isStep, isServiceType, collect_date } = request.body;
 
         let newStep = ''
 
@@ -26,6 +26,7 @@ class UpdateServiceController {
         const service = await updateServiceUseCase.execute({
             id,
             step: newStep,
+            collect_date,
         });
         return response.json(service);
     }

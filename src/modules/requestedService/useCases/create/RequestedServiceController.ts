@@ -16,6 +16,7 @@ class CreateRequestedServiceController {
         Object.assign(service, {
             step: 'toValidateRequestedService',
             customer_id: customer_id,
+            collect_date,
         });
         await serviceRepository.Create(service);
 
