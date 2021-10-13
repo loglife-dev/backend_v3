@@ -6,7 +6,7 @@ import { CreateUserUseCase } from "./UserUseCase";
 class CreateUserController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { situation, user_type, loglife_employee, customer_id, driver_id,
-            collector_id, permissions, email, password, firstname, lastname } = request.body;
+            collector_id, permissions, email, firstname, lastname } = request.body;
 
         const createUserUseCase = container.resolve(CreateUserUseCase);
 
@@ -19,7 +19,7 @@ class CreateUserController {
             collector_id,
             permissions,
             email,
-            password,
+            password: 'loglife123',
             firstname,
             lastname,
         });

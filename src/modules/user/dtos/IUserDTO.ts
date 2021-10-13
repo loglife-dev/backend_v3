@@ -10,7 +10,7 @@ interface IUserDTO {
     collector_id: string
     permissions: string[];
     email: string;
-    password: string;
+    password?: string;
     firstname: string;
     lastname: string;
 }

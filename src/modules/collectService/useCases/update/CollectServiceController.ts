@@ -8,8 +8,7 @@ class UpdateCollectServiceController {
         const files = request.files as any;
         const { service_id, address_id, driver_id, provider_id, responsible_name, responsible_cpf, volume, sample, problem, departure_latitude, departure_longitude, departure_timestamp, unsuccess_latitude,
             unsuccess_longitude, unsuccess_timestamp, observation, hasUnsuccess } = request.body;
-        console.log(request.body)
-
+        
         const updateCollectServiceUseCase = container.resolve(UpdateCollectServiceUseCase)
         let collectService: any
 

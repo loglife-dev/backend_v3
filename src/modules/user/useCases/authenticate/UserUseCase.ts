@@ -29,7 +29,7 @@ class AuthenticateUserUseCase {
         if (email == "" || password == "") {
             throw new AppError("fill in all fields")
         }
-
+        
         const user = await this.userRepository.findByEmail(email);
 
         if (!user) {
