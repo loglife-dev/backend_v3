@@ -83,10 +83,10 @@ class CollectService {
     departure_timestamp: Date;
 
     @Column()
-    unsuccess_latitude: Date;
+    unsuccess_latitude: string;
 
     @Column()
-    unsuccess_longitude: Date;
+    unsuccess_longitude: string;
 
     @Column()
     unsuccess_timestamp: Date;

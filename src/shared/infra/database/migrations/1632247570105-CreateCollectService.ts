@@ -105,12 +105,12 @@ export class CreateCollectService1632247570105 implements MigrationInterface {
                     },
                     {
                         name: 'unsuccess_latitude',
-                        type: 'timestamp',
+                        type: 'varchar',
                         isNullable: true,
                     },
                     {
                         name: 'unsuccess_longitude',
-                        type: 'timestamp',
+                        type: 'varchar',
                         isNullable: true,
                     },
                     {
