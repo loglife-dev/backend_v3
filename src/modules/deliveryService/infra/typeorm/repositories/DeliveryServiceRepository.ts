@@ -24,5 +24,15 @@ class DeliveryServiceRepository extends BaseRepository<DeliveryService> implemen
             }
         })
     }
+
+    async findAllIds(id: string): Promise<DeliveryService[]> {
+        return this.repository.find({
+            where: { service_id: id },
+            relations: ["serviceId", "addressId", "driverId"],
+            order: {
+                service_id: 'ASC'
+            }
+        })
+    }
 }
 export { DeliveryServiceRepository }

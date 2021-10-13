@@ -10,7 +10,8 @@
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "test": "jest",
     "seed": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
-    "build": "tsc"
+    "build": "tsc",
+    "production": "pm2 start src/server.ts --name transporte-biologico-api"
   },
   "dependencies": {
     "aws-sdk": "^2.991.0",

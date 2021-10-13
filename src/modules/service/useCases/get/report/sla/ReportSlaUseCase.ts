@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { handleSla, handleSlaTransfer } from "../../../../../../utils/report/Sla";
 import { ICollectServiceRepository } from "../../../../../collectService/repositories/ICollectServiceRepository";
+import { IDeliveryServiceRepository } from "../../../../../deliveryService/repositories/IDeliveryServiceRepository";
 import { ServiceRepository } from "../../../../infra/typeorm/repositories/ServiceRepository";
 
 @injectable()
@@ -9,7 +10,9 @@ class GetReportSlaUseCase {
         @inject("ServiceRepository")
         private readonly serviceRepository: ServiceRepository,
         @inject("CollectServiceRepository")
-        private readonly collectServiceRepository: ICollectServiceRepository) { }
+        private readonly collectServiceRepository: ICollectServiceRepository,
+        @inject("DeliveryServiceRepository")
+        private readonly deliveryServiceRepository: IDeliveryServiceRepository) { }
 
     async execute({
         service_id,
@@ -19,7 +22,9 @@ class GetReportSlaUseCase {
         const services = await this.serviceRepository.filterSla(startFilter, endFilter)
 
         const collectService = await this.collectServiceRepository.findAllIds(service_id)
-        
+
+        const deliveryService = await this.deliveryServiceRepository.findAllIds(service_id);
+
         const serviceList = services.map(service => {
             if (service.step === 'finishedService') {
                 return service;
@@ -29,7 +34,7 @@ class GetReportSlaUseCase {
         const response = serviceList.map(async service => {
             const estimatedTimeAvailable = service.requestedServiceId.service_type.toUpperCase() === 'FRACIONADO' ? service.allocateServiceId.availability_hour : '-';
             const realTimeAvailable = service.requestedServiceId.service_type.toUpperCase() === 'FRACIONADO' ? service.availableServiceId.landing_availability_hour : '-';
-            
+
             console.log({
                 protocol: service.protocol,
                 customer: service.customerId.trading_firstname,
@@ -47,7 +52,7 @@ class GetReportSlaUseCase {
                 slaCollect: await handleSla(collectService, service.requestedServiceId.collect_hour_end),
                 destinationCollector: service.requestedServiceId.destination_collector_id,
                 expectedDeliveryTime: service.requestedServiceId.delivery_hour,
-                slaDelivery: await handleSla(collectService, service.requestedServiceId.collect_hour_end),
+                slaDelivery: await handleSla(deliveryService, service.requestedServiceId.delivery_hour),
 
             })
         })

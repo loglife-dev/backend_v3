@@ -1,4 +1,4 @@
-import { formatDistanceStrict, format, getHours, getMinutes } from 'date-fns'
+import { differenceInMinutes, formatDistanceStrict, format, getHours, getMinutes } from 'date-fns'
 
 async function handleSlaTransfer(service_type: string, realTimeAvailable: any, estimatedTimeAvailable: any) {
     if (service_type.toUpperCase() !== 'FRACIONADO') {
@@ -16,16 +16,16 @@ async function handleSlaTransfer(service_type: string, realTimeAvailable: any, e
 
 }
 
-async function handleSla(addresses: any, collectHourEnd: any) {
+async function handleSla(addresses: any, hourEnd: any) {
     let sla = 0;
 
-    const handleCollectHourEnd: any = format(new Date(2020, 1, 1, getHours(collectHourEnd), getMinutes(collectHourEnd)), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
+    const handleHourEnd: any = format(new Date(2020, 1, 1, getHours(hourEnd), getMinutes(hourEnd)), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
     addresses.map(address => {
         if (address.step === 'DONE') {
             const handleDepartureTime: any = format(new Date(2020, 1, 1, getHours(address.departure_timestamp), getMinutes(address.departure_timestamp)), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
-            const diffBetweenCollectHourEndAndDepartureTime = formatDistanceStrict(new Date(handleCollectHourEnd), new Date(handleDepartureTime), { unit: 'minute' })
+            const diffBetweenHourEndAndDepartureTime = differenceInMinutes(new Date(handleHourEnd), new Date(handleDepartureTime))
 
-            if (parseInt(diffBetweenCollectHourEndAndDepartureTime.split(" ")[0]) <= 60) {
+            if (diffBetweenHourEndAndDepartureTime <= 60 && diffBetweenHourEndAndDepartureTime >= 0) {
                 sla += 100
             } else {
                 sla += 0
