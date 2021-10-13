@@ -11,7 +11,6 @@ class UpdateDeliveryServiceUseCase {
 
     async execute({
         id,
-        step,
         responsible_name,
         responsible_cpf,
         delivery_volume,
@@ -25,7 +24,7 @@ class UpdateDeliveryServiceUseCase {
     }: IDeliveryServiceDTO): Promise<DeliveryService> {
         const delivery = await this.deliveryServiceRepository.findById(id);
 
-        delivery.step = step;
+        delivery.step = 'DONE';
         delivery.responsible_name = responsible_name
         delivery.responsible_cpf = responsible_cpf;
         delivery.delivery_volume = delivery_volume;

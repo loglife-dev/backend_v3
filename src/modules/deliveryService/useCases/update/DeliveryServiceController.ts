@@ -6,7 +6,7 @@ class UpdateDeliveryServiceController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { id } = request.params;
         const files = request.files as any;
-        const { step, responsible_name, responsible_cpf, delivery_volume, problem, departure_latitude,
+        const { responsible_name, responsible_cpf, delivery_volume, problem, departure_latitude,
             departure_longitude, departure_timestamp, observation } = request.body;
 
         let box_photo = ''
@@ -26,7 +26,6 @@ class UpdateDeliveryServiceController {
 
         const updateDelivery = await updateDeliveryServiceUseCase.execute({
             id,
-            step,
             responsible_name,
             responsible_cpf,
             delivery_volume,
