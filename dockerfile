@@ -10,4 +10,6 @@ COPY . .
 
 EXPOSE 3333
 
-CMD ["npm", "run", "dev"] 
+RUN npm install pm2 -g
+
+CMD ["pm2-runtime", "src/server.ts"]

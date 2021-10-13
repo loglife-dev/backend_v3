@@ -5,4 +5,5 @@ export interface IDeliveryServiceRepository extends IBaseRepository<DeliveryServ
     Get(): Promise<DeliveryService[]>;
     findById(id: string): Promise<DeliveryService>;
     findAllIds(id: string): Promise<DeliveryService[]>;
+    findQuery(service_id: string, address_id: string): Promise<DeliveryService>
 }

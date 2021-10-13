@@ -10,7 +10,8 @@ class UpdateDeliveryServiceUseCase {
         private readonly deliveryServiceRepository: IDeliveryServiceRepository) { }
 
     async execute({
-        id,
+        service_id,
+        address_id,
         responsible_name,
         responsible_cpf,
         delivery_volume,
@@ -22,7 +23,7 @@ class UpdateDeliveryServiceUseCase {
         departure_timestamp,
         observation,
     }: IDeliveryServiceDTO): Promise<DeliveryService> {
-        const delivery = await this.deliveryServiceRepository.findById(id);
+        const delivery = await this.deliveryServiceRepository.findQuery(service_id, address_id)
 
         delivery.step = 'DONE';
         delivery.responsible_name = responsible_name

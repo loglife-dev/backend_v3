@@ -34,5 +34,11 @@ class DeliveryServiceRepository extends BaseRepository<DeliveryService> implemen
             }
         })
     }
+
+    async findQuery(service_id: string, address_id: string): Promise<DeliveryService> {
+        return this.repository.createQueryBuilder()
+            .where("service_id =:service_id AND address_id =:address_id", { service_id: service_id, address_id: address_id })
+            .getOne()
+    }
 }
 export { DeliveryServiceRepository }

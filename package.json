@@ -11,7 +11,7 @@
     "test": "jest",
     "seed": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
     "build": "tsc",
-    "production": "pm2 start src/server.ts --name transporte-biologico-api"
+    "pm2:dev": "pm2 start dist/src/server.js --name transporte-biologico-api"
   },
   "dependencies": {
     "aws-sdk": "^2.991.0",
