@@ -14,6 +14,8 @@ interface IResponse {
     user: {
         name: string,
         email: string
+        user_type: string;
+        permissions: string[];
     },
     token: string;
 }
@@ -50,7 +52,9 @@ class AuthenticateUserUseCase {
         const tokenReturn: IResponse = {
             token,
             user: {
-                name: user.lastname,
+                name: user.firstname,
+                user_type: user.user_type,
+                permissions: user.permissions,
                 email: user.email
             }
         }
