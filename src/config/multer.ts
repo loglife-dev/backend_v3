@@ -24,7 +24,6 @@ const storageTypes = {
     key(request, file: Express.Multer.File, callback) {
       const fileHash = crypto.randomBytes(16).toString("hex");
       const fileName = `${fileHash}-${file.originalname}`
-      console.log(new aws.S3)
 
       return callback(null, fileName);
     }

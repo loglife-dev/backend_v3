@@ -13,7 +13,6 @@ class UpdateBoardServiceController {
             departure_timestamp, board_observation,
             validate_observation, hasValidate } = request.body;
  
-        console.log(request.body)
  
         if (hasValidate) {
             const serviceId = await serviceRepository.findById(id);
