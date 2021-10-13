@@ -28,29 +28,42 @@ class UpdateCollectServiceController {
         }
 
         const updateCollectServiceUseCase = container.resolve(UpdateCollectServiceUseCase)
+        let collectService: any
 
-        const collectService = await updateCollectServiceUseCase.execute({
-            service_id: id,
-            address_id,
-            driver_id,
-            provider_id,
-            step: hasUnsuccess ? 'UNSUCCESS' : 'DONE',
-            responsible_name,
-            responsible_cpf,
-            box_photo: box_photo,
-            content_declaration: content_declaration,
-            receipt_photo: receipt_photo,
-            volume,
-            sample,
-            problem,
-            departure_latitude,
-            departure_longitude,
-            departure_timestamp,
-            unsuccess_latitude,
-            unsuccess_longitude,
-            unsuccess_timestamp,
-            observation,
-        })
+        if (!hasUnsuccess) {
+            collectService = await updateCollectServiceUseCase.execute({
+                service_id: id,
+                address_id,
+                driver_id,
+                provider_id,
+                step: 'DONE',
+                responsible_name,
+                responsible_cpf,
+                box_photo: box_photo,
+                content_declaration: content_declaration,
+                receipt_photo: receipt_photo,
+                volume,
+                sample,
+                problem,
+                departure_latitude,
+                departure_longitude,
+                departure_timestamp,
+                observation,
+            })
+        } else {
+            collectService = await updateCollectServiceUseCase.execute({
+                service_id: id,
+                address_id,
+                driver_id,
+                provider_id,
+                step: 'UNSUCCESS',
+                unsuccess_latitude,
+                unsuccess_longitude,
+                unsuccess_timestamp
+            })
+        }
+
+
         return response.json(collectService);
     }
 }
