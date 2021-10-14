@@ -31,7 +31,7 @@ const storageTypes = {
 
 };
 
-module.exports = {
+export default  {
   dest: path.resolve(__dirname, "..", "tmp", "img"),
   storage: storageTypes[process.env.STORAGE_TYPE],
   fileFilter: (req, file: Express.Multer.File, cb) => {

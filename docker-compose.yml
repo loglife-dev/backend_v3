@@ -5,6 +5,8 @@ services:
   postgressql:
     image: postgres
     container_name: container_loglife
+    ports:
+      - 5432:5432
     env_file:
       - backend.env
     volumes:

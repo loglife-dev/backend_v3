@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from "multer"
-import multerConfig = require("../../../config/multer")
+import multerConfig from "../../../config/multer"
 
 import { CreateDeliveryServiceController } from "../../../modules/deliveryService/useCases/create/DeliveryServiceController";
 import { GetAllDeliveryServiceController, GetDeliveryServiceController } from "../../../modules/deliveryService/useCases/get/DeliveryServiceController";

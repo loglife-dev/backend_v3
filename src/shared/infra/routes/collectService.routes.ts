@@ -1,6 +1,6 @@
 import { request, response, Router } from "express";
 import multer from "multer"
-import multerConfig = require("../../../config/multer")
+import multerConfig from "../../../config/multer"
 
 import { CreateCollectServiceController } from "../../../modules/collectService/useCases/create/CollectServiceController";
 import { DeleteCollectServiceController } from "../../../modules/collectService/useCases/delete/CollectServiceController";

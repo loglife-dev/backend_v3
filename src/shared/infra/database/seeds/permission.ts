@@ -543,28 +543,10 @@ export default class CreatePermission implements Seeder {
                 },
                 {
                     id: v4(),
-                    key: 'DEFINIR COLETAS',
-                    value: 'define-collect',
-                    group: 'services',
-                    order: 8,
-                    created_at: new Date(),
-                    updated_at: new Date()
-                },
-                {
-                    id: v4(),
                     key: 'COLETAR SERVIÇOS',
                     value: 'add-collect-service',
                     group: 'services',
                     order: 9,
-                    created_at: new Date(),
-                    updated_at: new Date()
-                },
-                {
-                    id: v4(),
-                    key: 'DEFINIR EMBARQUES',
-                    value: 'define-boarding',
-                    group: 'services',
-                    order: 10,
                     created_at: new Date(),
                     updated_at: new Date()
                 },
@@ -606,28 +588,10 @@ export default class CreatePermission implements Seeder {
                 },
                 {
                     id: v4(),
-                    key: 'DEFINIR DESEMBARQUES',
-                    value: 'define-landing',
-                    group: 'services',
-                    order: 15,
-                    created_at: new Date(),
-                    updated_at: new Date()
-                },
-                {
-                    id: v4(),
                     key: 'DESEMBARCAR SERVIÇOS',
                     value: 'add-landing-service',
                     group: 'services',
                     order: 16,
-                    created_at: new Date(),
-                    updated_at: new Date()
-                },
-                {
-                    id: v4(),
-                    key: 'DEFINIR ENTREGAS',
-                    value: 'define-delivery',
-                    group: 'services',
-                    order: 17,
                     created_at: new Date(),
                     updated_at: new Date()
                 },

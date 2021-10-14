@@ -20,7 +20,7 @@ export class CreateCollectService1632247570105 implements MigrationInterface {
                     {
                         name: 'address_id',
                         type: 'uuid',
-                        isNullable: false,
+                        isNullable: true,
                     },
                     {
                         name: 'driver_id',

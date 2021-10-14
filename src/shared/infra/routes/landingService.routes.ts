@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from "multer"
-import multerConfig = require("../../../config/multer")
+import multerConfig from "../../../config/multer"
 import { CreateLandingServiceController } from "../../../modules/landingService/useCases/create/LandingServiceController";
 import { GetAllLandingServiceController, GetLandingServiceController } from "../../../modules/landingService/useCases/get/LandingServiceController";
 import { UpdateLandingServiceController } from "../../../modules/landingService/useCases/update/LandingServiceController";
