@@ -10,8 +10,5 @@ module.exports = {
   "cli": {
     "migrationsDir": "./src/shared/infra/database/migrations"
   },
-  seeds: ["./src/shared/infra/database/seeds/*.ts"],
-  'extra': {
-    'ssl': true
-  }
+  seeds: ["./src/shared/infra/database/seeds/*.ts"]
 }

@@ -5,14 +5,9 @@ services:
   postgressql:
     image: postgres
     container_name: container_loglife
-    restart: always
-    ports: 
-      - 5432:5432
-    environment: 
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=docker
-      - POSTGRES_DB=loglife
-    volumes: 
+    env_file:
+      - backend.env
+    volumes:
       - pgdata:/data/postgres
     
  # app:
@@ -30,8 +25,8 @@ services:
  #     - log
     
 
-networks:
-      log:
+#networks:
+ #     log:
 volumes:
    pgdata:
      driver: local
